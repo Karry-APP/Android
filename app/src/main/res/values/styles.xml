@@ -8,4 +8,33 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="inputWhite">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="android:backgroundTint">#FFFFFF</item>
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="colorControlActivated">#FFFFFF</item>
+    </style>
+
+    <style name="GreyText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#C4C4C4</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="buttonGreenFull" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">#4CEBA0</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+    <style name="buttonSmallTransparent">
+        <item name="android:textColor">#DADADA</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">31dp</item>
+    </style>
+
 </resources>

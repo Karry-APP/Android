@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Karry</string>
+    <string name="loginActivity_inputUserName">Identifiant</string>
+    <string name="loginActivity_inputPassword">Mot de passe</string>
+    <string name="loginActivity_buttonLogin">Se connecter</string>
+    <string name="loginActivity_linkForgotPassword">Vous avez oublié votre mot de passe ?</string>
 </resources>
