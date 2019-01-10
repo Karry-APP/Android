@@ -18,18 +18,27 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp" app:srcCompat="@drawable/ic_logo_karryv1"
                 android:id="@+id/imgLogo"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-        />
+                app:layout_constraintVertical_bias="0.447"/>
         <TextView
                 android:text="@string/app_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/textView"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/imgLogo" android:textColor="#FFFFFF"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/imgLogo" android:textColor="#FFFFFF" android:textSize="18sp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/errorMessage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="12sp"
+                android:textColor="#C4C4C4" app:layout_constraintHorizontal_bias="0.502"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2" app:layout_constraintVertical_bias="1.0"/>
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp" app:layout_constraintBottom_toBottomOf="parent"
@@ -39,14 +48,13 @@
             <EditText
                     android:layout_width="250dp"
                     android:layout_height="50dp"
-                    android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/inputUserName"
+                    android:id="@+id/inputEmail"
                     android:hint="@string/loginActivity_inputUserName" app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" android:textStyle="normal" android:textSize="12sp"
                     android:textColorHighlight="#FFFFFF" android:textColorHint="#FFFFFF"
-                    style="@style/inputWhite"/>
+                    style="@style/inputWhite" android:inputType="textEmailAddress"/>
             <EditText
                     android:layout_width="250dp"
                     android:layout_height="50dp"
@@ -54,7 +62,7 @@
                     android:ems="10"
                     android:id="@+id/inputPassword"
                     android:hint="@string/loginActivity_inputPassword" android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@+id/inputUserName"
+                    app:layout_constraintTop_toBottomOf="@+id/inputEmail"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent" android:textSize="12sp"
@@ -85,7 +93,7 @@
                     android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
             <Button
                     android:text="@string/loginActivity_buttonLogin"
-                    android:layout_height="wrap_content" android:id="@+id/buttonLogin"
+                    android:layout_height="wrap_content" android:id="@+id/loginButton"
                     android:layout_width="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +106,7 @@
                     android:layout_height="wrap_content" android:id="@+id/linkForgotPassword"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="32dp"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonLogin" android:textSize="12sp"
+                    app:layout_constraintTop_toBottomOf="@+id/loginButton" android:textSize="12sp"
                     android:textColor="#C4C4C4"/>
             <Button
                     android:text="F"
@@ -110,6 +118,16 @@
                     app:layout_constraintEnd_toStartOf="@+id/buttonGoogleLogin"
                     app:layout_constraintHorizontal_chainStyle="packed" android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
+            <ProgressBar
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/loginProgress" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/linkForgotPassword"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="3dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                    app:layout_constraintVertical_bias="0.4" android:visibility="invisible"/>
         </android.support.constraint.ConstraintLayout>
     </android.support.constraint.ConstraintLayout>
 
