@@ -2,9 +2,22 @@
     <string name="app_name">Karry</string>
 
     <!-- LoginActivity -->
-    <string name="loginActivity_inputUserName">Identifiant</string>
+    <string name="loginActivity_inputUserName">Email</string>
     <string name="loginActivity_inputPassword">Mot de passe</string>
     <string name="loginActivity_buttonLogin">Se connecter</string>
     <string name="loginActivity_linkForgotPassword">Vous avez oublié votre mot de passe ?</string>
     <string name="loginActivity_failedLogin">Une erreur s\'est produite lors de votre connexion</string>
+    <string name="loginActivity_linkRegister">Vous n\'avez pas encore de compte ?\n Créez-en maintenant</string>
+
+    <!-- Registration Page -->
+    <string name="registrationActivity_welcomeMessage">Bienvenue sur</string>
+    <string name="registrationActivity_firstname">Prénom</string>
+    <string name="registrationActivity_lastname">Nom</string>
+    <string name="registrationActivity_password">Mot de passe</string>
+    <string name="registrationActivity_passwordConfirmation">Confirmer votre mot de passe</string>
+    <string name="registrationActivity_email">Email</string>
+    <string name="registrationActivity_phone">Téléphone</string>
+    <string name="registrationActivity_submitButton">Créer un compte</string>
+    <string name="registrationActivity_linkSocial">Connectez-vous avec vos réseaux sociaux</string>
+
 </resources>
