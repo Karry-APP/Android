@@ -15,8 +15,8 @@
             app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-                android:layout_width="63dp"
-                android:layout_height="66dp" app:srcCompat="@drawable/ic_logo_karryv1"
+                android:layout_width="80dp"
+                android:layout_height="80dp" app:srcCompat="@drawable/ic_logo_karryv1"
                 android:id="@+id/imgLogo"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,8 +37,8 @@
                 android:id="@+id/constraintLayout2" android:layout_marginBottom="16dp">
 
             <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/inputUserName"
@@ -48,8 +48,8 @@
                     android:textColorHighlight="#FFFFFF" android:textColorHint="#FFFFFF"
                     style="@style/inputWhite"/>
             <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
                     android:inputType="textPassword"
                     android:ems="10"
                     android:id="@+id/inputPassword"
