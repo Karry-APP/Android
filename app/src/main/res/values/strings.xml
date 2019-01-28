@@ -20,4 +20,11 @@
     <string name="registrationActivity_submitButton">Créer un compte</string>
     <string name="registrationActivity_linkSocial">Connectez-vous avec vos réseaux sociaux</string>
 
+
+    <!-- SearchResult -->
+    <string name="searchResultActivity_resultLabel">Résultat pour la recherche:</string>
+    <string name="searchResultActivity_result">PARIS (FR)</string>
+    <string name="searchResultActivity_noTripTitle">Vous n'avez pas trouvé de voyageurs ?</string>
+    <string name="searchResultActivity_noTripSubtitle">Postez votre annonce et recevez une notification lorsqu'un profil correspondà vos besoin</string>
+    <string name="searchResultActivity_noTripButton">Postez une annonce</string>
 </resources>

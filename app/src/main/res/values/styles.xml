@@ -61,4 +61,9 @@
         <item name="android:layout_height">31dp</item>
     </style>
 
+
+    <style name="ratingBarCustom"
+           parent="android:style/Widget.Material.RatingBar.Small">
+    </style>
+
 </resources>
