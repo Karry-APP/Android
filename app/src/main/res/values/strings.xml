@@ -20,4 +20,30 @@
     <string name="registrationActivity_submitButton">Créer un compte</string>
     <string name="registrationActivity_linkSocial">Connectez-vous avec vos réseaux sociaux</string>
 
+
+    <!-- Announcement Page -->
+    <string name="announcementActivity_userName">Adrien F.</string>
+    <string name="announcementActivity_reviews">(23 commentaires)</string>
+    <string name="announcementActivity_descritpion">Descriptions:</string>
+    <string name="announcementActivity_subtitleWeight">Peut transporter:</string>
+    <string name="announcementActivity_subtitleTax">Taxe:</string>
+    <string name="announcementActivity_subtitleNumber">Commandes max:</string>
+    <string name="announcementActivity_subtitleDisponibility">Disponible jusqu\'au:</string>
+    <string name="announcementActivity_buttonSendMessage">Envoyer un message</string>
+    <string name="announcementActivity_buttonSendProposition">Proposer</string>
+
+    <!-- Account Page -->
+    <string name="accountActivity_buttonUpdateInformation">Modifier mes informations</string>
+
+
+    <!-- City -->
+    <string name="city_Roma">Rome</string>
+    <string name="city_Paris">Paris</string>
+
+
+    <!-- Country -->
+    <string name="country_Italy">ITA</string>
+    <string name="country_France">FR</string>
+
+
 </resources>
