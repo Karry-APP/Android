@@ -23,14 +23,15 @@
 
     <!-- Announcement Page -->
     <string name="announcementActivity_userName">Adrien F.</string>
-    <string name="announcementActivity_reviews">(23 commentaires)</string>
+    <string name="announcementActivity_reviews">(23 avis)</string>
     <string name="announcementActivity_descritpion">Descriptions:</string>
     <string name="announcementActivity_subtitleWeight">Peut transporter:</string>
     <string name="announcementActivity_subtitleTax">Taxe:</string>
     <string name="announcementActivity_subtitleNumber">Commandes max:</string>
     <string name="announcementActivity_subtitleDisponibility">Disponible jusqu\'au:</string>
     <string name="announcementActivity_buttonSendMessage">Envoyer un message</string>
-    <string name="announcementActivity_buttonSendProposition">Proposer</string>
+    <string name="announcementActivity_textLiveIn">Habite à </string>
+    <string name="announcementActivity_textGoTo">Se rend à </string>
 
     <!-- Account Page -->
     <string name="accountActivity_buttonUpdateInformation">Modifier mes informations</string>
@@ -42,8 +43,8 @@
 
 
     <!-- Country -->
-    <string name="country_Italy">ITA</string>
-    <string name="country_France">FR</string>
+    <string name="country_Italy">(ITA)</string>
+    <string name="country_France">(FR)</string>
 
 
 </resources>
