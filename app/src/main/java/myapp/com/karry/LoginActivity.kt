@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
         loginButton.visibility = View.INVISIBLE
         loginProgress.visibility = View.VISIBLE
 
-        val baseUrl =  "https://bringathing.herokuapp.com/users/login"
+        val baseUrl =  "https://karry-dev.herokuapp.com/users/login"
         val client = OkHttpClient()
         val appType = MediaType.parse("application/json; charset=utf-8")
 

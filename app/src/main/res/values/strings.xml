@@ -24,7 +24,15 @@
     <!-- SearchResult -->
     <string name="searchResultActivity_resultLabel">Résultat pour la recherche:</string>
     <string name="searchResultActivity_result">PARIS (FR)</string>
-    <string name="searchResultActivity_noTripTitle">Vous n'avez pas trouvé de voyageurs ?</string>
-    <string name="searchResultActivity_noTripSubtitle">Postez votre annonce et recevez une notification lorsqu'un profil correspondà vos besoin</string>
+    <string name="searchResultActivity_noTripTitle">Vous n\'avez pas trouvé de voyageurs ?</string>
+    <string name="searchResultActivity_noTripSubtitle">Postez votre annonce et recevez une notification lorsqu\'un
+        profil correspondà vos besoin
+    </string>
     <string name="searchResultActivity_noTripButton">Postez une annonce</string>
+    <string name="searchResultActivity_propsalUserAvatarDescription">Avatar of the traveler who make the proposal</string>
+    <string name="searchResultActivity_propsalUserNameDescription">Traveler name</string>
+
+    <string name="searchResultActivity_availableProductIcon">Available Product Icon</string>
+
+    <string name="searchResultActivity_proposalLocationIcon">proposal location icon</string>
 </resources>
