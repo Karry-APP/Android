@@ -1,10 +1,48 @@
 <resources>
     <string name="app_name">Karry</string>
 
+    <!-- SplashscreenActivity -->
+    <string name="SplashscreenActivity_splashLogo_contentDescription">Logo Karry</string>
+
     <!-- LoginActivity -->
-    <string name="loginActivity_inputUserName">Identifiant</string>
-    <string name="loginActivity_inputPassword">Mot de passe</string>
-    <string name="loginActivity_buttonLogin">Se connecter</string>
-    <string name="loginActivity_linkForgotPassword">Vous avez oublié votre mot de passe ?</string>
-    <string name="loginActivity_failedLogin">Une erreur s\'est produite lors de votre connexion</string>
+    <string name="LoginActivity_loginLogo_contentDescription">Logo Karry</string>
+    <string name="LoginActivity_inputEmail_hint">Email</string>
+    <string name="LoginActivity_inputPassword_hint">Mot de passe</string>
+    <string name="LoginActivity_buttonLogin_text">Se connecter</string>
+    <string name="LoginActivity_linkForgotPassword_text">Mot de passe oublié ?</string>
+    <string name="LoginActivity_dontHaveAccount_text">Vous n\'avez pas encore de compte :O Inscrivez-vous !</string>
+    <string name="LoginActivity_loginError_text">Une erreur s\'est produite lors de votre connexion</string>
+
+    <!-- RegisterActivity -->
+    <string name="RegisterActivity_registerLogo_contentDescription">Logo Karry</string>
+    <string name="RegisterActivity_registerFirstname_hint">Prénom</string>
+    <string name="RegisterActivity_registerLastname_hint">Nom</string>
+    <string name="RegisterActivity_registerEmail_hint">Email</string>
+    <string name="RegisterActivity_registerPassword_hint">Mot de passe</string>
+    <string name="RegisterActivity_registerConfirmPassword_hint">Confirmez mot de passe</string>
+    <string name="RegisterActivity_errorMessage_text">Une erreur s\'est produite lors de votre inscription</string>
+    <string name="RegisterActivity_haveAccount_text">Vous possédez déjà un compte ? Connectez-vous !</string>
+    <string name="RegisterActivity_buttonRegister_text">S\'inscrire</string>
+
+
+    <!-- MainActivity -->
+    <string name="MainActivity_bottomNavigation_searchTitle">Recherche</string>
+    <string name="MainActivity_bottomNavigation_tripsTitle">Voyages</string>
+    <string name="MainActivity_bottomNavigation_profileTitle">Profil</string>
+
+    <!-- ProfileFragment -->
+    <string name="ProfileFragment_logoutButton_text">Se déconnecter</string>
+    <string name="title_activity_trip_form">TripFormActivity</string>
+
+    <!-- SearchFragment -->
+    <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui se rend à ....</string>
+    <string name="SearchFragment_searchBeginSearch_text">Commencez à chercher des voyageurs !</string>
+    <string name="SearchFragment_searchDestinationCity_hint">Pékin</string>
+
+    <!-- TripFormActiity -->
+    <string name="TripFormActivity_TripPageTitle_text">Créer un voyage</string>
+    <string name="TripFormActivity_tripSubtitleMain_text">Informations générales</string>
+    <string name="TripFormActivity_tripFormDescription_hint">Description</string>
+
+
 </resources>

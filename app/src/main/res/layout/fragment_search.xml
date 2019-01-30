@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".fragments.SearchFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:text="@string/SearchFragment_searchIntroduction_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView3" android:layout_marginTop="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"/>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/linearLayout2" android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp" android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/searchDestinationCity" android:importantForAutofill="no"
+                    android:hint="@string/SearchFragment_searchDestinationCity_hint" tools:targetApi="o"
+                    android:background="@drawable/bg_searchbar" android:paddingStart="10dp"/>
+        </LinearLayout>
+        <TextView
+                android:text="@string/SearchFragment_searchBeginSearch_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                android:id="@+id/searchBeginSearch"
+                android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/linearLayout2"/>
+        <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchProgress" app:layout_constraintEnd_toEndOf="@+id/searchBeginSearch"
+                app:layout_constraintBottom_toBottomOf="@+id/searchBeginSearch"
+                app:layout_constraintTop_toTopOf="@+id/searchBeginSearch"
+                app:layout_constraintStart_toStartOf="@+id/searchBeginSearch" android:visibility="invisible"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="0dp" android:id="@+id/tripsList"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
