@@ -12,19 +12,23 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".SearchResultActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".LoginActivity">
         </activity>
         <activity android:name=".HomeActivity">
         </activity>
         <activity android:name=".SplashscreenActivity">
+          <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity">
+        </activity>
+        <activity android:name=".AnnouncementActivity">
+        </activity>
+        <activity android:name=".AccountActivity">
         </activity>
     </application>
 
