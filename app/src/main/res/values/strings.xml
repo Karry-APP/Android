@@ -24,20 +24,26 @@
     <string name="RegisterActivity_haveAccount_text">Vous possédez déjà un compte ? Connectez-vous !</string>
     <string name="RegisterActivity_buttonRegister_text">S\'inscrire</string>
 
-
     <!-- MainActivity -->
     <string name="MainActivity_bottomNavigation_searchTitle">Recherche</string>
     <string name="MainActivity_bottomNavigation_tripsTitle">Voyages</string>
     <string name="MainActivity_bottomNavigation_profileTitle">Profil</string>
 
+    <!-- Announcement Page -->
+    <string name="announcementActivity_userName">Adrien F.</string>
+    <string name="announcementActivity_reviews">(23 avis)</string>
+    <string name="announcementActivity_descritpion">Descriptions:</string>
+    <string name="announcementActivity_subtitleWeight">Peut transporter:</string>
+    <string name="announcementActivity_subtitleTax">Taxe:</string>
+    <string name="announcementActivity_subtitleNumber">Commandes max:</string>
+    <string name="announcementActivity_subtitleDisponibility">Disponible jusqu\'au:</string>
+    <string name="announcementActivity_buttonSendMessage">Envoyer un message</string>
+    <string name="announcementActivity_textLiveIn">Habite à </string>
+    <string name="announcementActivity_textGoTo">Se rend à </string>
+
     <!-- ProfileFragment -->
     <string name="ProfileFragment_logoutButton_text">Se déconnecter</string>
     <string name="title_activity_trip_form">TripFormActivity</string>
-
-    <!-- SearchFragment -->
-    <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui se rend à ....</string>
-    <string name="SearchFragment_searchBeginSearch_text">Commencez à chercher des voyageurs !</string>
-    <string name="SearchFragment_searchDestinationCity_hint">Pékin</string>
 
     <!-- TripFormActiity -->
     <string name="TripFormActivity_TripPageTitle_text">Créer un voyage</string>
@@ -45,4 +51,37 @@
     <string name="TripFormActivity_tripFormDescription_hint">Description</string>
 
 
+    <!-- SearchResult -->
+    <string name="searchResultActivity_resultLabel">Résultat pour la recherche:</string>
+    <string name="searchResultActivity_result">PARIS (FR)</string>
+    <string name="searchResultActivity_noTripTitle">Vous n\'avez pas trouvé de voyageurs ?</string>
+    <string name="searchResultActivity_noTripSubtitle">Postez votre annonce et recevez une notification lorsqu\'un
+        profil correspondà vos besoin
+    </string>
+    <string name="searchResultActivity_noTripButton">Postez une annonce</string>
+    <string name="searchResultActivity_propsalUserAvatarDescription">Avatar of the traveler who make the proposal</string>
+    <string name="searchResultActivity_propsalUserNameDescription">Traveler name</string>
+
+    <string name="searchResultActivity_availableProductIcon">Available Product Icon</string>
+
+    <string name="searchResultActivity_proposalLocationIcon">proposal location icon</string>
+
+    <!-- SearchFragment -->
+    <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui se rend à ....</string>
+    <string name="SearchFragment_searchBeginSearch_text">Commencez à chercher des voyageurs !</string>
+    <string name="SearchFragment_searchDestinationCity_hint">Pékin</string>
+
+
+    <!-- Account Page -->
+    <string name="accountActivity_buttonUpdateInformation">Modifier mes informations</string>
+
+
+    <!-- City -->
+    <string name="city_Roma">Rome</string>
+    <string name="city_Paris">Paris</string>
+
+
+    <!-- Country -->
+    <string name="country_Italy">(ITA)</string>
+    <string name="country_France">(FR)</string>
 </resources>
