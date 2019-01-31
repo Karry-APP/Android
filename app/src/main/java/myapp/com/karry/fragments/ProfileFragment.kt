@@ -18,12 +18,10 @@ class ProfileFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_profile, container, false)
-
         v.profileLogout.setOnClickListener { logoutUser() }
         v.profileFirstname.text = UserInfoManager(this.requireContext()).firstname
         v.profileLastname.text = UserInfoManager(this.requireContext()).lastname
         v.profileEmail.text = UserInfoManager(this.requireContext()).email
-
         return v
     }
 
@@ -44,8 +42,6 @@ class ProfileFragment : Fragment() {
                 profileProgress.visibility = View.INVISIBLE
             }
         })
-
-
     }
 }
 
