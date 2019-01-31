@@ -14,6 +14,8 @@ import org.json.JSONObject
 class TripFormActivity : AppCompatActivity() {
 
     private lateinit var tripDescription: String
+    private lateinit var tripDepartureCity: String
+    private lateinit var tripDepartureCountry: String
     private lateinit var tripDestinationCity: String
     private lateinit var tripDestinationCountry: String
     private var tripCarryWeight: Int = 0
@@ -28,7 +30,9 @@ class TripFormActivity : AppCompatActivity() {
 
         val items = arrayOf("paris", "berlin", "tokyo", "Lille", "Nantes", "Bordeaux")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
+
         tripFormDestinationCity.adapter = adapter
+        tripFormDepartureCity.adapter = adapter
 
         tripFormButton.setOnClickListener { createTrip() }
     }
@@ -47,6 +51,12 @@ class TripFormActivity : AppCompatActivity() {
 
         // TODO: Check is description is valid
         tripDescription = description
+
+        // TODO: Check is destinationCity is valid
+        tripDepartureCity = destinationCity
+
+        // TODO: Check is destinationCountry is valid
+        tripDepartureCountry = destinationCountry
 
         // TODO: Check is destinationCity is valid
         tripDestinationCity = destinationCity
@@ -72,6 +82,8 @@ class TripFormActivity : AppCompatActivity() {
     private fun tripInfoAsJson(): String {
         val tripObject = JSONObject()
         tripObject.put("description", tripDescription)
+        tripObject.put("departureCity", tripDepartureCity)
+        tripObject.put("departureCountry", tripDepartureCountry)
         tripObject.put("destinationCity", tripDestinationCity)
         tripObject.put("destinationCountry", tripDestinationCountry)
         tripObject.put("carryWeight", tripCarryWeight)

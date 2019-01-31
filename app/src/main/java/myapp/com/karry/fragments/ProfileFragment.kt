@@ -44,6 +44,8 @@ class ProfileFragment : Fragment() {
                 profileProgress.visibility = View.INVISIBLE
             }
         })
+
+
     }
 }
 

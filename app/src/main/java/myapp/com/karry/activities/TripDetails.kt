@@ -1,7 +1,8 @@
-package myapp.com.karry
+package myapp.com.karry.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import myapp.com.karry.R
 
 class TripDetails : AppCompatActivity() {
 

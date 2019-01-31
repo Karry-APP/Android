@@ -5,10 +5,17 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragmentContainer"
         android:background="@color/colorBackground"
         tools:context=".activities.MainActivity">
 
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp" android:id="@+id/fragmentContainer"
+            app:layout_constraintBottom_toTopOf="@+id/navigation"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+
+    </FrameLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_width="0dp"

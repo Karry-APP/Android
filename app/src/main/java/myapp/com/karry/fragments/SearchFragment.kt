@@ -26,6 +26,18 @@ class SearchFragment : Fragment() {
         v.tripsList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
 
         v.searchDestinationCity.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                checkSearch()
+            }
+        })
+
+        v.searchDepartureCity.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
             }
 
@@ -33,20 +45,25 @@ class SearchFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                searchFor(p0.toString())
-                searchProgress.visibility = View.VISIBLE
-                if(p0.isNullOrBlank()) {
-                    v.searchBeginSearch.text = ""
-                } else {
-                    v.searchBeginSearch.text = ""
-                }
+                checkSearch()
+
             }
         })
         return v
     }
 
-    private fun searchFor(destinationCity: String) {
-        TripsService.searchByCity(destinationCity, { response ->
+    fun checkSearch() {
+        if(!searchDepartureCity.text.isNullOrBlank() && !searchDestinationCity.text.isNullOrBlank() ) {
+            searchFor(searchDepartureCity.text.toString(), searchDestinationCity.text.toString())
+            searchProgress.visibility = View.VISIBLE
+            searchBeginSearch.text = ""
+        } else {
+            searchBeginSearch.text = ""
+        }
+    }
+
+    private fun searchFor(departureCity: String, destinationCity: String) {
+        TripsService.searchByCities(departureCity, destinationCity, { response ->
 
             activity?.runOnUiThread {
                 val tripsArray = JSONArray(response.body()?.string())
@@ -54,9 +71,11 @@ class SearchFragment : Fragment() {
 
                 for (i in 0 until tripsArray.length()) {
                     val tripObject = tripsArray.getJSONObject(i)
+                    val tripId = tripObject.getString("_id").toString()
                     val tripDescription = tripObject.getString("description").toString()
+                    val departureCity = tripObject.getString("departureCity").toString()
                     val destinationCity = tripObject.getString("destinationCity").toString()
-                    val trip = Trip(tripDescription, destinationCity)
+                    val trip = Trip(tripId, tripDescription, departureCity, destinationCity)
                     results.add(trip)
                 }
 

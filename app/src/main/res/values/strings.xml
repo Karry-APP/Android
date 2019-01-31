@@ -45,32 +45,30 @@
     <string name="ProfileFragment_logoutButton_text">Se déconnecter</string>
     <string name="title_activity_trip_form">TripFormActivity</string>
 
-    <!-- TripFormActiity -->
+    <!-- TripFormActivity -->
     <string name="TripFormActivity_TripPageTitle_text">Créer un voyage</string>
     <string name="TripFormActivity_tripSubtitleMain_text">Informations générales</string>
     <string name="TripFormActivity_tripFormDescription_hint">Description</string>
-
+    <string name="TripFormActivity_tripFormButton_text">Créer le voyage</string>
 
     <!-- SearchResult -->
     <string name="searchResultActivity_resultLabel">Résultat pour la recherche:</string>
     <string name="searchResultActivity_result">PARIS (FR)</string>
     <string name="searchResultActivity_noTripTitle">Vous n\'avez pas trouvé de voyageurs ?</string>
     <string name="searchResultActivity_noTripSubtitle">Postez votre annonce et recevez une notification lorsqu\'un
-        profil correspondà vos besoin
+        profil correspond à vos besoins
     </string>
     <string name="searchResultActivity_noTripButton">Postez une annonce</string>
     <string name="searchResultActivity_propsalUserAvatarDescription">Avatar of the traveler who make the proposal</string>
     <string name="searchResultActivity_propsalUserNameDescription">Traveler name</string>
-
     <string name="searchResultActivity_availableProductIcon">Available Product Icon</string>
-
     <string name="searchResultActivity_proposalLocationIcon">proposal location icon</string>
 
     <!-- SearchFragment -->
-    <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui se rend à ....</string>
+    <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui va ...</string>
     <string name="SearchFragment_searchBeginSearch_text">Commencez à chercher des voyageurs !</string>
-    <string name="SearchFragment_searchDestinationCity_hint">Pékin</string>
-
+    <string name="SearchFragment_searchDepartureCity_hint">de Pékin</string>
+    <string name="SearchFragment_searchDestinationCity_hint">à Paris</string>
 
     <!-- Account Page -->
     <string name="accountActivity_buttonUpdateInformation">Modifier mes informations</string>

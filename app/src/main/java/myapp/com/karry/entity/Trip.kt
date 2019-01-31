@@ -1,3 +1,3 @@
 package myapp.com.karry.entity
 
-class Trip (val description: String, val destinationCity: String)
+class Trip (val id: String, val description: String, val departureCity:String, val destinationCity: String)

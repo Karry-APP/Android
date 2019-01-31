@@ -29,7 +29,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tripPageTitle"/>
     <EditText
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:inputType="text"
             android:ems="10"
             android:id="@+id/tripFormDescription"
@@ -40,48 +40,64 @@
             android:hint="@string/TripFormActivity_tripFormDescription_hint"
             app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/tripSubtitleMain" android:importantForAutofill="no"
-            tools:targetApi="o"/>
+            tools:targetApi="o" android:background="@drawable/bg_searchbar"/>
     <Spinner
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:id="@+id/tripFormDestinationCity"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="32dp"
             app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/tripFormDescription"/>
+            app:layout_constraintTop_toBottomOf="@+id/tripFormDescription" android:background="@drawable/bg_searchbar"
+            android:spinnerMode="dialog"/>
+    <Spinner
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:id="@+id/tripFormDepartureCity"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:background="@drawable/bg_searchbar" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tripFormDestinationCity" android:spinnerMode="dialog"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content" android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="32dp"
-            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/tripFormDestinationCity" android:id="@+id/linearLayout3">
+            app:layout_constraintHorizontal_bias="0.0"
+            android:id="@+id/linearLayout3" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tripFormDepartureCity">
         <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:ems="10"
-                android:id="@+id/tripFormCarryWeight" android:layout_weight="1" android:hint="Weight (kg)"
-                android:importantForAutofill="no" android:inputType="number" tools:targetApi="o"/>
+                android:id="@+id/tripFormCarryWeight" android:layout_weight="1" android:hint="Weight"
+                android:importantForAutofill="no" android:inputType="number" tools:targetApi="o"
+                android:background="@drawable/bg_searchbar" android:layout_margin="5dp" android:paddingLeft="5dp"/>
         <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/tripFormCarryMaxAmount" android:layout_weight="1" android:hint="Quantity"
-                android:importantForAutofill="no" tools:targetApi="o"/>
+                android:importantForAutofill="no" tools:targetApi="o" android:background="@drawable/bg_searchbar"
+                android:layout_margin="5dp" android:paddingLeft="5dp"/>
         <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/tripFormCarryTaxe" android:layout_weight="1" android:hint="Taxe %"
-                android:importantForAutofill="no" tools:targetApi="o"/>
+                android:id="@+id/tripFormCarryTaxe" android:layout_weight="1" android:hint="Taxe"
+                android:importantForAutofill="no" tools:targetApi="o" android:background="@drawable/bg_searchbar"
+                android:layout_margin="5dp" android:paddingLeft="5dp"/>
     </LinearLayout>
     <Button
-            android:text="Button"
+            android:text="@string/TripFormActivity_tripFormButton_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
