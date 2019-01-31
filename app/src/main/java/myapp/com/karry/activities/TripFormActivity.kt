@@ -3,13 +3,18 @@ package myapp.com.karry.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_trip_form.*
 import myapp.com.karry.R
+import myapp.com.karry.modules.ApiManager
+import myapp.com.karry.modules.FormChecker
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.TripsService
+import okhttp3.*
 import org.json.JSONObject
+import java.io.IOException
 
 class TripFormActivity : AppCompatActivity() {
 
@@ -26,37 +31,64 @@ class TripFormActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trip_form)
+        val itemsDeparture = arrayOf("Choisissez une ville de départ", "Paris", "Berlin", "Tokyo", "Lille", "Nantes", "Bordeaux")
+        val itemsDestination = arrayOf("Choisissez une ville de destination", "Paris", "Berlin", "Tokyo", "Lille", "Nantes", "Bordeaux")
 
+        val adapterDepartureCities = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, itemsDeparture)
+        val adapterDestinationCities = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, itemsDestination)
 
-        val items = arrayOf("paris", "berlin", "tokyo", "Lille", "Nantes", "Bordeaux")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
-
-        tripFormDestinationCity.adapter = adapter
-        tripFormDepartureCity.adapter = adapter
+        tripFormDestinationCity.adapter = adapterDepartureCities
+        tripFormDepartureCity.adapter = adapterDestinationCities
 
         tripFormButton.setOnClickListener { createTrip() }
     }
 
     private fun validateForm(): Boolean {
+
+        // Description
+
+        /*
+        if(FormChecker.isValidDescription(tripFormDescription, description)) {
+            tripDescription = description
+        }
+
+        if(departureCity !== "Choisissez une ville de départ") {
+            tripDescription = description
+        }
+
+        val destinationCity = tripFormDestinationCity.selectedItem.toString()
+
+        // DestinationCity
+
+
+
+
+*/
+
         val description = tripFormDescription.text.toString()
+
+
+        val departureCity = tripFormDepartureCity.selectedItem.toString()
+        val departureCountry = "FRANCE"
         val destinationCity = tripFormDestinationCity.selectedItem.toString()
         val destinationCountry = "FRANCE"
         val carryWeight = tripFormCarryWeight.text.toString().toInt()
         val carryMaxAmount= tripFormCarryMaxAmount.text.toString().toInt()
         val carryTaxe= tripFormCarryTaxe.text.toString().toInt()
 
-
-
         val creator = UserInfoManager(this.applicationContext).id
 
-        // TODO: Check is description is valid
-        tripDescription = description
+        if(FormChecker.isValidDescription(tripFormDescription, description)) {
+            tripDescription = description
+        } else {
+            return false
+        }
 
         // TODO: Check is destinationCity is valid
-        tripDepartureCity = destinationCity
+        tripDepartureCity = departureCity
 
         // TODO: Check is destinationCountry is valid
-        tripDepartureCountry = destinationCountry
+        tripDepartureCountry = departureCountry
 
         // TODO: Check is destinationCity is valid
         tripDestinationCity = destinationCity

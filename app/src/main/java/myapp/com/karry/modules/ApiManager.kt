@@ -11,14 +11,12 @@ class ApiManager {
             const val USER_REGISTER = "$BASE/users"
             const val USER_LOGOUT = "$BASE/users/me/token"
             fun USER_TRIPS(userId: String?): String {
-                return "$BASE/users/$userId/events"
+                return "$BASE/users/$userId/trips"
             }
+
             // TRIPS
             const val TRIP_SEARCH = "$BASE/trips/search"
             const val TRIP_CREATE = "$BASE/trips"
-
-
-
         }
     }
 }

@@ -46,7 +46,6 @@ class UsersService {
 
         fun logout(token: String, success: (response: Response) -> Unit, failure: () -> Unit) {
             val request = Request.Builder().delete().url(ApiManager.URL.USER_LOGOUT).header("x-auth", token).build()
-
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
                     Log.d("JSON:logout", response.body()?.string())
@@ -59,16 +58,14 @@ class UsersService {
                 override fun onFailure(call: Call, e: IOException) {
                     failure()
                 }
-
             })
         }
 
-        fun getCreatedTrips(token: String?, userId: String?, success: (response: Response) -> Unit, failure: () -> Unit) {
-            val request = Request.Builder().url(ApiManager.URL.USER_TRIPS(userId)).header("x-auth", token!!).build()
+        fun getCreatedTrips(token: String, userId: String?, success: (response: Response) -> Unit, failure: () -> Unit) {
+            val request = Request.Builder().url(ApiManager.URL.USER_TRIPS(userId)).header("x-auth", token).build()
 
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    Log.d("JSON:getCreatedTrips", response.body()?.string())
                     if (response.code() == 200) {
                         success(response)
                     } else {

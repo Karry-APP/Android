@@ -3,6 +3,7 @@ package myapp.com.karry.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,9 +38,9 @@ class TripsFragment : Fragment() {
 
     private fun loadUserCreatedTrips() {
         val userId = UserInfoManager(this.requireContext()).id
-        val token = TokenManager(this.requireContext()).deviceToken
+        val token: String = TokenManager(this.requireContext()).deviceToken ?: ""
 
-        UsersService.getCreatedTrips(token, userId, {response ->
+        UsersService.getCreatedTrips(token, userId, { response ->
             val tripsArray = JSONArray(response.body()!!.string())
 
             val results = arrayListOf<Trip>()
@@ -58,12 +59,14 @@ class TripsFragment : Fragment() {
             activity?.runOnUiThread {
                 userEventsList.adapter = TripsAdapter(results)
                 Toast.makeText(context, "Succeed", Toast.LENGTH_LONG).show()
-                swiperefresh.isRefreshing = false
+               swiperefresh.isRefreshing = false
             }
         }, {
+
             activity?.runOnUiThread {
                 Toast.makeText(this.context, "Aie", Toast.LENGTH_LONG).show()
             }
+
         })
     }
 }
