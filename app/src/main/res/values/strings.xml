@@ -38,8 +38,8 @@
     <string name="announcementActivity_subtitleNumber">Commandes max:</string>
     <string name="announcementActivity_subtitleDisponibility">Disponible jusqu\'au:</string>
     <string name="announcementActivity_buttonSendMessage">Envoyer un message</string>
-    <string name="announcementActivity_textLiveIn">Habite à </string>
-    <string name="announcementActivity_textGoTo">Se rend à </string>
+    <string name="announcementActivity_textLiveIn">Habite à</string>
+    <string name="announcementActivity_textGoTo">Se rend à</string>
 
     <!-- ProfileFragment -->
     <string name="ProfileFragment_logoutButton_text">Se déconnecter</string>
@@ -59,13 +59,14 @@
         profil correspond à vos besoins
     </string>
     <string name="searchResultActivity_noTripButton">Postez une annonce</string>
-    <string name="searchResultActivity_propsalUserAvatarDescription">Avatar of the traveler who make the proposal</string>
+    <string name="searchResultActivity_propsalUserAvatarDescription">Avatar of the traveler who make the proposal
+    </string>
     <string name="searchResultActivity_propsalUserNameDescription">Traveler name</string>
     <string name="searchResultActivity_availableProductIcon">Available Product Icon</string>
     <string name="searchResultActivity_proposalLocationIcon">proposal location icon</string>
 
     <!-- SearchFragment -->
-    <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui va ...</string>
+    <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui va &#8230;</string>
     <string name="SearchFragment_searchBeginSearch_text">Commencez à chercher des voyageurs !</string>
     <string name="SearchFragment_searchDepartureCity_hint">de Pékin</string>
     <string name="SearchFragment_searchDestinationCity_hint">à Paris</string>

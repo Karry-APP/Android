@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import myapp.com.karry.entity.Trip
@@ -23,7 +24,7 @@ class SearchFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_search, container, false)
 
-        v.tripsList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
+        v.tripsListView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
 
         v.searchDestinationCity.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -63,27 +64,13 @@ class SearchFragment : Fragment() {
     }
 
     private fun searchFor(departureCity: String, destinationCity: String) {
-        TripsService.searchByCities(departureCity, destinationCity, { response ->
-
+        TripsService.searchByCities(departureCity, destinationCity, { tripsList ->
             activity?.runOnUiThread {
-                val tripsArray = JSONArray(response.body()?.string())
-                val results = arrayListOf<Trip>()
-
-                for (i in 0 until tripsArray.length()) {
-                    val tripObject = tripsArray.getJSONObject(i)
-                    val tripId = tripObject.getString("_id").toString()
-                    val tripDescription = tripObject.getString("description").toString()
-                    val departureCity = tripObject.getString("departureCity").toString()
-                    val destinationCity = tripObject.getString("destinationCity").toString()
-                    val trip = Trip(tripId, tripDescription, departureCity, destinationCity)
-                    results.add(trip)
-                }
-
                 searchProgress.visibility = View.INVISIBLE
-                if(results.isNullOrEmpty()) {
+                if(tripsList.isNullOrEmpty()) {
                     searchBeginSearch.text = "Oups aucun résultat trouvé "
                 } else {
-                    tripsList.adapter = TripsAdapter(results)
+                    tripsListView.adapter = TripsAdapter(tripsList)
                 }
             }
         }, {

@@ -55,12 +55,6 @@ class LoginActivity : AppCompatActivity() {
             loginButton.visibility = View.INVISIBLE
             loginProgress.visibility = View.VISIBLE
 
-            UsersService.login(userInfoAsJson(), {
-
-            }, {
-
-            })
-
             UsersService.login(userInfoAsJson(), { response ->
                 val jsonData: String = response.body()!!.string()
                 val userObj = JSONObject(jsonData)

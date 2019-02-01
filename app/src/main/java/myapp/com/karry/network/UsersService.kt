@@ -1,6 +1,8 @@
 package myapp.com.karry.network
 
 import android.util.Log
+import com.google.gson.Gson
+import myapp.com.karry.entity.Trip
 import myapp.com.karry.modules.ApiManager
 import myapp.com.karry.modules.TokenManager
 import okhttp3.*
@@ -48,7 +50,6 @@ class UsersService {
             val request = Request.Builder().delete().url(ApiManager.URL.USER_LOGOUT).header("x-auth", token).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    Log.d("JSON:logout", response.body()?.string())
                     if (response.code() == 200) {
                         success(response)
                     } else {
@@ -61,13 +62,14 @@ class UsersService {
             })
         }
 
-        fun getCreatedTrips(token: String, userId: String?, success: (response: Response) -> Unit, failure: () -> Unit) {
+        fun getCreatedTrips(token: String, userId: String?, success: (tripsList: List<Trip>) -> Unit, failure: () -> Unit) {
             val request = Request.Builder().url(ApiManager.URL.USER_TRIPS(userId)).header("x-auth", token).build()
 
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
                     if (response.code() == 200) {
-                        success(response)
+                        val tripsArray = Gson().fromJson(response.body()!!.string(), Array<Trip>::class.java).toList()
+                        success(tripsArray)
                     } else {
                         failure()
                     }
