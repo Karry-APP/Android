@@ -20,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         loginButton.setOnClickListener { loginUser() }
         loginDontHaveAccount.setOnClickListener { startRegisterActivity() }
         loginForgotPassword.setOnClickListener { forgotPassword() }
@@ -28,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private fun userInfoAsJson(): String {
         val email = loginEmail.text.toString()
         val password = loginPassword.text.toString()
+
         val userObject= JSONObject()
         userObject.put("email",email)
         userObject.put("password",password)
@@ -37,7 +39,11 @@ class LoginActivity : AppCompatActivity() {
     private fun validateForm(): Boolean {
         val email = loginEmail.text.toString()
         val password = loginPassword.text.toString()
+
+        // TODO: Check is email is valid
         userEmail = email
+
+        // TODO: Check is password is valid
         userPassword = password
         return true
     }
@@ -62,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
                 runOnUiThread {
                     loginError.text = getString(R.string.LoginActivity_loginError_text)
                     loginProgress.visibility = View.INVISIBLE
-                    loginButton.visibility = View.VISIBLE
+                    loginButton.text = "Se connecter"
                 }
             })
         }
