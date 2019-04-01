@@ -1,9 +1,7 @@
 package myapp.com.karry.modules
 
-import android.util.Log
 import android.widget.EditText
 import android.widget.Spinner
-import android.widget.TextView
 import myapp.com.karry.R
 
 

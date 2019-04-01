@@ -2,10 +2,12 @@ package myapp.com.karry.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import myapp.com.karry.activities.LoginActivity
@@ -19,14 +21,23 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_profile, container, false)
         v.profileLogout.setOnClickListener { logoutUser() }
+
         v.profileFirstname.text = UserInfoManager(this.requireContext()).firstname
         v.profileLastname.text = UserInfoManager(this.requireContext()).lastname
         v.profileEmail.text = UserInfoManager(this.requireContext()).email
+
+        Log.d("PROFIL PIC", UserInfoManager(this.requireContext()).profilePicture)
+
+        Glide
+            .with(v)
+            .load(UserInfoManager(this.requireContext()).profilePicture)
+            .circleCrop()
+            .into(v.profilePicture)
+
         return v
     }
 
     private fun logoutUser() {
-
         profileLogout.visibility = View.INVISIBLE
         profileProgress.visibility = View.VISIBLE
 
