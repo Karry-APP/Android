@@ -10,7 +10,7 @@
     <string name="LoginActivity_inputPassword_hint">Mot de passe</string>
     <string name="LoginActivity_buttonLogin_text">Se connecter</string>
     <string name="LoginActivity_linkForgotPassword_text">Mot de passe oublié ?</string>
-    <string name="LoginActivity_dontHaveAccount_text">Vous n\'avez pas encore de compte :O Inscrivez-vous !</string>
+    <string name="LoginActivity_dontHaveAccount_text">Vous n\'avez pas encore de compte :O \n Inscrivez-vous !</string>
     <string name="LoginActivity_loginError_text">Une erreur s\'est produite lors de votre connexion</string>
 
     <!-- RegisterActivity -->
@@ -18,15 +18,17 @@
     <string name="RegisterActivity_registerFirstname_hint">Prénom</string>
     <string name="RegisterActivity_registerLastname_hint">Nom</string>
     <string name="RegisterActivity_registerEmail_hint">Email</string>
+    <string name="RegisterActivity_registerPhone_hint">Téléphone</string>
     <string name="RegisterActivity_registerPassword_hint">Mot de passe</string>
     <string name="RegisterActivity_registerConfirmPassword_hint">Confirmez mot de passe</string>
     <string name="RegisterActivity_errorMessage_text">Une erreur s\'est produite lors de votre inscription</string>
-    <string name="RegisterActivity_haveAccount_text">Vous possédez déjà un compte ? Connectez-vous !</string>
+    <string name="RegisterActivity_haveAccount_text">Vous possédez déjà un compte ? \n Connectez-vous !</string>
     <string name="RegisterActivity_buttonRegister_text">S\'inscrire</string>
 
     <!-- MainActivity -->
     <string name="MainActivity_bottomNavigation_searchTitle">Recherche</string>
     <string name="MainActivity_bottomNavigation_tripsTitle">Voyages</string>
+    <string name="MainActivity_bottomNavigation_chatTitle">Chat</string>
     <string name="MainActivity_bottomNavigation_profileTitle">Profil</string>
 
     <!-- Announcement Page -->
@@ -44,6 +46,7 @@
     <!-- ProfileFragment -->
     <string name="ProfileFragment_logoutButton_text">Se déconnecter</string>
     <string name="title_activity_trip_form">TripFormActivity</string>
+    <string name="ProfileFragment_profilePicture_contentDescription">Image du profil</string>
 
     <!-- TripFormActivity -->
     <string name="TripFormActivity_TripPageTitle_text">Créer un voyage</string>
@@ -83,4 +86,7 @@
     <!-- Country -->
     <string name="country_Italy">(ITA)</string>
     <string name="country_France">(FR)</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

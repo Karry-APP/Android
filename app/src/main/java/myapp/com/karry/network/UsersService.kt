@@ -3,8 +3,8 @@ package myapp.com.karry.network
 import android.util.Log
 import com.google.gson.Gson
 import myapp.com.karry.entity.Trip
+import myapp.com.karry.entity.User
 import myapp.com.karry.modules.ApiManager
-import myapp.com.karry.modules.TokenManager
 import okhttp3.*
 import java.io.IOException
 
@@ -28,14 +28,17 @@ class UsersService {
             })
         }
 
-        fun register(userJson: String, success: (response: Response) -> Unit, failure: () -> Unit) {
+        fun register(userJson: String, success: (user: User, header: String?) -> Unit, failure: () -> Unit) {
             val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), userJson)
             val request = Request.Builder().url(ApiManager.URL.USER_REGISTER).post(body).build()
 
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
                     if (response.code() == 200) {
-                        success(response)
+                        val header = response.header("x-auth")
+                        val user = Gson().fromJson(response.body()?.string(), User::class.java)
+                        Log.d("Registered User", user.toString())
+                        success(user, header)
                     } else {
                         failure()
                     }

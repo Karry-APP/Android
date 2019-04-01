@@ -12,6 +12,12 @@
             android:title="@string/MainActivity_bottomNavigation_tripsTitle"/>
 
     <item
+            android:id="@+id/navigation_chat"
+            android:icon="@drawable/ic_chat"
+            android:title="@string/MainActivity_bottomNavigation_chatTitle"/>
+
+
+    <item
             android:id="@+id/navigation_profile"
             android:icon="@drawable/ic_profile"
             android:title="@string/MainActivity_bottomNavigation_profileTitle"/>

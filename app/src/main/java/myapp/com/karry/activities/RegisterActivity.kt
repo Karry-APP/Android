@@ -6,20 +6,20 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.view.View
 import kotlinx.android.synthetic.main.activity_register.*
-import myapp.com.karry.R
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.UsersService
 import org.json.JSONObject
+import myapp.com.karry.R
+
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var userFirstname: String
     private lateinit var userLastname: String
+    private lateinit var userPhone: String
     private lateinit var userEmail: String
     private lateinit var userPassword: String
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,15 +35,19 @@ class RegisterActivity : AppCompatActivity() {
     private fun validateForm(): Boolean {
         val firstname = registerFirstname.text.toString()
         val lastname = registerLastname.text.toString()
+        val phone = registerPhone.text.toString()
         val email = registerEmail.text.toString()
         val password = registerPassword.text.toString()
-        val confirmPassword = registerConfirmPassword.text.toString()
+        //val confirmPassword = registerConfirmPassword.text.toString()
 
         // TODO: Check is firstname is valid
         userFirstname = firstname
 
         // TODO: Check is lastname is valid
         userLastname = lastname
+
+        // TODO: Check is phone is valid
+        userPhone = phone
 
         // TODO: Check is email is valid
         userEmail = email
@@ -58,6 +62,7 @@ class RegisterActivity : AppCompatActivity() {
         val userObject = JSONObject()
         userObject.put("firstname", userFirstname)
         userObject.put("lastname", userLastname)
+        userObject.put("phone", userPhone)
         userObject.put("email", userEmail)
         userObject.put("password", userPassword)
         return userObject.toString()
@@ -70,15 +75,15 @@ class RegisterActivity : AppCompatActivity() {
             registerProgress.visibility = View.VISIBLE
 
             // Registering User in db
-            UsersService.register(userInfoAsJson(), { response ->
-                val jsonData: String = response.body()!!.string()
-                val userObj = JSONObject(jsonData)
+            UsersService.register(userInfoAsJson(), { user, token ->
 
-                TokenManager(baseContext).deviceToken = response.header("x-auth")
-                UserInfoManager(baseContext).id = userObj.getString("_id")
-                UserInfoManager(baseContext).firstname = userObj.getString("firstname")
-                UserInfoManager(baseContext).lastname = userObj.getString("lastname")
-                UserInfoManager(baseContext).email = userObj.getString("email")
+                TokenManager(baseContext).deviceToken = token
+                UserInfoManager(baseContext).id = user._id
+                UserInfoManager(baseContext).firstname = user.firstname
+                UserInfoManager(baseContext).lastname = user.lastname
+                UserInfoManager(baseContext).phone = user.phone
+                UserInfoManager(baseContext).email = user.email
+                UserInfoManager(baseContext).profilePicture = user.profilePicture
 
                 startMainActivity()
             }, {
@@ -92,8 +97,9 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun startLoginActivity() {
-        startActivity(Intent(this, RegisterActivity::class.java))
-        finish()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
     private fun startMainActivity() {

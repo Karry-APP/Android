@@ -2,11 +2,11 @@ package myapp.com.karry.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_trips.*
 import kotlinx.android.synthetic.main.fragment_trips.view.*
 import myapp.com.karry.activities.TripFormActivity
@@ -31,8 +31,8 @@ class TripsFragment : Fragment() {
     }
 
     private fun loadUserCreatedTrips() {
-        val userId = UserInfoManager(this.requireContext()).id
-        val token: String = TokenManager(this.requireContext()).deviceToken ?: ""
+        val userId = UserInfoManager(requireContext()).id
+        val token: String = TokenManager(requireContext()).deviceToken ?: ""
 
         UsersService.getCreatedTrips(token, userId, { tripsArray ->
             activity?.runOnUiThread {
