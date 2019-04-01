@@ -6,12 +6,11 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.view.View
 import kotlinx.android.synthetic.main.activity_register.*
+import myapp.com.karry.R
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.UsersService
 import org.json.JSONObject
-import myapp.com.karry.R
-
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -20,6 +19,9 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var userPhone: String
     private lateinit var userEmail: String
     private lateinit var userPassword: String
+
+    private val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,21 +35,21 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun validateForm(): Boolean {
-        val firstname = registerFirstname.text.toString()
-        val lastname = registerLastname.text.toString()
-        val phone = registerPhone.text.toString()
+        //val firstname = registerFirstname.text.toString()
+        //val lastname = registerLastname.text.toString()
+        //val phone = registerPhone.text.toString()
         val email = registerEmail.text.toString()
         val password = registerPassword.text.toString()
         //val confirmPassword = registerConfirmPassword.text.toString()
 
         // TODO: Check is firstname is valid
-        userFirstname = firstname
+        //userFirstname = firstname
 
         // TODO: Check is lastname is valid
-        userLastname = lastname
+        //userLastname = lastname
 
         // TODO: Check is phone is valid
-        userPhone = phone
+        //userPhone = phone
 
         // TODO: Check is email is valid
         userEmail = email
@@ -59,12 +61,20 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun userInfoAsJson(): String {
+        val randomFirstName = (1..8)
+            .map { i -> kotlin.random.Random.nextInt(0, charPool.size) }
+            .map(charPool::get)
+            .joinToString("")
+        val randomLastName = (1..8)
+            .map { i -> kotlin.random.Random.nextInt(0, charPool.size) }
+            .map(charPool::get)
+            .joinToString("")
         val userObject = JSONObject()
-        userObject.put("firstname", userFirstname)
-        userObject.put("lastname", userLastname)
-        userObject.put("phone", userPhone)
+        userObject.put("firstname", randomFirstName)
+        userObject.put("lastname", randomLastName)
         userObject.put("email", userEmail)
         userObject.put("password", userPassword)
+        userObject.put("phone", "0000000000")
         return userObject.toString()
     }
 

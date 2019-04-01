@@ -17,6 +17,9 @@ class ApiManager {
             // TRIPS
             const val TRIP_SEARCH = "$BASE/trips/search"
             const val TRIP_CREATE = "$BASE/trips"
+            fun TRIP_DETAIL(tripId: String?): String {
+                return "$BASE/trips/$tripId"
+            }
         }
     }
 }
