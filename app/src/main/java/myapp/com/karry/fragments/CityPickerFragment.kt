@@ -12,6 +12,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import myapp.com.karry.R
 import myapp.com.karry.adapters.CitiesAdapter
 
@@ -38,6 +39,11 @@ class CityPickerFragment : Fragment() {
                 filter(s.toString())
             }
         })
+
+        v.closeCityPicker.setOnClickListener {
+            activity?.onBackPressed()
+        }
+
         return v
     }
 
@@ -56,10 +62,11 @@ class CityPickerFragment : Fragment() {
         }
     }
 
+
+
     private fun createCityList() {
-        cityLisArray.add(City("P"))
         cityLisArray.add(City("Paris"))
-        cityLisArray.add(City("Londre"))
+        cityLisArray.add(City("Londres"))
         cityLisArray.add(City("Tokyo"))
         cityLisArray.add(City("Bangkok"))
         cityLisArray.add(City("New York"))
@@ -121,7 +128,6 @@ class CityPickerFragment : Fragment() {
         cityLisArray.add(City("New Delhi"))
         cityLisArray.add(City("Katmandou"))
         cityLisArray.add(City("Hanoï"))
-        cityLisArray.add(City("Paris"))
         cityLisArray.add(City("Pékin"))
         cityLisArray.add(City("Quimper"))
         cityLisArray.add(City("Shangaï"))
