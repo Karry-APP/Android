@@ -83,6 +83,8 @@
     <string name="SearchFragment_searchBeginSearch_text">Commencez à chercher des voyageurs !</string>
     <string name="SearchFragment_searchDepartureCity_hint">de Pékin</string>
     <string name="SearchFragment_searchDestinationCity_hint">à Paris</string>
+    <string name="SearchFragment_searchBottomTooltip">Vous partez bientot et pouvez \n ramener un produit à quelqu\'un ?</string>
+    <string name="SearchFragment_postTripTooltipButton">Postez votre voyage</string>
 
     <!-- Account Page -->
     <string name="accountActivity_buttonUpdateInformation">Modifier mes informations</string>
