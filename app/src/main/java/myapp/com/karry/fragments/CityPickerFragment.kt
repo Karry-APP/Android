@@ -57,16 +57,18 @@ class CityPickerFragment : Fragment() {
         val searchFragment = SearchFragment()
         val bundle = Bundle()
         val bundleArgs = arguments
+
         val direction = bundleArgs?.getString("currentDirection").toString()
+        val destination = bundleArgs?.getString("destination").toString()
+        val arrival = bundleArgs?.getString("arrival").toString()
 
-
-        if (cityName.isEmpty()) {
-            bundle.putString("cityName", "")
-        } else {
-            bundle.putString("cityName", cityName)
-            bundle.putString("currentDirection", direction)
+        if(direction === "destination") {
+            bundle.putString("destination", cityName)
+            bundle.putString("arrival", arrival)
+        } else if(direction === "arrival") {
+            bundle.putString("destination", destination)
+            bundle.putString("arrival", cityName)
         }
-
         searchFragment.arguments = bundle
         closeCityPicker(searchFragment)
     }
@@ -96,8 +98,6 @@ class CityPickerFragment : Fragment() {
             }
         }
     }
-
-
 
     private fun createCityList() {
         cityLisArray.add(City("Paris"))

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Karry</string>
 
+    <!-- Notifications -->
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+
     <!-- SplashscreenActivity -->
     <string name="SplashscreenActivity_splashLogo_contentDescription">Logo Karry</string>
 

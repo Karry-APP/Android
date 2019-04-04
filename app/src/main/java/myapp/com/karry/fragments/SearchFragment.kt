@@ -2,7 +2,6 @@ package myapp.com.karry.fragments
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,47 +12,43 @@ import myapp.com.karry.R
 
 class SearchFragment : Fragment() {
 
+    private var destinationValue: String? = ""
+    private var arrivalValue: String? = ""
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(myapp.com.karry.R.layout.fragment_search, container, false)
-
         v.destinationCityLabel.setOnClickListener { openCitySearch("destination") }
         v.destinationCityInput.setOnClickListener { openCitySearch("destination") }
         v.arrivalCityLabel.setOnClickListener { openCitySearch("arrival") }
         v.arrivalCityInput.setOnClickListener { openCitySearch("arrival") }
-
         displayReceivedData(v)
-
         return v
     }
 
-    private fun openCitySearch(currentSearch:String) {
+    private fun openCitySearch(currentSearch: String) {
         val bundle = Bundle()
         val cityPickerFragment = CityPickerFragment()
-
-        if (currentSearch === "arrival") {
-            bundle.putString("currentDirection", "arrival")
-        } else if (currentSearch === "destination") {
-            bundle.putString("currentDirection", "destination")
-        }
-
+        bundle.putString("currentDirection", currentSearch)
+        bundle.putString("destination", destinationValue)
+        bundle.putString("arrival", arrivalValue)
         cityPickerFragment.arguments = bundle
-
-        val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, cityPickerFragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        launchFragment(cityPickerFragment)
     }
 
     private fun displayReceivedData(v: View) {
         val bundleArgs = arguments
+        destinationValue = bundleArgs?.getString("destination")
+        arrivalValue = bundleArgs?.getString("arrival")
+        v.destinationCityInput.text =destinationValue
+        v.arrivalCityInput.text = arrivalValue
+    }
 
-        val cityNameSelected = bundleArgs?.getString("cityName")
-        val currentDirectionSelected = bundleArgs?.getString("currentDirection").toString()
+    private fun launchFragment(fragment: Fragment) {
 
-        if (currentDirectionSelected === "arrival") {
-            v.arrivalCityInput.text = cityNameSelected.toString()
-        } else if (currentDirectionSelected === "destination") {
-            v.destinationCityInput.text = cityNameSelected.toString()
-        }
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+
     }
 }

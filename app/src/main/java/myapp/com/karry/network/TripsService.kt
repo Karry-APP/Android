@@ -26,6 +26,8 @@ class TripsService {
             })
         }
 
+
+
         fun searchByCities(departureCity: String, destinationCity: String, success: (tripsList: List<Trip>) -> Unit, failure: () -> Unit) {
             val request = okhttp3.Request.Builder().url(ApiManager.URL.TRIP_SEARCH + "?departureCity=$departureCity&destinationCity=$destinationCity").build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
