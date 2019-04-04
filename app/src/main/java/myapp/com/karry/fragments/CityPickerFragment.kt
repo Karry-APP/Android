@@ -14,19 +14,12 @@ import android.util.Log
 import myapp.com.karry.R
 import myapp.com.karry.adapters.CitiesAdapter
 
-
-
-
 class CityPickerFragment : Fragment() {
     private val cityLisArray: ArrayList<City> = arrayListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_city_picker, container, false)
-
         createCityList()
-
-
-
         v.arrivalCitiesList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
         v.arrivalCitiesList.adapter = CitiesAdapter(cityLisArray) { cityName ->
             fillSearchBar(cityName)
@@ -47,8 +40,6 @@ class CityPickerFragment : Fragment() {
         v.closeCityPicker.setOnClickListener {
             closeCityPicker(SearchFragment())
         }
-
-
 
         return v
     }
