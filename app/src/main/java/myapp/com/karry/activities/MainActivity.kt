@@ -1,6 +1,7 @@
 package myapp.com.karry.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -12,7 +13,6 @@ import myapp.com.karry.fragments.SearchFragment
 import myapp.com.karry.fragments.TripsFragment
 
 class MainActivity : AppCompatActivity() {
-
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_search -> {
@@ -35,6 +35,13 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
+    //override fun onSaveInstanceState(outState: Bundle) {
+    //    super.onSaveInstanceState(outState)
+    //
+    //    supportFragmentManager.putFragment(outState, "SearchFragment", mContent)
+    //}
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -47,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+     private fun replaceFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()

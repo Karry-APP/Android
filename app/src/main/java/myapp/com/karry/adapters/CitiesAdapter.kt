@@ -11,7 +11,7 @@ import myapp.com.karry.entity.City
 
 class CityViewHolder(val view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view)
 
-class CitiesAdapter(private var cityList: List<City>) : androidx.recyclerview.widget.RecyclerView.Adapter<CityViewHolder>() {
+class CitiesAdapter(private var cityList: List<City>, val click: (cityName: String) -> Unit) : androidx.recyclerview.widget.RecyclerView.Adapter<CityViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
         val layoutInflater: LayoutInflater = LayoutInflater.from(parent.context)
         val cellForRow = layoutInflater.inflate(R.layout.city_row, parent, false)
@@ -29,7 +29,7 @@ class CitiesAdapter(private var cityList: List<City>) : androidx.recyclerview.wi
     }
 
     private fun selectCity(c: Context, city: City) {
-        Toast.makeText(c, "Selected city is "+city.name, Toast.LENGTH_LONG).show()
+        click(city.name)
     }
 
 }

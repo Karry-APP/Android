@@ -11,10 +11,10 @@ import myapp.com.karry.entity.City
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_main.*
 import myapp.com.karry.R
 import myapp.com.karry.adapters.CitiesAdapter
+
+
 
 
 class CityPickerFragment : Fragment() {
@@ -25,8 +25,12 @@ class CityPickerFragment : Fragment() {
 
         createCityList()
 
+
+
         v.arrivalCitiesList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
-        v.arrivalCitiesList.adapter = CitiesAdapter(cityLisArray)
+        v.arrivalCitiesList.adapter = CitiesAdapter(cityLisArray) { cityName ->
+            fillSearchBar(cityName)
+        }
 
         v.searchbarCity.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -41,15 +45,44 @@ class CityPickerFragment : Fragment() {
         })
 
         v.closeCityPicker.setOnClickListener {
-            activity?.onBackPressed()
+            closeCityPicker(SearchFragment())
         }
+
+
 
         return v
     }
 
+    private fun  fillSearchBar(cityName: String) {
+        val searchFragment = SearchFragment()
+        val bundle = Bundle()
+        val bundleArgs = arguments
+        val direction = bundleArgs?.getString("currentDirection").toString()
+
+
+        if (cityName.isEmpty()) {
+            bundle.putString("cityName", "")
+        } else {
+            bundle.putString("cityName", cityName)
+            bundle.putString("currentDirection", direction)
+        }
+
+        searchFragment.arguments = bundle
+        closeCityPicker(searchFragment)
+    }
+
+    private fun closeCityPicker(fragment: Fragment) {
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+
     private fun filter(text: String) {
-        if(text.isBlank()) {
-            arrivalCitiesList.adapter = CitiesAdapter(cityLisArray)
+        if (text.isBlank()) {
+            arrivalCitiesList.adapter = CitiesAdapter(cityLisArray) { cityName ->
+                fillSearchBar(cityName)
+            }
         } else {
             val filteredList = arrayListOf<City>()
             for (city in cityLisArray) {
@@ -58,7 +91,9 @@ class CityPickerFragment : Fragment() {
                     filteredList.add(city)
                 }
             }
-            arrivalCitiesList.adapter = CitiesAdapter(filteredList)
+            arrivalCitiesList.adapter = CitiesAdapter(filteredList) { cityName ->
+                fillSearchBar(cityName)
+            }
         }
     }
 
@@ -135,8 +170,4 @@ class CityPickerFragment : Fragment() {
         cityLisArray.add(City("Jakarta"))
         cityLisArray.add(City("Dubaï"))
     }
-
-
-
-
 }
