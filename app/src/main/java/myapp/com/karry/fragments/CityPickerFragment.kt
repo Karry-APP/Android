@@ -16,6 +16,11 @@ import myapp.com.karry.adapters.CitiesAdapter
 
 class CityPickerFragment : Fragment() {
     private val cityLisArray: ArrayList<City> = arrayListOf()
+    private val bundle = Bundle()
+
+    var destination: String = ""
+    var arrival: String = ""
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_city_picker, container, false)
@@ -38,7 +43,7 @@ class CityPickerFragment : Fragment() {
         })
 
         v.closeCityPicker.setOnClickListener {
-            closeCityPicker(SearchFragment())
+            closeCityPicker(SearchFragment(), null)
         }
 
         return v
@@ -46,25 +51,35 @@ class CityPickerFragment : Fragment() {
 
     private fun  fillSearchBar(cityName: String) {
         val searchFragment = SearchFragment()
-        val bundle = Bundle()
+
         val bundleArgs = arguments
 
         val direction = bundleArgs?.getString("currentDirection").toString()
-        val destination = bundleArgs?.getString("destination").toString()
-        val arrival = bundleArgs?.getString("arrival").toString()
+        destination = bundleArgs?.getString("destination").toString()
+        arrival = bundleArgs?.getString("arrival").toString()
 
-        if(direction === "destination") {
+        if (direction === "destination") {
             bundle.putString("destination", cityName)
             bundle.putString("arrival", arrival)
-        } else if(direction === "arrival") {
+        } else if (direction === "arrival") {
             bundle.putString("destination", destination)
             bundle.putString("arrival", cityName)
         }
+
         searchFragment.arguments = bundle
-        closeCityPicker(searchFragment)
+
+        closeCityPicker(searchFragment, bundle)
     }
 
-    private fun closeCityPicker(fragment: Fragment) {
+    private fun closeCityPicker(fragment: Fragment, bundle: Bundle?) {
+        val searchFragment = SearchFragment()
+
+        if (bundle !== null) {
+            bundle.putString("arrival", bundle.getString("arrival"))
+            bundle.putString("destination", bundle.getString("destination"))
+            searchFragment.arguments = bundle
+        }
+
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.addToBackStack(null)

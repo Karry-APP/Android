@@ -39,7 +39,7 @@ class SearchFragment : Fragment() {
         val bundleArgs = arguments
         destinationValue = bundleArgs?.getString("destination")
         arrivalValue = bundleArgs?.getString("arrival")
-        v.destinationCityInput.text =destinationValue
+        v.destinationCityInput.text = destinationValue
         v.arrivalCityInput.text = arrivalValue
     }
 
