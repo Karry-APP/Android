@@ -16,11 +16,9 @@ import myapp.com.karry.adapters.CitiesAdapter
 
 class CityPickerFragment : Fragment() {
     private val cityLisArray: ArrayList<City> = arrayListOf()
-    private val bundle = Bundle()
 
-    var destination: String = ""
-    var arrival: String = ""
-
+    var arrivalValue: String = ""
+    var destinationValue: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_city_picker, container, false)
@@ -43,43 +41,39 @@ class CityPickerFragment : Fragment() {
         })
 
         v.closeCityPicker.setOnClickListener {
-            closeCityPicker(SearchFragment(), null)
+            val searchFragment = SearchFragment()
+            closeCityPicker(searchFragment)
         }
 
         return v
     }
 
     private fun  fillSearchBar(cityName: String) {
+        val bundle = Bundle()
         val searchFragment = SearchFragment()
-
         val bundleArgs = arguments
 
         val direction = bundleArgs?.getString("currentDirection").toString()
-        destination = bundleArgs?.getString("destination").toString()
-        arrival = bundleArgs?.getString("arrival").toString()
 
         if (direction === "destination") {
+            destinationValue = cityName
             bundle.putString("destination", cityName)
-            bundle.putString("arrival", arrival)
+            bundle.putString("arrival", arrivalValue)
         } else if (direction === "arrival") {
-            bundle.putString("destination", destination)
+            arrivalValue = cityName
             bundle.putString("arrival", cityName)
+            bundle.putString("destination", destinationValue)
         }
+
+        Log.d("picker", arrivalValue)
+        Log.d("picker", destinationValue)
 
         searchFragment.arguments = bundle
 
-        closeCityPicker(searchFragment, bundle)
+        closeCityPicker(searchFragment)
     }
 
-    private fun closeCityPicker(fragment: Fragment, bundle: Bundle?) {
-        val searchFragment = SearchFragment()
-
-        if (bundle !== null) {
-            bundle.putString("arrival", bundle.getString("arrival"))
-            bundle.putString("destination", bundle.getString("destination"))
-            searchFragment.arguments = bundle
-        }
-
+    private fun closeCityPicker(fragment: Fragment) {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.addToBackStack(null)
