@@ -1,4 +1,4 @@
-package myapp.com.karry.fragments
+package myapp.com.karry.fragments.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +11,6 @@ import myapp.com.karry.entity.City
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.recyclerview.widget.RecyclerView
 import myapp.com.karry.R
 import myapp.com.karry.adapters.CitiesAdapter
 

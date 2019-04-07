@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.StrictMode
 import android.view.View
-import kotlinx.android.synthetic.main.activity_register.*
+import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_register_profil.*
 import myapp.com.karry.R
+import myapp.com.karry.fragments.register.RegisterProfilFragment
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.UsersService
@@ -20,7 +22,13 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var userEmail: String
     private lateinit var userPassword: String
 
-    private val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+
+    private fun replaceFragment(fragment: Fragment) {
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.commit()
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,9 +38,14 @@ class RegisterActivity : AppCompatActivity() {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
 
-        registerHaveAccount.setOnClickListener { startLoginActivity() }
-        registerButton.setOnClickListener { registerUser() }
+        if (savedInstanceState == null) {
+
+            replaceFragment(RegisterProfilFragment())
+        }
+
     }
+
+    private val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
     private fun validateForm(): Boolean {
         //val firstname = registerFirstname.text.toString()
@@ -95,7 +108,7 @@ class RegisterActivity : AppCompatActivity() {
                 UserInfoManager(baseContext).email = user.email
                 UserInfoManager(baseContext).profilePicture = user.profilePicture
 
-                startMainActivity()
+                //startMainActivity()
             }, {
                 runOnUiThread {
                     registerError.text = getString(R.string.LoginActivity_loginError_text)
@@ -112,8 +125,8 @@ class RegisterActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
-    private fun startMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
-    }
+    //private fun startMainActivity() {
+    //    startActivity(Intent(this, MainActivity::class.java))
+    //    finish()
+    //}
 }
