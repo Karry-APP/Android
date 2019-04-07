@@ -34,7 +34,7 @@ class UsersService {
 
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    if (response.code() == 200) {
+                    if (response.code() == 201) {
                         val header = response.header("x-auth")
                         val user = Gson().fromJson(response.body()?.string(), User::class.java)
                         Log.d("Registered User", user.toString())
