@@ -7,27 +7,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import myapp.com.karry.R
+import myapp.com.karry.model.SharedViewModel
 
 
 class SearchFragment : Fragment() {
 
-     private var destinationValue: String? = ""
-     private var arrivalValue: String? = ""
+    private var destinationValue: String = " "
+    private var arrivalValue: String = " "
+
+    private lateinit var model: SharedViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        destinationValue = savedInstanceState?.getString("destination").toString()
-        arrivalValue = savedInstanceState?.getString("arrival").toString()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        outState.putString("destination", destinationValue)
-        outState.putString("arrival", arrivalValue)
+        model = activity?.run {
+            ViewModelProviders.of(this).get(SharedViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -50,21 +50,17 @@ class SearchFragment : Fragment() {
     }
 
     private fun displayReceivedData(v: View) {
-        val bundleArgs = arguments
+        if (model.destinationValue.value !== null) {
+            destinationValue = model.destinationValue.value.toString()
+        }
 
-        destinationValue = bundleArgs?.getString("destination").toString()
-        arrivalValue = bundleArgs?.getString("arrival").toString()
-
-        Log.d("search", destinationValue)
-        Log.d("search", arrivalValue)
+        if (model.arrivalValue.value !== null) {
+            arrivalValue = model.arrivalValue.value.toString()
+        }
 
         v.destinationCityInput.text = destinationValue
         v.arrivalCityInput.text = arrivalValue
     }
-
-
-
-
 
     private fun launchFragment(fragment: Fragment) {
         val fragmentTransaction = fragmentManager!!.beginTransaction()

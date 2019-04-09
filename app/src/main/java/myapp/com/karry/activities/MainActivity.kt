@@ -15,7 +15,6 @@ import myapp.com.karry.fragments.ChatFragment
 import myapp.com.karry.fragments.ProfileFragment
 import myapp.com.karry.fragments.SearchFragment
 import myapp.com.karry.fragments.TripsFragment
-import myapp.com.karry.network.NotificationService
 
 class MainActivity : AppCompatActivity() {
 

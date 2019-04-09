@@ -8,8 +8,10 @@
     <color name="colorWhiteBackground">#F8FAFE</color>
 
     <color name="colorRed">#FF3C3C</color>
-    <color name="colorDarkBLue">#7C9299</color>
 
+    <color name="colorDarkBLue">#7C9299</color>
+    <color name="colorLightBLue">#004E64</color>
+    <color name="shadow">#C3CBD0</color>
 
 
 </resources>

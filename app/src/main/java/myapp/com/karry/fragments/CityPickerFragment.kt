@@ -11,14 +11,28 @@ import myapp.com.karry.entity.City
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import myapp.com.karry.R
 import myapp.com.karry.adapters.CitiesAdapter
+import myapp.com.karry.model.SharedViewModel
 
 class CityPickerFragment : Fragment() {
     private val cityLisArray: ArrayList<City> = arrayListOf()
 
     var arrivalValue: String = ""
     var destinationValue: String = ""
+
+
+    private lateinit var model: SharedViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        model = activity?.run {
+            ViewModelProviders.of(this).get(SharedViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_city_picker, container, false)
@@ -47,28 +61,16 @@ class CityPickerFragment : Fragment() {
 
         return v
     }
-
     private fun  fillSearchBar(cityName: String) {
-        val bundle = Bundle()
         val searchFragment = SearchFragment()
         val bundleArgs = arguments
-
         val direction = bundleArgs?.getString("currentDirection").toString()
 
         if (direction === "destination") {
-            destinationValue = cityName
-            bundle.putString("destination", cityName)
-            bundle.putString("arrival", arrivalValue)
+            model.setDestination(cityName)
         } else if (direction === "arrival") {
-            arrivalValue = cityName
-            bundle.putString("arrival", cityName)
-            bundle.putString("destination", destinationValue)
+            model.setArrival(cityName)
         }
-
-        Log.d("picker", arrivalValue)
-        Log.d("picker", destinationValue)
-
-        searchFragment.arguments = bundle
 
         closeCityPicker(searchFragment)
     }
