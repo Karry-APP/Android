@@ -11,10 +11,10 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
 import myapp.com.karry.R
-import myapp.com.karry.fragments.ChatFragment
-import myapp.com.karry.fragments.ProfileFragment
-import myapp.com.karry.fragments.SearchFragment
-import myapp.com.karry.fragments.TripsFragment
+import myapp.com.karry.fragments.main.ChatFragment
+import myapp.com.karry.fragments.main.ProfileFragment
+import myapp.com.karry.fragments.main.SearchFragment
+import myapp.com.karry.fragments.main.TripsFragment
 
 class MainActivity : AppCompatActivity() {
 

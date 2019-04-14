@@ -31,6 +31,16 @@
     <string name="RegisterActivity_haveAccount_text">Vous possédez déjà un compte ?</string>
     <string name="RegisterActivity_haveAccount_link">Se connecter</string>
     <string name="RegisterActivity_buttonRegister_text">S\'inscrire</string>
+    <string name="CompleteProfil_name_example">Adrien F.</string>
+    <string name="CompleteProfil_text_presentation_name">Nous afficherons votre profil comme l’exemple ci-dessus.</string>
+    <string name="CompleteProfil_text_description">Complétez votre profil</string>
+    <string name="CompleteProfil_help_edit_telephone">Votre numéro ne sera pas communiqué sans votre accord</string>
+    <string name="CompleteProfil_text_btn_enregistrer">Enregistrer</string>
+    <string name="AddPhotoProfil_title_photo_profil">Votre photo de profil</string>
+    <string name="AddPhotoProfil_text_description">Ajoutez une photo de profil, pour que notre communauté puisse mettre un visage sur votre prénom 😉</string>
+    <string name="AddPhotoProfil_text_btn_ajout">Ajouter</string>
+    <string name="AddPhotoProfil_link_ignore">Ignorer pour l\'instant</string>
+
 
     <!-- MainActivity -->
     <string name="MainActivity_bottomNavigation_searchTitle">Recherche</string>
@@ -42,7 +52,7 @@
     <string name="announcementActivity_userName">Adrien F.</string>
     <string name="announcementActivity_seeProfil_link">Voir le profil</string>
     <string name="announcementActivity_reviews">4,8/5</string>
-    <string name="announcementActivity_capacity">Quelques mots </string>
+    <string name="announcementActivity_capacity">Quelques mots</string>
     <string name="announcementActivity_description">Capacités du voyageur:</string>
     <string name="announcementActivity_subtitleWeight">Peut transporter:</string>
     <string name="announcementActivity_subtitleTax">Taxe:</string>
@@ -51,9 +61,9 @@
     <string name="announcementActivity_buttonSendMessage">Contacter</string>
     <string name="announcementActivity_textLiveIn">Départ de</string>
     <string name="announcementActivity_textGoTo">Se rend à</string>
-    <string name="announcementActivity_textDate">le </string>
-    <string name="announcementActivity_textDateBack">jusqu\'au </string>
-    <string name="announcementActivity_titleDetail">Détail du voyage </string>
+    <string name="announcementActivity_textDate">le</string>
+    <string name="announcementActivity_textDateBack">jusqu\'au</string>
+    <string name="announcementActivity_titleDetail">Détail du voyage</string>
 
     <!-- ProfileFragment -->
     <string name="ProfileFragment_logoutButton_text">Se déconnecter</string>
@@ -95,10 +105,13 @@
     <string name="accountActivity_text_exchange_profil">Echanges</string>
     <string name="accountActivity_text_score_profil">Notes</string>
     <string name="accountActivity_title_comments">Commentaires :</string>
-    <string name="accountActivity_text_comments">“Merci pour le magret et  le fromage! Ça manque vraiment trop ici !!!”</string>
+    <string name="accountActivity_text_comments">“Merci pour le magret et le fromage! Ça manque vraiment trop ici !!!”
+    </string>
     <string name="accountActivity_text_comments_date">Le 10 septembre 2018</string>
     <string name="accountActivity_title_description">Description :</string>
-    <string name="accountActivity_text_description">Expat’ à Johannesbourg depuis 2 ans. Je viens sur Paris entre 2 et 3 fois par an seulement 😥 , mais ca me permet de ramener du confit de canard et du fromage en masse 😅 !</string>
+    <string name="accountActivity_text_description">Expat’ à Johannesbourg depuis 2 ans. Je viens sur Paris entre 2 et 3
+        fois par an seulement 😥 , mais ca me permet de ramener du confit de canard et du fromage en masse 😅 !
+    </string>
 
 
     <!-- City -->

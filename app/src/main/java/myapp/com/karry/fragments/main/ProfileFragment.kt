@@ -1,4 +1,4 @@
-package myapp.com.karry.fragments
+package myapp.com.karry.fragments.main
 
 import android.content.Intent
 import android.os.Bundle
