@@ -9,21 +9,28 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/mainSearchPage">
 
-        <TextView
-                android:text="Recherche de voyageurs"
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView"
-                android:layout_marginTop="40dp"
-                android:textStyle="bold"
+                android:layout_height="wrap_content" android:id="@+id/linearLayout15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" android:background="@android:color/white">
+            <TextView
+                    android:text="Recherche de voyageurs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView"
+                    android:textStyle="bold"
 
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="20dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="20dp"
-                android:textSize="24sp"
-                android:textColor="#004E64"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="20dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="20dp"
+                    android:textSize="24sp"
+                    android:textColor="#004E64"
 
-        />
+                    android:layout_marginTop="60dp" android:layout_marginBottom="40dp" android:paddingStart="16dp"/>
+        </LinearLayout>
         <LinearLayout
 
                 android:orientation="vertical"
@@ -33,27 +40,28 @@
                 android:paddingBottom="4dp"
                 android:paddingTop="4dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/textView"
+                android:layout_height="wrap_content"
+
+
+                android:id="@+id/linearLayout4"
+                android:paddingVertical="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="40dp"
-
-
-                app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/linearLayout4">
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
             <TextView
                     android:textStyle="bold"
 
                     android:textColor="@color/colorDarkBLue"
                     android:text="Où se trouve votre produit ?"
                     android:layout_width="match_parent"
-                    android:textSize="15dp"
+                    android:textSize="18sp"
                     android:layout_height="wrap_content" android:id="@+id/destinationCityLabel" android:padding="5dp"/>
             <TextView
                     android:layout_width="match_parent"
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="6dp"
                     android:layout_height="wrap_content" android:id="@+id/destinationCityInput" android:text="---"
-                    android:padding="5dp"/>
+                    android:padding="5dp" android:textSize="18sp" android:textColor="@android:color/black"/>
 
 
         </LinearLayout>
@@ -68,13 +76,14 @@
                 android:paddingTop="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
 
 
+                android:id="@+id/linearLayout5"
+                android:paddingVertical="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/linearLayout5" app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        >
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
 
             <TextView
@@ -82,7 +91,7 @@
                     android:textStyle="bold"
                     android:text="Où souhaitez vous être livré ?"
                     android:layout_width="match_parent"
-                    android:textSize="15dp"
+                    android:textSize="18sp"
                     android:layout_marginTop="12dp"
 
                     android:layout_height="wrap_content" android:id="@+id/arrivalCityLabel" android:padding="5dp"/>
@@ -91,7 +100,8 @@
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="6dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/arrivalCityInput" android:padding="5dp"/>
+                    android:layout_height="wrap_content" android:id="@+id/arrivalCityInput" android:padding="5dp"
+                    android:textSize="18sp" android:textColor="@android:color/black"/>
 
 
         </LinearLayout>
