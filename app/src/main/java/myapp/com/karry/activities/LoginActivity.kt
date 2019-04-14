@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
                 val jsonData: String = response.body()!!.string()
                 val userObj = JSONObject(jsonData)
                 TokenManager(baseContext).deviceToken = response.header("x-auth")
-                UserInfoManager(baseContext).id = userObj.getString("_id")
+                UserInfoManager(baseContext).id = userObj.getString("id")
                 UserInfoManager(baseContext).firstname = userObj.getString("firstname")
                 UserInfoManager(baseContext).lastname = userObj.getString("lastname")
                 UserInfoManager(baseContext).phone = userObj.getString("phone")

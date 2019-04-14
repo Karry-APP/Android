@@ -38,5 +38,4 @@ class TripsAdapter(private val tripList: List<Trip>) :
         intent.putExtra("EVENT_ID", trip.id)
         c.startActivity(intent)
     }
-
 }
