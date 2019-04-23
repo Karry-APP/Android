@@ -18,15 +18,6 @@ import myapp.com.karry.model.SharedViewModel
 
 class CityPickerFragment : Fragment() {
     private val cityLisArray: ArrayList<City> = arrayListOf()
-    private lateinit var model: SharedViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        model = activity?.run {
-            ViewModelProviders.of(this).get(SharedViewModel::class.java)
-        } ?: throw Exception("Invalid Activity")
-    }
 
     var arrivalValue: String = ""
     var destinationValue: String = ""
