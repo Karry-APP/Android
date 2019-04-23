@@ -19,14 +19,11 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var userEmail: String
     private lateinit var userPassword: String
 
-
     private fun replaceFragment(fragment: Fragment) {
-
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,24 +40,9 @@ class RegisterActivity : AppCompatActivity() {
     private fun validateForm(): Boolean {
         val email = registerEmail.text.toString()
         val password = registerPassword.text.toString()
-        //val confirmPassword = registerConfirmPassword.text.toString()
-
-        // TODO: Check is firstname is valid
-        //userFirstname = firstname
-
-        // TODO: Check is lastname is valid
-        //userLastname = lastname
-
-        // TODO: Check is phone is valid
-        //userPhone = phone
-
-        // TODO: Check is email is valid
         userEmail = email
-
-        // TODO: Check is password is valid
         userPassword = password
-
-        return true // or false
+        return true
     }
 
     private fun userInfoAsJson(): String {
@@ -83,13 +65,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun registerUser() {
         if (validateForm()) {
-
             registerButton.visibility = View.INVISIBLE
             registerProgress.visibility = View.VISIBLE
-
-            // Registering User in db
             UsersService.register(userInfoAsJson(), { user, token ->
-
                 TokenManager(baseContext).deviceToken = token
                 UserInfoManager(baseContext).id = user._id
                 UserInfoManager(baseContext).firstname = user.firstname
@@ -97,8 +75,6 @@ class RegisterActivity : AppCompatActivity() {
                 UserInfoManager(baseContext).phone = user.phone
                 UserInfoManager(baseContext).email = user.email
                 UserInfoManager(baseContext).profilePicture = user.profilePicture
-
-                //startMainActivity()
             }, {
                 runOnUiThread {
                     registerError.text = getString(R.string.LoginActivity_loginError_text)
@@ -114,9 +90,4 @@ class RegisterActivity : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
-
-    //private fun startMainActivity() {
-    //    startActivity(Intent(this, MainActivity::class.java))
-    //    finish()
-    //}
 }
