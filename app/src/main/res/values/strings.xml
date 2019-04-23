@@ -113,6 +113,10 @@
         fois par an seulement 😥 , mais ca me permet de ramener du confit de canard et du fromage en masse 😅 !
     </string>
 
+    <!-- Tchat -->
+    <string name="tchatFragment_title">Messagerie</string>
+    <string name="tchatFragment_navigation_message">Messages</string>
+    <string name="tchatFragment_navigation_contact">Demande de contact</string>
 
     <!-- City -->
     <string name="city_Roma">Rome</string>

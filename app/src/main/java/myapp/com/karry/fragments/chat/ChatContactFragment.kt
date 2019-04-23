@@ -1,4 +1,17 @@
 package myapp.com.karry.fragments.chat
 
-class ChatContactFragment {
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import myapp.com.karry.R
+
+class ChatContactFragment : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val v: View = inflater.inflate(R.layout.fragment_chat_contact, container, false)
+        return v
+    }
 }
