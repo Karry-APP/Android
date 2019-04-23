@@ -13,4 +13,9 @@ class SharedViewModel : ViewModel() {
     fun setArrival(item: String) {
         arrivalValue.value = item
     }
+  
+    fun cleanValues() {
+        destinationValue.value = ""
+        arrivalValue.value = ""
+    }
 }

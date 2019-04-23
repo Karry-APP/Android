@@ -14,4 +14,3 @@ class ChatMessageFragment: Fragment() {
         val v: View = inflater.inflate(R.layout.fragment_chat_message, container, false)
         return v
     }
-}

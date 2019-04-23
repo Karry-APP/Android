@@ -11,7 +11,6 @@ import myapp.com.karry.entity.City
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import myapp.com.karry.R
 import myapp.com.karry.adapters.CitiesAdapter
@@ -19,6 +18,15 @@ import myapp.com.karry.model.SharedViewModel
 
 class CityPickerFragment : Fragment() {
     private val cityLisArray: ArrayList<City> = arrayListOf()
+    private lateinit var model: SharedViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        model = activity?.run {
+            ViewModelProviders.of(this).get(SharedViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
+    }
 
     var arrivalValue: String = ""
     var destinationValue: String = ""
