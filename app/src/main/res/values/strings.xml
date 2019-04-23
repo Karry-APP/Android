@@ -49,7 +49,9 @@
     <string name="CompleteProfil_help_edit_telephone">Votre numéro ne sera pas communiqué sans votre accord</string>
     <string name="CompleteProfil_text_btn_enregistrer">Enregistrer</string>
     <string name="AddPhotoProfil_title_photo_profil">Votre photo de profil</string>
-    <string name="AddPhotoProfil_text_description">Ajoutez une photo de profil, pour que notre communauté puisse mettre un visage sur votre prénom 😉</string>
+    <string name="AddPhotoProfil_text_description">Ajoutez une photo de profil, pour que notre communauté puisse mettre
+        un visage sur votre prénom 😉
+    </string>
     <string name="AddPhotoProfil_text_btn_ajout">Ajouter</string>
     <string name="AddPhotoProfil_link_ignore">Ignorer pour l\'instant</string>
 
@@ -104,7 +106,13 @@
     <string name="searchResultActivity_proposalLocationIcon">proposal location icon</string>
 
     <!-- SearchFragment -->
-    <string name="SearchFragment_searchBottomTooltip">Vous partez bientot et pouvez \n ramener un produit à quelqu\'un ?</string>
+    <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui va &#8230;</string>
+    <string name="SearchFragment_searchBeginSearch_text">Commencez à chercher des voyageurs !</string>
+    <string name="SearchFragment_searchDepartureCity_hint">de Pékin</string>
+    <string name="SearchFragment_searchDestinationCity_hint">à Paris</string>
+    <string name="SearchFragment_searchBottomTooltip">Vous partez bientot et pouvez \n ramener un produit à quelqu\'un
+        ?
+    </string>
     <string name="SearchFragment_postTripTooltipButton">Postez votre voyage</string>
 
     <!-- Account Page -->

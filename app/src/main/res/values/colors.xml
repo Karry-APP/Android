@@ -10,6 +10,7 @@
     <!-- Backgrounds -->
     <color name="colorBackgroundMain">#F8FAFE</color>
     <color name="colorBackgroundWhite">#fffafa</color>
+    <color name="city_picker_background">#F0F3F9</color>
 
     <!-- Title -->
     <color name="colorTitleImportant">#004E64</color>
@@ -18,6 +19,10 @@
 
     <!-- Strokes -->
     <color name="colorStrokeGrey">#EFF3FB</color>
+
+    <!-- Shadows -->
+    <color name="shadow">#C3CBD0</color>
+    <color name="colorLightBlue">#004E64</color>
 
 
 

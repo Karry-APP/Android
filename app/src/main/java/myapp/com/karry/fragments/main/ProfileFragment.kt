@@ -2,7 +2,6 @@ package myapp.com.karry.fragments.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,8 +24,6 @@ class ProfileFragment : Fragment() {
         v.profileFirstname.text = UserInfoManager(this.requireContext()).firstname
         v.profileLastname.text = UserInfoManager(this.requireContext()).lastname
         v.profileEmail.text = UserInfoManager(this.requireContext()).email
-
-        Log.d("PROFIL PIC", UserInfoManager(this.requireContext()).profilePicture)
 
         Glide
             .with(v)

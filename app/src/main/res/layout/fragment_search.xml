@@ -3,7 +3,7 @@
              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="@color/colorWhiteBackground"
+             android:background="@color/colorBackgroundMain"
              tools:context=".fragments.main.SearchFragment"
 >
 
@@ -78,8 +78,6 @@
                 android:paddingTop="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-
                 android:id="@+id/linearLayout5"
                 android:paddingVertical="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +110,8 @@
         <Button
                 android:text="@string/MainActivity_bottomNavigation_searchTitle"
                 android:layout_width="0dp"
-                android:layout_height="55dp" android:id="@+id/button3"
+                android:layout_height="55dp" android:id="@+id/searchButton"
+
                 android:background="@drawable/btn_rounded_normal" android:textColor="@android:color/white"
                 android:layout_marginEnd="45dp"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="45dp"

@@ -16,9 +16,6 @@ import org.json.JSONObject
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var userFirstname: String
-    private lateinit var userLastname: String
-    private lateinit var userPhone: String
     private lateinit var userEmail: String
     private lateinit var userPassword: String
 
@@ -34,23 +31,16 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
-
         if (savedInstanceState == null) {
-
             replaceFragment(RegisterProfilFragment())
         }
-
     }
 
     private val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
     private fun validateForm(): Boolean {
-        //val firstname = registerFirstname.text.toString()
-        //val lastname = registerLastname.text.toString()
-        //val phone = registerPhone.text.toString()
         val email = registerEmail.text.toString()
         val password = registerPassword.text.toString()
         //val confirmPassword = registerConfirmPassword.text.toString()
@@ -75,11 +65,11 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun userInfoAsJson(): String {
         val randomFirstName = (1..8)
-            .map { i -> kotlin.random.Random.nextInt(0, charPool.size) }
+            .map { kotlin.random.Random.nextInt(0, charPool.size) }
             .map(charPool::get)
             .joinToString("")
         val randomLastName = (1..8)
-            .map { i -> kotlin.random.Random.nextInt(0, charPool.size) }
+            .map { kotlin.random.Random.nextInt(0, charPool.size) }
             .map(charPool::get)
             .joinToString("")
         val userObject = JSONObject()

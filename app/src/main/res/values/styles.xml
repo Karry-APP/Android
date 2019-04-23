@@ -95,4 +95,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="buttonGreenFull" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">#4CEBA0</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
 </resources>

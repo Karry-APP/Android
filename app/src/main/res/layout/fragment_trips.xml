@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
 
-        android:background="@color/colorWhiteBackground"
+        android:background="@color/colorBackgroundMain"
         tools:context=".fragments.main.TripsFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

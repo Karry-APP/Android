@@ -22,7 +22,6 @@ class Introduction2 : Fragment() {
         return v
     }
 
-
     fun startLoginActivity() {
         this.startActivity(Intent(this.context, LoginActivity::class.java))
         activity?.finish()

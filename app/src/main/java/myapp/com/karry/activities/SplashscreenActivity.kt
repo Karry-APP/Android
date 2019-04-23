@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.FirebaseApp
 import myapp.com.karry.R
 import myapp.com.karry.modules.TokenManager
 
@@ -17,15 +16,17 @@ class SplashscreenActivity : AppCompatActivity() {
     private val runnable: Runnable = Runnable {
         if (!isFinishing) {
             val FIRST_TIME = "data.source.prefs.FIRST_TIME"
-            val isFirstOpen: Boolean = PreferenceManager.getDefaultSharedPreferences(this.baseContext).getBoolean(FIRST_TIME, true)
-            if(isFirstOpen) {
-                PreferenceManager.getDefaultSharedPreferences(this.baseContext).edit().putBoolean(FIRST_TIME, false).apply()
+            val isFirstOpen: Boolean =
+                PreferenceManager.getDefaultSharedPreferences(this.baseContext).getBoolean(FIRST_TIME, true)
+            if (isFirstOpen) {
+                PreferenceManager.getDefaultSharedPreferences(this.baseContext).edit().putBoolean(FIRST_TIME, false)
+                    .apply()
                 val introIntent = Intent(applicationContext, IntroductionActivity::class.java)
                 startActivity(introIntent)
                 finish()
             } else {
                 val token = TokenManager(this).deviceToken
-                if(token == "") {
+                if (token == "") {
                     val intent1 = Intent(applicationContext, LoginActivity::class.java)
                     startActivity(intent1)
                     finish()
