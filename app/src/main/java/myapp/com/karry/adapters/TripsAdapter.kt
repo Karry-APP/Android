@@ -2,7 +2,6 @@ package myapp.com.karry.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +27,7 @@ class TripsAdapter(private val tripList: List<Trip>) :
 
     override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
         val trip = tripList[position]
+
         holder.view.tripDepartureCity.text = trip.departureCity
         holder.view.tripDestinationCity.text = trip.destinationCity
         holder.view.tripCard.setOnClickListener { v -> loadTrip(v.context, trip) }
