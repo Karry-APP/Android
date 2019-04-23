@@ -112,7 +112,8 @@
         <Button
                 android:text="@string/MainActivity_bottomNavigation_searchTitle"
                 android:layout_width="0dp"
-                android:layout_height="55dp" android:id="@+id/button3"
+                android:layout_height="55dp" android:id="@+id/searchButton"
+
                 android:background="@drawable/btn_rounded_normal" android:textColor="@android:color/white"
                 android:layout_marginEnd="45dp"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="45dp"
