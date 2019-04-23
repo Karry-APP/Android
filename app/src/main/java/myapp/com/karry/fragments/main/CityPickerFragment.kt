@@ -28,6 +28,20 @@ class CityPickerFragment : Fragment() {
         } ?: throw Exception("Invalid Activity")
     }
 
+    var arrivalValue: String = ""
+    var destinationValue: String = ""
+
+
+    private lateinit var model: SharedViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        model = activity?.run {
+            ViewModelProviders.of(this).get(SharedViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_city_picker, container, false)
         createCityList()
