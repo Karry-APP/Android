@@ -25,7 +25,7 @@ class CitiesAdapter(private var cityList: List<City>, val click: (cityName: Stri
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
         val city = cityList[position]
         holder.view.cityName.text = city.name
-        holder.view.cityRow.setOnClickListener { selectCity(city) }
+        holder.view.cityRow.setOnClickListener { v -> selectCity(city) }
     }
 
     private fun selectCity(city: City) {

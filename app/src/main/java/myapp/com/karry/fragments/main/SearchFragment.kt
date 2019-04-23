@@ -45,7 +45,6 @@ class SearchFragment : Fragment() {
         val cityPickerFragment = CityPickerFragment()
         bundle.putString("currentDirection", currentSearch)
         cityPickerFragment.arguments = bundle
-
         launchFragment(cityPickerFragment)
     }
 
@@ -63,9 +62,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun launchFragment(fragment: Fragment) {
+
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+
     }
 }

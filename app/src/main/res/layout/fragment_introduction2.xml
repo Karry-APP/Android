@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".fragments.introductions.Introduction2">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp" android:gravity="center_horizontal">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_intro_step2"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="30dp"
+                android:text="@string/IntroductionActivity_introStepTwo_titleText"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:textColor="@color/colorTextBlack"
+                android:textAlignment="center"
+                android:fontFamily="@font/lato_bold"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/colorTextGrey"
+                android:text="@string/IntroductionActivity_introStepTwo_mainText"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp" android:layout_marginBottom="30dp"
+                android:fontFamily="@font/lato_bold"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button" android:background="@drawable/btn_rounded_normal"
+                android:text="@string/IntroductionActivity_introStepTwo_beginText"
+                android:textColor="@android:color/white" android:id="@+id/startButton"
+                android:layout_marginBottom="20dp"/>
+    </LinearLayout>
+
+</FrameLayout>

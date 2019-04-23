@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".fragments.introductions.Introduction1">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp" android:gravity="center_horizontal">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_intro_step1"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/IntroductionActivity_introStepOne_titleText"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="30dp"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:textColor="@color/colorTextBlack"
+                android:textAlignment="center"
+                android:fontFamily="@font/lato_bold"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/IntroductionActivity_introStepOne_mainText"
+                android:textSize="18sp"
+                android:textColor="@color/colorTextGrey"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp" android:layout_marginBottom="30dp"
+                android:fontFamily="@font/lato_bold" android:textStyle="bold"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/IntroductionActivity_introStepTwo_passText"
+                android:textAlignment="center" android:padding="5dp" android:textColor="@color/colorTextGrey"
+                android:textSize="18sp"/>
+        <TextView
+                android:text="@string/IntroductionActivity_introStepTwo_passButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/passLabel" android:padding="5dp"
+                android:textColor="@color/colorTitleImportant" android:textStyle="bold" android:textSize="20sp"/>
+    </LinearLayout>
+
+</FrameLayout>

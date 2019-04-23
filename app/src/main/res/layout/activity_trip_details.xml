@@ -46,7 +46,7 @@
                     <TextView
                             android:text="@string/announcementActivity_seeProfil_link"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/profil_link"
+                            android:layout_height="wrap_content"
                             style="@style/textGreen"
                             app:layout_constraintStart_toEndOf="@+id/textUserName" android:layout_marginStart="16dp"
                             app:layout_constraintTop_toTopOf="@+id/textUserName"
@@ -67,7 +67,6 @@
                     <ImageView
                             android:layout_width="16dp"
                             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_star_full"
-                            android:id="@+id/imageStar"
                             app:layout_constraintStart_toEndOf="@+id/textComments"
                             app:layout_constraintTop_toTopOf="@+id/textComments"
                             app:layout_constraintBottom_toBottomOf="@+id/textComments"
@@ -130,7 +129,6 @@
                         <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" app:srcCompat="@drawable/ic_flag_fr"
-                                android:id="@+id/icon_flag_fr"
                                 app:layout_constraintStart_toEndOf="@+id/textCountry2"
                                 android:layout_marginStart="8dp"
                                 app:layout_constraintTop_toTopOf="@+id/textCountry2"
@@ -149,7 +147,7 @@
                         <TextView
                                 android:text="28/02/2019"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/textDateDeparture"
+                                android:layout_height="wrap_content"
                                 app:layout_constraintStart_toEndOf="@+id/textPDateDeparture"
                                 android:layout_marginStart="8dp"
                                 app:layout_constraintTop_toTopOf="@+id/textPDateDeparture" android:textColor="#121212"/>
@@ -162,7 +160,7 @@
                     android:layout_height="wrap_content" android:layout_marginTop="16dp"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:id="@+id/linearLayout6" android:gravity="center_vertical">
+                    android:gravity="center_vertical">
                 <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp" app:srcCompat="@drawable/ic_airplane_backhome"
@@ -222,7 +220,7 @@
                         <TextView
                                 android:text="12/03/2019"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/textDateArrival"
+                                android:layout_height="wrap_content"
                                 android:textColor="#121212"
                                 app:layout_constraintStart_toEndOf="@+id/textPDateArrival"
                                 android:layout_marginStart="8dp"
@@ -312,7 +310,7 @@
                         <TextView
                                 android:text="produits"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/textPMaxProductUnit"
+                                android:layout_height="wrap_content"
                                 android:textColor="#121212"
                                 app:layout_constraintBottom_toBottomOf="@+id/textPWeightUnit"
                                 app:layout_constraintStart_toEndOf="@+id/textPMaxProduct"
@@ -341,7 +339,7 @@
                 <TextView
                         android:text="d'Adrien"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/textNameKarrier"
+                        android:layout_height="wrap_content"
                         app:layout_constraintStart_toEndOf="@+id/textKarrier" android:layout_marginStart="4dp"
                         app:layout_constraintTop_toTopOf="@+id/textKarrier" style="@style/textTitleBlack"/>
             </LinearLayout>
@@ -356,14 +354,14 @@
         </LinearLayout>
         <Button
                 android:text="@string/announcementActivity_buttonSendMessage"
-                android:id="@+id/buttonSendMessage"
                 app:layout_constraintStart_toStartOf="parent"
                 android:background="@drawable/btn_rounded_normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintVertical_chainStyle="packed" android:shadowRadius="0"
                 android:layout_width="wrap_content"
-                style="@style/buttonSmallTransparent" android:textColor="@android:color/white"
+                style="@style/buttonSmallTransparent"
+                android:textColor="@android:color/white"
                 android:layout_height="29dp" android:paddingLeft="20dp" android:paddingRight="20dp"
                 android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/linearLayout3"/>
@@ -372,7 +370,6 @@
             android:text="@string/announcementActivity_titleDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/titleTripDetail"
             android:textColor="#004E64"
             app:layout_constraintStart_toEndOf="@+id/icon_arrow_back"
             android:layout_marginStart="8dp"

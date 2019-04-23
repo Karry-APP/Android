@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.LoginActivity" android:id="@+id/loginActivityLayout"
+        android:fitsSystemWindows="true"
+        tools:context=".activities.LoginActivity"
+        android:id="@+id/loginActivityLayout"
 >
     <View
             android:layout_width="0dp"
@@ -27,7 +30,8 @@
             android:layout_height="wrap_content" app:srcCompat="@drawable/ic_karry" android:id="@+id/ic_karry"
             android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/loginLogo"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:contentDescription="@string/LoginActivity_loginLogo_contentDescription"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -77,7 +81,7 @@
             android:layout_height="wrap_content" android:id="@+id/textView"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent" android:textSize="16sp" android:textColor="#7C9299"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/loginForgotPassword"/>
+            android:layout_marginTop="64dp" app:layout_constraintTop_toBottomOf="@+id/loginForgotPassword"/>
     <TextView
             android:text="@string/LoginActivity_dontHaveAccount_text"
             android:layout_width="wrap_content"

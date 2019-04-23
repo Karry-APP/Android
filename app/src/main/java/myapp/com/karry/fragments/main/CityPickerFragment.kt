@@ -11,7 +11,6 @@ import myapp.com.karry.entity.City
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import myapp.com.karry.R
 import myapp.com.karry.adapters.CitiesAdapter

@@ -62,12 +62,12 @@
                             <ImageView
                                     android:src="@drawable/ic_marker_position"
                                     android:layout_width="14dp"
-                                    android:layout_height="20dp" android:id="@+id/ic_marker_position"
+                                    android:layout_height="20dp"
                                     android:layout_weight="1"/>
                             <TextView
                                     android:text="@string/city_Johannesbourg"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" android:id="@+id/text_city_profil"
+                                    android:layout_height="wrap_content"
                                     android:layout_weight="1" android:layout_marginStart="4dp"
                                     style="@style/textSmallGrey"/>
                         </LinearLayout>
@@ -94,12 +94,12 @@
                         <TextView
                                 android:text="6"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/number_voyage_profil"
+                                android:layout_height="wrap_content"
                                 style="@style/textTitleBlack"/>
                         <TextView
                                 android:text="@string/accountActivity_text_voyage_profil"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/text_voyage_profil"
+                                android:layout_height="wrap_content"
                                 style="@style/textSmallGrey"/>
                     </LinearLayout>
                     <LinearLayout
@@ -109,12 +109,12 @@
                         <TextView
                                 android:text="10"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/number_exchange_profil"
+                                android:layout_height="wrap_content"
                                 style="@style/textTitleBlack"/>
                         <TextView
                                 android:text="@string/accountActivity_text_exchange_profil"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/text_exchange_profil"
+                                android:layout_height="wrap_content"
                                 style="@style/textSmallGrey"/>
                     </LinearLayout>
                     <LinearLayout
@@ -124,12 +124,12 @@
                         <TextView
                                 android:text="4,8"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/number_score_profil"
+                                android:layout_height="wrap_content"
                                 style="@style/textTitleBlack"/>
                         <TextView
                                 android:text="@string/accountActivity_text_score_profil"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:id="@+id/text_score_profil"
+                                android:layout_height="wrap_content"
                                 style="@style/textSmallGrey"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -141,7 +141,7 @@
                     <TextView
                             android:text="@string/accountActivity_title_comments"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/textView3" android:layout_weight="1"
+                            android:layout_height="wrap_content" android:layout_weight="1"
                             style="@style/textTitleBlack"/>
                     <LinearLayout
                             android:orientation="vertical"
@@ -155,7 +155,7 @@
                         <TextView
                                 android:text="Le 10 septembre 2018"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" android:id="@+id/textView6"
+                                android:layout_height="wrap_content"
                                 style="@style/textSmallGrey"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -173,7 +173,7 @@
                     <TextView
                             android:text="@string/accountActivity_text_description"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:id="@+id/textView7" android:layout_weight="1"/>
+                            android:layout_height="wrap_content" android:layout_weight="1"/>
                 </LinearLayout>
                 <Button
                         android:text="@string/ProfileFragment_logoutButton_text"

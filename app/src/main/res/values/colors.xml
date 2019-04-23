@@ -3,16 +3,22 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#008577</color>
-
-    <color name="colorBackground">#fffafa</color>
-    <color name="colorWhiteBackground">#F8FAFE</color>
-
     <color name="colorRed">#FF3C3C</color>
-
     <color name="colorDarkBLue">#7C9299</color>
-    <color name="colorLightBLue">#004E64</color>
-    <color name="shadow">#C3CBD0</color>
-    <color name="city_picker_background">#F0F3F9</color>
+
+
+    <!-- Backgrounds -->
+    <color name="colorBackgroundMain">#F8FAFE</color>
+    <color name="colorBackgroundWhite">#fffafa</color>
+
+    <!-- Title -->
+    <color name="colorTitleImportant">#004E64</color>
+    <color name="colorTextBlack">#131515</color>
+    <color name="colorTextGrey">#7C9299</color>
+
+    <!-- Strokes -->
+    <color name="colorStrokeGrey">#EFF3FB</color>
+
 
 
 </resources>

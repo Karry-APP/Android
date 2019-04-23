@@ -7,8 +7,20 @@
     <!-- SplashscreenActivity -->
     <string name="SplashscreenActivity_splashLogo_contentDescription">Logo Karry</string>
 
+    <!-- IntroductionActivity -->
+    <string name="IntroductionActivity_introStepOne_titleText">Hello 👋👋\n Bienvenue sur Karry !</string>
+    <string name="IntroductionActivity_introStepOne_mainText">Dans quelques clics, vous allez pouvoir vous procurer les richesses du monde entier, en contactant un voyageur.</string>
+    <string name="IntroductionActivity_introStepTwo_titleText">Rentabilisez vos déplacement 🤑</string>
+    <string name="IntroductionActivity_introStepTwo_mainText">Vous pouvez également gagner de l’argent durant votre voyage en rapportant les commandes des utilisateurs.</string>
+    <string name="IntroductionActivity_introStepTwo_beginText">Commencer</string>
+    <string name="IntroductionActivity_introStepTwo_passText">Vous connaissez déjà le concept ?</string>
+    <string name="IntroductionActivity_introStepTwo_passButtonText">PASSER</string>
+
+
+
     <!-- LoginActivity -->
     <string name="LoginActivity_loginLogo_contentDescription">Logo Karry</string>
+    <string name="LoginActivity_loginBackground_contentDescription">Fond d\'ecran dégradé</string>
     <string name="LoginActivity_inputEmail_hint">Email</string>
     <string name="LoginActivity_inputPassword_hint">Mot de passe</string>
     <string name="LoginActivity_buttonLogin_text">Se connecter</string>
@@ -92,10 +104,6 @@
     <string name="searchResultActivity_proposalLocationIcon">proposal location icon</string>
 
     <!-- SearchFragment -->
-    <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui va &#8230;</string>
-    <string name="SearchFragment_searchBeginSearch_text">Commencez à chercher des voyageurs !</string>
-    <string name="SearchFragment_searchDepartureCity_hint">de Pékin</string>
-    <string name="SearchFragment_searchDestinationCity_hint">à Paris</string>
     <string name="SearchFragment_searchBottomTooltip">Vous partez bientot et pouvez \n ramener un produit à quelqu\'un ?</string>
     <string name="SearchFragment_postTripTooltipButton">Postez votre voyage</string>
 
@@ -113,6 +121,9 @@
         fois par an seulement 😥 , mais ca me permet de ramener du confit de canard et du fromage en masse 😅 !
     </string>
 
+    <!-- ChatActivity -->
+    <string name="ChatActivity_tabTitle_text">Messagerie</string>
+
 
     <!-- City -->
     <string name="city_Roma">Rome</string>
@@ -126,5 +137,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="SearchFragment_destinationCity_label">Où se trouve votre produit ?</string>
+    <string name="SearchFragment_destinationCity_input">---</string>
+    <string name="SearchFragment_arrivalCity_label">Où souhaitez vous être livré ?</string>
+    <string name="SearchFragment_arrivalCity_input">---</string>
 
 </resources>
