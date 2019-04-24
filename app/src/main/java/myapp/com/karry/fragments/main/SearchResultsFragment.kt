@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_search_results.view.*
+import kotlinx.android.synthetic.main.trip_row.view.*
 import myapp.com.karry.R
 import myapp.com.karry.adapters.TripsAdapter
 import myapp.com.karry.entity.Trip
@@ -17,9 +18,7 @@ import myapp.com.karry.network.TripsService
 import java.lang.Exception
 
 class SearchResultsFragment : Fragment() {
-    private val tripLisArray: ArrayList<Trip> = arrayListOf()
     private lateinit var model: SharedViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +33,8 @@ class SearchResultsFragment : Fragment() {
     ): View? {
         val v : View= inflater.inflate(R.layout.fragment_search_results, container, false)
 
+        v.destinationValue.text = model.destinationValue.value?.toUpperCase()
+        v.closeSearchResult.setOnClickListener { smartBackToSearch() }
         loadTripsQuery(v)
 
         return v
@@ -42,8 +43,13 @@ class SearchResultsFragment : Fragment() {
     private fun bindView(v: View) {
         activity?.runOnUiThread {
             v.tripsList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
-            v.tripsList.adapter = TripsAdapter(tripLisArray)
+            v.tripsList.adapter = TripsAdapter(model.tripLisArray)
         }
+    }
+
+    private fun smartBackToSearch() {
+        model.cleanTripsList()
+        launchFragment(SearchFragment())
     }
 
     private fun loadTripsQuery(v: View) {
@@ -53,13 +59,18 @@ class SearchResultsFragment : Fragment() {
 
         TripsService.searchByCities(destination, arrival,token, {
             if (!it.isNullOrEmpty()) {
-                for (trip in it) {
-                    tripLisArray.add(trip)
-                }
+                model.storeSearchResults(it)
                 bindView(v)
             }
         }, {
             Log.d("yay", "Something bad happened")
         })
+    }
+
+    private fun launchFragment(fragment: Fragment) {
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }

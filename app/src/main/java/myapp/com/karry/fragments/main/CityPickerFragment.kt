@@ -53,7 +53,7 @@ class CityPickerFragment : Fragment() {
             }
         })
 
-        v.closeCityPicker.setOnClickListener {
+        v.closeSearchResult.setOnClickListener {
             val searchFragment = SearchFragment()
             closeCityPicker(searchFragment)
         }

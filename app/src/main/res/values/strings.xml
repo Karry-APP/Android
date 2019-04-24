@@ -93,6 +93,16 @@
     <string name="searchResultActivity_propsalUserNameDescription">Traveler name</string>
     <string name="searchResultActivity_availableProductIcon">Available Product Icon</string>
     <string name="searchResultActivity_proposalLocationIcon">proposal location icon</string>
+    <string name="searchResultActivity_seeSearchResultsDetails">Voir détails</string>
+    <string name="searchResultActivity_seeProfile">Voir le profile</string>
+    <string name="searchResultActivity_descriptionPlaceholder">Description du voyage</string>
+    <string name="searchResultActivity_defaultRate">4.8</string>
+    <string name="searchResultActivity_defaultDate">02/01/19</string>
+    <string name="searchResultActivity_defaultName">John D.</string>
+    <string name="searchResultActivity_emptyDate"></string>
+    <string name="searchResultActivity_searchResultPlaceholder">Résultats pour la recherche: </string>
+    <string name="searchResultActivity_searchResultPlaceholderDetails">Détails du voyage</string>
+    <string name="searchResultActivity_buttonHintContact">Contacter</string>
 
     <!-- SearchFragment -->
     <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui va &#8230;</string>

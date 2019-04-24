@@ -28,9 +28,10 @@ class TripsAdapter(private val tripList: List<Trip>) :
     override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
         val trip = tripList[position]
 
-        holder.view.tripDepartureCity.text = trip.departureCity
+        holder.view.tripDepartureCityDetails.text = trip.departureCity
         holder.view.tripDestinationCity.text = trip.destinationCity
-        holder.view.tripCard.setOnClickListener { v -> loadTrip(v.context, trip) }
+
+        holder.view.linkTripDetails.setOnClickListener { v -> loadTrip(v.context, trip) }
     }
 
     private fun loadTrip(c: Context, trip: Trip) {
