@@ -3,7 +3,7 @@ package myapp.com.karry.entity
 import com.google.gson.annotations.SerializedName
 
 class Trip (
-    @SerializedName("_id") val id: String,
+    val id: String,
     val description: String,
     val departureCity:String,
     val destinationCity: String,
