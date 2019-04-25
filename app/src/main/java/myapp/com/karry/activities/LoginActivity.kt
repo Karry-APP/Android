@@ -81,7 +81,6 @@ class LoginActivity : AppCompatActivity() {
     private fun startRegisterActivity() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun startMainActivity() {

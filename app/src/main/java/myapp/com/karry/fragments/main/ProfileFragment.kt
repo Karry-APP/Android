@@ -1,5 +1,6 @@
 package myapp.com.karry.fragments.main
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +12,8 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import myapp.com.karry.activities.LoginActivity
 import myapp.com.karry.R
+import myapp.com.karry.activities.TripDetails
+import myapp.com.karry.activities.UpdateProfileActivity
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.UsersService
@@ -19,11 +22,11 @@ class ProfileFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_profile, container, false)
-        v.profileLogout.setOnClickListener { logoutUser() }
+        v.logoutButton.setOnClickListener { logoutUser() }
+        v.updateProfileLink.setOnClickListener { redirectToMyProposals() }
 
-        v.profileFirstname.text = UserInfoManager(this.requireContext()).firstname
-        v.profileLastname.text = UserInfoManager(this.requireContext()).lastname
-        v.profileEmail.text = UserInfoManager(this.requireContext()).email
+        v.userName.text =
+            "${UserInfoManager(this.requireContext()).firstname} ${UserInfoManager(this.requireContext()).lastname}"
 
         Glide
             .with(v)
@@ -34,22 +37,15 @@ class ProfileFragment : Fragment() {
         return v
     }
 
+    private fun redirectToMyProposals() {
+        val intent = Intent(context, UpdateProfileActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun logoutUser() {
-        profileLogout.visibility = View.INVISIBLE
-        profileProgress.visibility = View.VISIBLE
-
-        val token: String = TokenManager(this.requireContext()).deviceToken ?: ""
-
-        UsersService.logout(token, {
-            TokenManager(this.requireContext()).deviceToken = ""
-            startActivity(Intent(context, LoginActivity::class.java))
-            activity?.finish()
-        }, {
-            activity?.runOnUiThread {
-                profileLogout.visibility = View.VISIBLE
-                profileProgress.visibility = View.INVISIBLE
-            }
-        })
+        TokenManager(this.requireContext()).deviceToken = ""
+        startActivity(Intent(context, LoginActivity::class.java))
+        activity?.finish()
     }
 }
 

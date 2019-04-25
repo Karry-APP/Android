@@ -50,6 +50,7 @@ class UsersService {
 
         fun logout(token: String, success: (response: Response) -> Unit, failure: () -> Unit) {
             val request = Request.Builder().delete().url(ApiManager.URL.USER_LOGOUT).header("X-Auth", token).build()
+            Log.d("yay", token)
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
                     if (response.code() == 200) {
