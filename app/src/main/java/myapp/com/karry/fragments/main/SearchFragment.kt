@@ -42,6 +42,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun redirectToSearchResults() {
+        model.cleanTripsList()
         launchFragment(SearchResultsFragment())
     }
 

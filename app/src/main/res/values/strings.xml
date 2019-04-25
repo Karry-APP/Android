@@ -95,14 +95,25 @@
     <string name="searchResultActivity_proposalLocationIcon">proposal location icon</string>
     <string name="searchResultActivity_seeSearchResultsDetails">Voir détails</string>
     <string name="searchResultActivity_seeProfile">Voir le profile</string>
-    <string name="searchResultActivity_descriptionPlaceholder">Description du voyage</string>
+    <string name="searchResultActivity_descriptionPlaceholder">Description</string>
     <string name="searchResultActivity_defaultRate">4.8</string>
     <string name="searchResultActivity_defaultDate">02/01/19</string>
     <string name="searchResultActivity_defaultName">John D.</string>
     <string name="searchResultActivity_emptyDate"></string>
-    <string name="searchResultActivity_searchResultPlaceholder">Résultats pour la recherche: </string>
+    <string name="searchResultActivity_searchResultPlaceholder">Résultats pour la recherche:</string>
     <string name="searchResultActivity_searchResultPlaceholderDetails">Détails du voyage</string>
     <string name="searchResultActivity_buttonHintContact">Contacter</string>
+    <string name="searchResultActivity_availableWeight">Poids (KG)</string>
+    <string name="searchResultActivity_karryTax">Tips (€)</string>
+    <string name="searchResultActivity_maxAmount">Objet(s)</string>
+    <string name="searchResultActivity_tripDetailsInformationsPlaceholder">Informations</string>
+    <string name="searchResultActivity_tripDetailsAvailabilityPlaceholder">Disponibilitées</string>
+
+    <!-- TravelerProfileFragment -->
+    <string name="TravelerProfileFragment_trips_stats">Voyages</string>
+    <string name="TravelerProfileFragment_transactions_stats">Echanges</string>
+    <string name="TravelerProfileFragment_rate_stats">Note</string>
+
 
     <!-- SearchFragment -->
     <string name="SearchFragment_searchIntroduction_text">Vous cherchez un voyageur qui va &#8230;</string>
@@ -119,11 +130,11 @@
     <string name="accountActivity_text_voyage_profil">Voyages</string>
     <string name="accountActivity_text_exchange_profil">Echanges</string>
     <string name="accountActivity_text_score_profil">Notes</string>
-    <string name="accountActivity_title_comments">Commentaires :</string>
+    <string name="accountActivity_title_comments">Commentaires</string>
     <string name="accountActivity_text_comments">“Merci pour le magret et le fromage! Ça manque vraiment trop ici !!!”
     </string>
     <string name="accountActivity_text_comments_date">Le 10 septembre 2018</string>
-    <string name="accountActivity_title_description">Description :</string>
+    <string name="accountActivity_title_description">Description</string>
     <string name="accountActivity_text_description">Expat’ à Johannesbourg depuis 2 ans. Je viens sur Paris entre 2 et 3
         fois par an seulement 😥 , mais ca me permet de ramener du confit de canard et du fromage en masse 😅 !
     </string>

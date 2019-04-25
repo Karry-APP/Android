@@ -1,14 +1,12 @@
 package myapp.com.karry.activities
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_trip_details.*
 import myapp.com.karry.R
 import myapp.com.karry.entity.Trip
-import myapp.com.karry.fragments.main.SearchResultsFragment
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.TripsManager
@@ -29,17 +27,28 @@ class TripDetails : AppCompatActivity() {
         val token = TokenManager(this).deviceToken.toString()
 
         closeDetailTrip.setOnClickListener { replaceFragment() }
+
         TripsManager.loadDetails(tripId, token, { tripDetails: Trip ->
             runOnUiThread {
+                karryTax.text = tripDetails.carryTaxe
+                availableWeight.text = tripDetails.carryWeight
+                maxAmount.text = tripDetails.carryMaxAmount
                 tripDepartureCityDetails.text = tripDetails.departureCity
                 tripDestinationCity.text = tripDetails.destinationCity
-                userName.text = tripDetails.creator
                 descriptionValue.text = tripDetails.description
+
+                linkTravelerProfile.setOnClickListener { startTravelerProfileActivity() }
+
             }
         }, {
             runOnUiThread {
             }
         })
+    }
+
+    private fun startTravelerProfileActivity() {
+        val intent = Intent(this, TravelerProfileActivity::class.java)
+        startActivity(intent)
     }
 
     private fun replaceFragment() {

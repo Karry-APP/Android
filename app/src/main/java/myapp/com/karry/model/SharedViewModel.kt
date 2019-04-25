@@ -2,7 +2,6 @@ package myapp.com.karry.model
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import myapp.com.karry.R
 import myapp.com.karry.entity.Trip
 
 class SharedViewModel : ViewModel() {
