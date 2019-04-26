@@ -1,6 +1,5 @@
 package myapp.com.karry.fragments.main
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,19 +11,16 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import myapp.com.karry.activities.LoginActivity
 import myapp.com.karry.R
-import myapp.com.karry.activities.TripDetails
 import myapp.com.karry.activities.UpdateProfileActivity
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
-import myapp.com.karry.network.UsersService
 
 class ProfileFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_profile, container, false)
         v.logoutButton.setOnClickListener { logoutUser() }
-        v.updateProfileLink.setOnClickListener { redirectToMyProposals() }
-
+        v.updateProfileLink.setOnClickListener { redirectToMyUpdateMyProfile() }
         v.userName.text =
             "${UserInfoManager(this.requireContext()).firstname} ${UserInfoManager(this.requireContext()).lastname}"
 
@@ -37,7 +33,12 @@ class ProfileFragment : Fragment() {
         return v
     }
 
-    private fun redirectToMyProposals() {
+    override fun onStart() {
+        super.onStart()
+        userName.text = "${UserInfoManager(this.requireContext()).firstname} ${UserInfoManager(this.requireContext()).lastname}"
+    }
+
+    private fun redirectToMyUpdateMyProfile() {
         val intent = Intent(context, UpdateProfileActivity::class.java)
         startActivity(intent)
     }
