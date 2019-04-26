@@ -50,6 +50,7 @@
     <string name="MainActivity_bottomNavigation_tripsTitle">Voyages</string>
     <string name="MainActivity_bottomNavigation_chatTitle">Chat</string>
     <string name="MainActivity_bottomNavigation_profileTitle">Profil</string>
+    <string name="MainActivity_bottomNavigation_updateProfileTitle">Modifier mon profil</string>
 
     <!-- Announcement Page -->
     <string name="announcementActivity_userName">Adrien F.</string>

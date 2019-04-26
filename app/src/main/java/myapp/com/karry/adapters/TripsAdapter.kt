@@ -27,9 +27,6 @@ class TripsAdapter(private val tripList: List<Trip>) :
     }
 
     override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
-
-        Log.d("yay", "yay")
-
         val trip = tripList[position]
 
         holder.view.tripDepartureCityDetails.text = trip.departureCity

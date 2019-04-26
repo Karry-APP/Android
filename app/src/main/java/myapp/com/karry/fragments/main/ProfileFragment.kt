@@ -11,19 +11,18 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import myapp.com.karry.activities.LoginActivity
 import myapp.com.karry.R
+import myapp.com.karry.activities.UpdateProfileActivity
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
-import myapp.com.karry.network.UsersService
 
 class ProfileFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_profile, container, false)
-        v.profileLogout.setOnClickListener { logoutUser() }
-
-        v.profileFirstname.text = UserInfoManager(this.requireContext()).firstname
-        v.profileLastname.text = UserInfoManager(this.requireContext()).lastname
-        v.profileEmail.text = UserInfoManager(this.requireContext()).email
+        v.logoutButton.setOnClickListener { logoutUser() }
+        v.updateProfileLink.setOnClickListener { redirectToMyUpdateMyProfile() }
+        v.userName.text =
+            "${UserInfoManager(this.requireContext()).firstname} ${UserInfoManager(this.requireContext()).lastname}"
 
         Glide
             .with(v)
@@ -34,22 +33,20 @@ class ProfileFragment : Fragment() {
         return v
     }
 
+    override fun onStart() {
+        super.onStart()
+        userName.text = "${UserInfoManager(this.requireContext()).firstname} ${UserInfoManager(this.requireContext()).lastname}"
+    }
+
+    private fun redirectToMyUpdateMyProfile() {
+        val intent = Intent(context, UpdateProfileActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun logoutUser() {
-        profileLogout.visibility = View.INVISIBLE
-        profileProgress.visibility = View.VISIBLE
-
-        val token: String = TokenManager(this.requireContext()).deviceToken ?: ""
-
-        UsersService.logout(token, {
-            TokenManager(this.requireContext()).deviceToken = ""
-            startActivity(Intent(context, LoginActivity::class.java))
-            activity?.finish()
-        }, {
-            activity?.runOnUiThread {
-                profileLogout.visibility = View.VISIBLE
-                profileProgress.visibility = View.INVISIBLE
-            }
-        })
+        TokenManager(this.requireContext()).deviceToken = ""
+        startActivity(Intent(context, LoginActivity::class.java))
+        activity?.finish()
     }
 }
 
