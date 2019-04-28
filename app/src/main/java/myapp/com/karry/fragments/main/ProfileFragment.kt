@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_profile.view.*
 import myapp.com.karry.activities.LoginActivity
 import myapp.com.karry.R
 import myapp.com.karry.activities.UpdateProfileActivity
+import myapp.com.karry.activities.UserTripsActivity
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 
@@ -20,6 +21,7 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_profile, container, false)
         v.logoutButton.setOnClickListener { logoutUser() }
+        v.myProposals.setOnClickListener { redirectToMyRequestedTrips() }
         v.updateProfileLink.setOnClickListener { redirectToMyUpdateMyProfile() }
         v.userName.text =
             "${UserInfoManager(this.requireContext()).firstname} ${UserInfoManager(this.requireContext()).lastname}"
@@ -40,6 +42,11 @@ class ProfileFragment : Fragment() {
 
     private fun redirectToMyUpdateMyProfile() {
         val intent = Intent(context, UpdateProfileActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun redirectToMyRequestedTrips() {
+        val intent = Intent(context, UserTripsActivity::class.java)
         startActivity(intent)
     }
 

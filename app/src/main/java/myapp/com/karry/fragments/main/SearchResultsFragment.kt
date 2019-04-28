@@ -61,7 +61,7 @@ class SearchResultsFragment : Fragment() {
             if (it.isNullOrEmpty()) {
 
             } else {
-                model.storeSearchResults(it)
+                model.storeTrips(it)
                 bindView(v)
             }
         }, {

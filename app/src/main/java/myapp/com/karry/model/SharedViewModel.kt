@@ -27,7 +27,7 @@ class SharedViewModel : ViewModel() {
         tripLisArray.clear()
     }
 
-    fun storeSearchResults(trips: List<Trip>) {
+    fun storeTrips(trips: List<Trip>) {
         for (trip in trips) {
             tripLisArray.add(trip)
         }
