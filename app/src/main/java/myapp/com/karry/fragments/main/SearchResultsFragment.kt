@@ -44,7 +44,7 @@ class SearchResultsFragment : Fragment() {
 
     private fun bindView(v: View) {
 
-        val tripListArray = model.tripLisArray
+        val tripListArray = model.tripListArray
 
         activity?.runOnUiThread {
             v.tripsList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)

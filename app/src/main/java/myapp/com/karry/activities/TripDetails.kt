@@ -21,7 +21,7 @@ class TripDetails : AppCompatActivity() {
 
         model = this.run {
             ViewModelProviders.of(this).get(SharedViewModel::class.java)
-        } ?: throw Exception("Invalid Activity")
+        }
 
         val tripId:String = intent.getStringExtra("EVENT_ID")
         val token = TokenManager(this).deviceToken.toString()

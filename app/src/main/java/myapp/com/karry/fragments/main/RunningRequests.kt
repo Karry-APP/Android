@@ -8,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.fragment_running_requests.view.*
 import kotlinx.android.synthetic.main.fragment_search_results.view.*
 import myapp.com.karry.R
 import myapp.com.karry.adapters.RequestedTripsAdapter
 import myapp.com.karry.adapters.TripsAdapter
 import myapp.com.karry.adapters.UserRequestsAdapter
+import myapp.com.karry.entity.Trip
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
@@ -34,8 +36,7 @@ class RunningRequests : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val v: View = inflater.inflate(R.layout.fragment_running_requests, container, false)
-
-        loadUserTrips(v)
+        bindView(v)
 
         return v
     }
@@ -44,26 +45,27 @@ class RunningRequests : Fragment() {
         val token = TokenManager(context!!).deviceToken.toString()
         val userId = UserInfoManager(this.requireContext()).id
 
-        if (model.tripLisArray.isNullOrEmpty()) {
-            UsersService.getCreatedTrips(token, userId,  {
-                if (it.isNullOrEmpty()) {
-                    Log.d("yay", "Empty")
-                } else {
-                    model.storeTrips(it)
-                    bindView(v)
-                }
-            }, {
-                Log.d("yay", "Something bad happened")
-            })
-        }
+        // if (model.tripListArray.isNullOrEmpty()) {
+        //     UsersService.getCreatedTrips(token, userId,  {
+        //         if (it.isNullOrEmpty()) {
+        //             Log.d("yay", "Empty")
+        //         } else {
+        //             model.storeTrips(it)
+        //             bindView(v)
+        //         }
+        //     }, {
+        //         Log.d("yay", "Something bad happened")
+        //     })
+        // }
     }
 
     private fun bindView(v: View) {
-        val tripListArray = model.tripLisArray
+        model.storeTrips(model.tripListArray)
+        val tripListArray = model.tripListArray
 
         activity?.runOnUiThread {
-            v.tripsList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
-            v.tripsList.adapter = RequestedTripsAdapter(tripListArray)
+            v.runningTripListRecylcerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
+            v.runningTripListRecylcerView.adapter = RequestedTripsAdapter(tripListArray)
         }
     }
 

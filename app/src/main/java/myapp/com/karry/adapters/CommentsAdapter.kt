@@ -28,5 +28,4 @@ class CommentsAdapter(private var commentList: List<Comment>, val click: (commen
         holder.view.commentContent.text = comment.value
         holder.view.createdDate.text = comment.created
     }
-
 }
