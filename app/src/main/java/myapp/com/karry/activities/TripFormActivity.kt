@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_trip_form.*
 import myapp.com.karry.R
 import myapp.com.karry.modules.EditTextChecker
 import myapp.com.karry.modules.SpinnerChecker
-import myapp.com.karry.modules.UserInfoManager
+import myapp.com.karry.modules.UserManager
 import myapp.com.karry.network.TripsService
 import org.json.JSONObject
 
@@ -67,7 +67,7 @@ class TripFormActivity : AppCompatActivity() {
         tripCarryWeight = tripFormCarryWeight.text.toString().toInt()
         tripCarryMaxAmount = tripFormCarryMaxAmount.text.toString().toInt()
         tripCarryTaxe = tripFormCarryTaxe.text.toString().toInt()
-        tripOwner = UserInfoManager(this.baseContext).id!!
+        tripOwner = UserManager(this.baseContext).id!!
 
         if(isValidDescription && isValidDestinationCity && isValidDepartureCity) {
             return true

@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_profile.view.*
 import myapp.com.karry.activities.LoginActivity
 import myapp.com.karry.R
 import myapp.com.karry.modules.TokenManager
-import myapp.com.karry.modules.UserInfoManager
+import myapp.com.karry.modules.UserManager
 import myapp.com.karry.network.UsersService
 
 class ProfileFragment : Fragment() {
@@ -21,13 +21,13 @@ class ProfileFragment : Fragment() {
         val v: View = inflater.inflate(R.layout.fragment_profile, container, false)
         v.profileLogout.setOnClickListener { logoutUser() }
 
-        v.profileFirstname.text = UserInfoManager(this.requireContext()).firstname
-        v.profileLastname.text = UserInfoManager(this.requireContext()).lastname
-        v.profileEmail.text = UserInfoManager(this.requireContext()).email
+        v.profileFirstname.text = UserManager(this.requireContext()).firstname
+        v.profileLastname.text = UserManager(this.requireContext()).lastname
+        v.profileEmail.text = UserManager(this.requireContext()).email
 
         Glide
             .with(v)
-            .load(UserInfoManager(this.requireContext()).profilePicture)
+            .load(UserManager(this.requireContext()).profilePicture)
             .circleCrop()
             .into(v.profilePicture)
 

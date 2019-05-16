@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_register_profil.*
 import myapp.com.karry.R
 import myapp.com.karry.fragments.register.RegisterProfilFragment
 import myapp.com.karry.modules.TokenManager
-import myapp.com.karry.modules.UserInfoManager
+import myapp.com.karry.modules.UserManager
 import myapp.com.karry.network.UsersService
 import org.json.JSONObject
 
@@ -69,12 +69,12 @@ class RegisterActivity : AppCompatActivity() {
             registerProgress.visibility = View.VISIBLE
             UsersService.register(userInfoAsJson(), { user, token ->
                 TokenManager(baseContext).deviceToken = token
-                UserInfoManager(baseContext).id = user._id
-                UserInfoManager(baseContext).firstname = user.firstname
-                UserInfoManager(baseContext).lastname = user.lastname
-                UserInfoManager(baseContext).phone = user.phone
-                UserInfoManager(baseContext).email = user.email
-                UserInfoManager(baseContext).profilePicture = user.profilePicture
+                UserManager(baseContext).id = user._id
+                UserManager(baseContext).firstname = user.firstname
+                UserManager(baseContext).lastname = user.lastname
+                UserManager(baseContext).phone = user.phone
+                UserManager(baseContext).email = user.email
+                UserManager(baseContext).profilePicture = user.profilePicture
             }, {
                 runOnUiThread {
                     registerError.text = getString(R.string.LoginActivity_loginError_text)

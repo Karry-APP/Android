@@ -8,7 +8,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 import myapp.com.karry.R
 import myapp.com.karry.modules.TokenManager
-import myapp.com.karry.modules.UserInfoManager
+import myapp.com.karry.modules.UserManager
 import myapp.com.karry.network.UsersService
 import org.json.JSONObject
 
@@ -21,9 +21,16 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        setUiListeners()
+    }
+
+    // Listeners
+    private fun setUiListeners() {
         loginButton.setOnClickListener { loginUser() }
         loginDontHaveAccount.setOnClickListener { startRegisterActivity() }
         loginForgotPassword.setOnClickListener { forgotPassword() }
+        facebookLoginButton.setOnClickListener { goToFacebookAuthActivity() }
+        googleLoginButton.setOnClickListener { goToGoogleAuthActivity() }
     }
 
     private fun userInfoAsJson(): String {
@@ -56,12 +63,12 @@ class LoginActivity : AppCompatActivity() {
                 val jsonData: String = response.body()!!.string()
                 val userObj = JSONObject(jsonData)
                 TokenManager(baseContext).deviceToken = response.header("x-auth")
-                UserInfoManager(baseContext).id = userObj.getString("id")
-                UserInfoManager(baseContext).firstname = userObj.getString("firstname")
-                UserInfoManager(baseContext).lastname = userObj.getString("lastname")
-                UserInfoManager(baseContext).phone = userObj.getString("phone")
-                UserInfoManager(baseContext).email = userObj.getString("email")
-                UserInfoManager(baseContext).profilePicture = userObj.getString("profilePicture")
+                UserManager(baseContext).id = userObj.getString("id")
+                UserManager(baseContext).firstname = userObj.getString("firstname")
+                UserManager(baseContext).lastname = userObj.getString("lastname")
+                UserManager(baseContext).phone = userObj.getString("phone")
+                UserManager(baseContext).email = userObj.getString("email")
+                UserManager(baseContext).profilePicture = userObj.getString("profilePicture")
 
                 startMainActivity()
             }, {
@@ -89,5 +96,14 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
+    // Go to
+    private fun goToGoogleAuthActivity() {
+        startActivity(Intent(this, GoogleAuthActivity::class.java))
+        finish()
+    }
 
+    private fun goToFacebookAuthActivity() {
+        startActivity(Intent(this, FacebookAuthActivity::class.java))
+        finish()
+    }
 }

@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import myapp.com.karry.R
 import myapp.com.karry.modules.TokenManager
+import myapp.com.karry.modules.UserManager
 
 class SplashscreenActivity : AppCompatActivity() {
 
@@ -15,25 +17,24 @@ class SplashscreenActivity : AppCompatActivity() {
 
     private val runnable: Runnable = Runnable {
         if (!isFinishing) {
-            val FIRST_TIME = "data.source.prefs.FIRST_TIME"
-            val isFirstOpen: Boolean =
-                PreferenceManager.getDefaultSharedPreferences(this.baseContext).getBoolean(FIRST_TIME, true)
+
+            val isFirstOpen: Boolean = PreferenceManager.getDefaultSharedPreferences(this.baseContext)
+                .getBoolean("data.source.prefs.FIRST_TIME", true)
             if (isFirstOpen) {
-                PreferenceManager.getDefaultSharedPreferences(this.baseContext).edit().putBoolean(FIRST_TIME, false)
-                    .apply()
-                val introIntent = Intent(applicationContext, IntroductionActivity::class.java)
-                startActivity(introIntent)
+                PreferenceManager.getDefaultSharedPreferences(this.baseContext).edit()
+                    .putBoolean("data.source.prefs.FIRST_TIME", false).apply()
+                startActivity(Intent(applicationContext, IntroductionActivity::class.java))
                 finish()
             } else {
-                val token = TokenManager(this).deviceToken
-                if (token == "") {
-                    val intent1 = Intent(applicationContext, LoginActivity::class.java)
-                    startActivity(intent1)
-                    finish()
+
+                val token = UserManager(this).token ?: ""
+                val id = UserManager(this).id ?: ""
+                Log.d("USER_SYNC", "$token $id")
+
+                if (token.isEmpty() || id.isEmpty()) {
+                    UserManager(this).clear { startActivity(Intent(this, LoginActivity::class.java)) }
                 } else {
-                    val intent1 = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(intent1)
-                    finish()
+                    startActivity(Intent(this, MainActivity::class.java))
                 }
             }
         }

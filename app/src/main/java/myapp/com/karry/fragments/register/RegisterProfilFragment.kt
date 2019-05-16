@@ -1,10 +1,7 @@
 package myapp.com.karry.fragments.register
 
-import android.app.Application
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +10,6 @@ import kotlinx.android.synthetic.main.fragment_register_profil.*
 import kotlinx.android.synthetic.main.fragment_register_profil.view.*
 import myapp.com.karry.R
 import myapp.com.karry.activities.LoginActivity
-import myapp.com.karry.modules.TokenManager
-import myapp.com.karry.modules.UserInfoManager
-import myapp.com.karry.network.UsersService
-import org.json.JSONObject
 
 class RegisterProfilFragment: Fragment() {
 
@@ -105,12 +98,12 @@ class RegisterProfilFragment: Fragment() {
 //
 //
     //            TokenManager(context).deviceToken = token
-    //            UserInfoManager(context).id = user._id
-    //            UserInfoManager(context).firstname = user.firstname
-    //            UserInfoManager(context).lastname = user.lastname
-    //            UserInfoManager(context).phone = user.phone
-    //            UserInfoManager(context).email = user.email
-    //            UserInfoManager(context).profilePicture = user.profilePicture
+    //            UserManager(context).id = user._id
+    //            UserManager(context).firstname = user.firstname
+    //            UserManager(context).lastname = user.lastname
+    //            UserManager(context).phone = user.phone
+    //            UserManager(context).email = user.email
+    //            UserManager(context).profilePicture = user.profilePicture
 //
     //        }, {
     //            activity?.runOnUiThread {

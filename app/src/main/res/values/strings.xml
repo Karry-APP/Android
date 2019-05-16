@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Karry</string>
 
+    <string name="client_id">816322250968-fj28tpsmh35fi7n208sahsc65d1ipe5r.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">2364488573830120</string>
+    <string name="fb_login_protocol_scheme">fb2364488573830120</string>
+
+
+
     <!-- Notifications -->
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
 
@@ -9,13 +15,16 @@
 
     <!-- IntroductionActivity -->
     <string name="IntroductionActivity_introStepOne_titleText">Hello 👋👋\n Bienvenue sur Karry !</string>
-    <string name="IntroductionActivity_introStepOne_mainText">Dans quelques clics, vous allez pouvoir vous procurer les richesses du monde entier, en contactant un voyageur.</string>
+    <string name="IntroductionActivity_introStepOne_mainText">Dans quelques clics, vous allez pouvoir vous procurer les
+        richesses du monde entier, en contactant un voyageur.
+    </string>
     <string name="IntroductionActivity_introStepTwo_titleText">Rentabilisez vos déplacement 🤑</string>
-    <string name="IntroductionActivity_introStepTwo_mainText">Vous pouvez également gagner de l’argent durant votre voyage en rapportant les commandes des utilisateurs.</string>
+    <string name="IntroductionActivity_introStepTwo_mainText">Vous pouvez également gagner de l’argent durant votre
+        voyage en rapportant les commandes des utilisateurs.
+    </string>
     <string name="IntroductionActivity_introStepTwo_beginText">Commencer</string>
     <string name="IntroductionActivity_introStepTwo_passText">Vous connaissez déjà le concept ?</string>
     <string name="IntroductionActivity_introStepTwo_passButtonText">PASSER</string>
-
 
 
     <!-- LoginActivity -->
@@ -44,7 +53,8 @@
     <string name="RegisterActivity_haveAccount_link">Se connecter</string>
     <string name="RegisterActivity_buttonRegister_text">S\'inscrire</string>
     <string name="CompleteProfil_name_example">Adrien F.</string>
-    <string name="CompleteProfil_text_presentation_name">Nous afficherons votre profil comme l’exemple ci-dessus.</string>
+    <string name="CompleteProfil_text_presentation_name">Nous afficherons votre profil comme l’exemple ci-dessus.
+    </string>
     <string name="CompleteProfil_text_description">Complétez votre profil</string>
     <string name="CompleteProfil_help_edit_telephone">Votre numéro ne sera pas communiqué sans votre accord</string>
     <string name="CompleteProfil_text_btn_enregistrer">Enregistrer</string>

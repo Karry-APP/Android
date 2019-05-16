@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_trips.view.*
 import myapp.com.karry.activities.TripFormActivity
 import myapp.com.karry.adapters.TripsAdapter
 import myapp.com.karry.modules.TokenManager
-import myapp.com.karry.modules.UserInfoManager
+import myapp.com.karry.modules.UserManager
 import myapp.com.karry.network.UsersService
 
 class TripsFragment : Fragment() {
@@ -31,7 +31,7 @@ class TripsFragment : Fragment() {
     }
 
     private fun loadUserCreatedTrips() {
-        val userId = UserInfoManager(requireContext()).id
+        val userId = UserManager(requireContext()).id
         val token: String = TokenManager(requireContext()).deviceToken ?: ""
 
         UsersService.getCreatedTrips(token, userId, { tripsArray ->

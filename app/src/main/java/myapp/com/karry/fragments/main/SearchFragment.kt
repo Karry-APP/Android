@@ -68,7 +68,6 @@ class SearchFragment : Fragment() {
     }
 
     private fun launchFragment(fragment: Fragment) {
-
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.addToBackStack(null)

@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_complete_profil.*
 import kotlinx.android.synthetic.main.fragment_complete_profil.view.*
-import kotlinx.android.synthetic.main.fragment_register_profil.*
 import myapp.com.karry.R
 import myapp.com.karry.modules.TokenManager
-import myapp.com.karry.modules.UserInfoManager
+import myapp.com.karry.modules.UserManager
 import myapp.com.karry.network.UsersService
 import org.json.JSONObject
 
@@ -52,12 +51,12 @@ class CompleteProfilFragment : Fragment() {
             val context: Context = this.requireContext()
 
             TokenManager(context).deviceToken = token
-            UserInfoManager(context).id = user._id
-            UserInfoManager(context).firstname = user.firstname
-            UserInfoManager(context).lastname = user.lastname
-            UserInfoManager(context).phone = user.phone
-            UserInfoManager(context).email = user.email
-            UserInfoManager(context).profilePicture = user.profilePicture
+            UserManager(context).id = user._id
+            UserManager(context).firstname = user.firstname
+            UserManager(context).lastname = user.lastname
+            UserManager(context).phone = user.phone
+            UserManager(context).email = user.email
+            UserManager(context).profilePicture = user.profilePicture
 
             activity?.runOnUiThread {
 

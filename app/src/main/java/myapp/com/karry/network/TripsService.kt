@@ -1,6 +1,5 @@
 package myapp.com.karry.network
 
-import android.util.Log
 import com.google.gson.Gson
 import myapp.com.karry.entity.Trip
 import myapp.com.karry.modules.ApiManager
