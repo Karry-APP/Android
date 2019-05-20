@@ -356,7 +356,7 @@
         </LinearLayout>
         <Button
                 android:text="@string/announcementActivity_buttonSendMessage"
-                android:id="@+id/buttonSendMessage"
+                android:id="@+id/buttonOrderForm"
                 app:layout_constraintStart_toStartOf="parent"
                 android:background="@drawable/btn_rounded_normal"
                 app:layout_constraintEnd_toEndOf="parent"

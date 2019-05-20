@@ -67,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
             }, {
                 runOnUiThread {
                     loginError.text = getString(R.string.LoginActivity_loginError_text)
+                    loginButton.visibility = View.VISIBLE
                     loginProgress.visibility = View.INVISIBLE
                     loginButton.text = "Se connecter"
                 }

@@ -31,6 +31,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" android:background="@android:color/transparent"
                 android:layout_marginTop="32dp" android:layout_marginStart="24dp"/>
+        <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tripListProgress"
+                app:layout_constraintBottom_toBottomOf="@+id/tripsList"
+                android:visibility="invisible"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintStart_toStartOf="@+id/tripsList"
+                app:layout_constraintEnd_toEndOf="@+id/tripsList"/>
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

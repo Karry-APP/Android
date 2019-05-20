@@ -31,6 +31,15 @@
         <item name="colorControlActivated">#C4C4C4</item>
     </style>
 
+    <style name="inputGreyAntracite">
+        <item name="android:textColor">#7C9299</item>
+        <item name="android:textColorHint">#7C9299</item>
+        <item name="android:backgroundTint">#DADADA</item>
+        <item name="colorControlNormal">#DADADA</item>
+        <item name="colorControlActivated">#DADADA</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
     <style name="inputGreyAntraciteBold">
         <item name="android:textColor">#7C9299</item>
         <item name="android:textColorHint">#7C9299</item>
@@ -114,6 +123,19 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">#C4C4C4</item>
     </style>
+
+    <style name="labelBlack">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#121212</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MyRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="colorAccent">#4CEBA0</item>
+        <item name="android:textColorPrimaryDisableOnly">#121212</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
+    </style>
+
 
     <style name="formInputTransparentWhite">
         <item name="android:textSize">16sp</item>
