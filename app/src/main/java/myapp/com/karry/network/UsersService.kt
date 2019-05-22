@@ -6,10 +6,30 @@ import myapp.com.karry.entity.Trip
 import myapp.com.karry.entity.User
 import myapp.com.karry.modules.ApiManager
 import okhttp3.*
+import org.json.JSONObject
 import java.io.IOException
 
 class UsersService {
     companion object {
+
+        fun me(token: String, userId: String?, success: (user: User) -> Unit, failure: () -> Unit) {
+            val request = Request.Builder().url(ApiManager.URL.USER_PATCH + userId).header("x-auth", token).build()
+            OkHttpClient().newCall(request).enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                        val user = Gson().fromJson(response.body()?.string(), User::class.java)
+                    if (response.code() == 200) {
+                        success(user)
+                    } else {
+                        failure()
+                    }
+                }
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.d("failure", e.toString())
+                    failure()
+                }
+            })
+        }
+
         fun login(userJson: String, success: (response: Response) -> Unit, failure: () -> Unit) {
             val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), userJson)
             val request = Request.Builder().url(ApiManager.URL.USER_LOGIN).post(body).build()
@@ -48,18 +68,27 @@ class UsersService {
             })
         }
 
-        fun logout(token: String, success: (response: Response) -> Unit, failure: () -> Unit) {
-            val request = Request.Builder().delete().url(ApiManager.URL.USER_LOGOUT).header("X-Auth", token).build()
+        fun patchProfile(payload: JSONObject, token: String, success: (updatedUser: User) -> Unit, failure: () -> Unit) {
+            val userID = payload.getString("userID")
+            payload.remove("userID")
+            val body = RequestBody
+                .create(MediaType.parse("application/json; charset=utf-8"), payload.toString())
+            val request = Request.Builder()
+                .url(ApiManager.URL.USER_PATCH + userID)
+                .header("X-Auth", token)
+                .patch(body)
+                .build()
+
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
                     if (response.code() == 200) {
-                        success(response)
+                        val updatedUser = Gson().fromJson(response.body()?.string(), User::class.java)
+                        success(updatedUser)
                     } else {
                         failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
-                    Log.d("yiy", e.toString())
                     failure()
                 }
             })

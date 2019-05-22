@@ -31,6 +31,7 @@ class TripsService {
 
         fun searchByCities(departureCity: String, destinationCity: String, token: String, success: (tripsList: List<Trip>) -> Unit, failure: () -> Unit) {
             val request = okhttp3.Request.Builder().header("X-Auth", token).url(ApiManager.URL.TRIP_SEARCH + "?departureCity=$departureCity&destinationCity=$destinationCity").build()
+
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
                     if (response.code() == 200) {

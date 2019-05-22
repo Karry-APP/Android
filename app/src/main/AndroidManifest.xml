@@ -14,8 +14,10 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning"
-            android:usesCleartextTraffic="true">
-        <activity android:name=".activities.OrderFormActivity">
+        <activity android:name=".activities.OrderFormActivity" />
+        <activity android:name=".activities.UpdateProfileActivity">
+        </activity>
+        <activity android:name=".activities.TravelerProfileActivity">
         </activity>
         <activity
                 android:name=".activities.TripFormActivity"
