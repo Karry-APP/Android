@@ -13,7 +13,7 @@ import myapp.com.karry.entity.Trip
 
 class TripViewHolder(val view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view)
 
-class TripsAdapter(private val tripList: List<Trip>) :
+class TripsAdapter(private val tripList: List<Trip>, val click: (trip: Trip) -> Unit) :
     androidx.recyclerview.widget.RecyclerView.Adapter<TripViewHolder>() {
 
     override fun getItemCount(): Int {
@@ -28,16 +28,8 @@ class TripsAdapter(private val tripList: List<Trip>) :
 
     override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
         val trip = tripList[position]
-
         holder.view.tripDepartureCityDetails.text = trip.departureCity
         holder.view.tripDestinationCity.text = trip.destinationCity
-
-        holder.view.linkTripDetails.setOnClickListener { v -> loadTrip(v.context, trip) }
-    }
-
-    private fun loadTrip(c: Context, trip: Trip) {
-        val intent = Intent(c, TripDetails::class.java)
-        intent.putExtra("EVENT_ID", trip.id)
-        c.startActivity(intent)
+        holder.view.tripCard.setOnClickListener { click(trip) }
     }
 }
