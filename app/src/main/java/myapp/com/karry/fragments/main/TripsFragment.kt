@@ -1,4 +1,4 @@
-package myapp.com.karry.fragments
+package myapp.com.karry.fragments.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_trips.*
 import kotlinx.android.synthetic.main.fragment_trips.view.*
+import myapp.com.karry.activities.TripDetails
 import myapp.com.karry.activities.TripFormActivity
 import myapp.com.karry.adapters.TripsAdapter
 import myapp.com.karry.modules.TokenManager
@@ -31,12 +32,13 @@ class TripsFragment : Fragment() {
     }
 
     private fun loadUserCreatedTrips() {
-        val userId = UserInfoManager(requireContext()).id
         val token: String = TokenManager(requireContext()).deviceToken ?: ""
 
-        UsersService.getCreatedTrips(token, userId, { tripsArray ->
+        UsersService.getCreatedTrips(token, { tripsArray ->
             activity?.runOnUiThread {
-                userTripsList.adapter = TripsAdapter(tripsArray)
+                userTripsList.adapter = TripsAdapter(tripsArray) {
+                   // activity?.intent!!.putExtra("trip", trip.id)
+                }
                 Toast.makeText(context, "Succeed", Toast.LENGTH_LONG).show()
                swiperefresh.isRefreshing = false
             }

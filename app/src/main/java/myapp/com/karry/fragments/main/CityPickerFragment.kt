@@ -1,4 +1,4 @@
-package myapp.com.karry.fragments
+package myapp.com.karry.fragments.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,21 +11,35 @@ import myapp.com.karry.entity.City
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.ViewModelProviders
 import myapp.com.karry.R
 import myapp.com.karry.adapters.CitiesAdapter
-
+import myapp.com.karry.model.SharedViewModel
 
 class CityPickerFragment : Fragment() {
     private val cityLisArray: ArrayList<City> = arrayListOf()
 
+    var arrivalValue: String = ""
+    var destinationValue: String = ""
+
+
+    private lateinit var model: SharedViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        model = activity?.run {
+            ViewModelProviders.of(this).get(SharedViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_city_picker, container, false)
-
         createCityList()
-
         v.arrivalCitiesList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
-        v.arrivalCitiesList.adapter = CitiesAdapter(cityLisArray)
+        v.arrivalCitiesList.adapter = CitiesAdapter(cityLisArray) { cityName ->
+            fillSearchBar(cityName)
+        }
 
         v.searchbarCity.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -38,12 +52,40 @@ class CityPickerFragment : Fragment() {
                 filter(s.toString())
             }
         })
+
+        v.closeSearchResult.setOnClickListener {
+            val searchFragment = SearchFragment()
+            closeCityPicker(searchFragment)
+        }
+
         return v
+    }
+    private fun  fillSearchBar(cityName: String) {
+        val searchFragment = SearchFragment()
+        val bundleArgs = arguments
+        val direction = bundleArgs?.getString("currentDirection").toString()
+
+        if (direction === "destination") {
+            model.setDestination(cityName)
+        } else if (direction === "arrival") {
+            model.setArrival(cityName)
+        }
+
+        closeCityPicker(searchFragment)
+    }
+
+    private fun closeCityPicker(fragment: Fragment) {
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
     private fun filter(text: String) {
-        if(text.isBlank()) {
-            arrivalCitiesList.adapter = CitiesAdapter(cityLisArray)
+        if (text.isBlank()) {
+            arrivalCitiesList.adapter = CitiesAdapter(cityLisArray) { cityName ->
+                fillSearchBar(cityName)
+            }
         } else {
             val filteredList = arrayListOf<City>()
             for (city in cityLisArray) {
@@ -52,14 +94,15 @@ class CityPickerFragment : Fragment() {
                     filteredList.add(city)
                 }
             }
-            arrivalCitiesList.adapter = CitiesAdapter(filteredList)
+            arrivalCitiesList.adapter = CitiesAdapter(filteredList) { cityName ->
+                fillSearchBar(cityName)
+            }
         }
     }
 
     private fun createCityList() {
-        cityLisArray.add(City("P"))
         cityLisArray.add(City("Paris"))
-        cityLisArray.add(City("Londre"))
+        cityLisArray.add(City("Londres"))
         cityLisArray.add(City("Tokyo"))
         cityLisArray.add(City("Bangkok"))
         cityLisArray.add(City("New York"))
@@ -121,7 +164,6 @@ class CityPickerFragment : Fragment() {
         cityLisArray.add(City("New Delhi"))
         cityLisArray.add(City("Katmandou"))
         cityLisArray.add(City("Hanoï"))
-        cityLisArray.add(City("Paris"))
         cityLisArray.add(City("Pékin"))
         cityLisArray.add(City("Quimper"))
         cityLisArray.add(City("Shangaï"))
@@ -129,8 +171,4 @@ class CityPickerFragment : Fragment() {
         cityLisArray.add(City("Jakarta"))
         cityLisArray.add(City("Dubaï"))
     }
-
-
-
-
 }

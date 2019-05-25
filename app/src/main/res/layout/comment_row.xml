@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="250dp"
+              android:layout_height="wrap_content" android:id="@+id/commentRow" android:paddingStart="24dp"
+              android:paddingEnd="24dp" android:paddingBottom="20dp" android:paddingTop="20dp"
+              android:layout_weight="0" android:layout_columnWeight="0.5" android:layout_rowWeight="0.5">
+
+    <TextView
+            android:drawableBottom="@android:color/black" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/userName"
+            android:textColor="#121212" android:textSize="16sp"
+            android:text="@string/ProfileFragment_logoutButton_text"
+            android:layout_marginBottom="10dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/commentContent"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/createdDate" android:textAlignment="textEnd"
+            android:layout_marginTop="10dp" android:layout_marginBottom="10dp"/>
+
+</LinearLayout>
