@@ -10,7 +10,8 @@
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <!--<item name="android:statusBarColor">@color/colorWhiteBackground</item>-->
+        <item name="android:statusBarColor">#fffafa</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="inputWhite">
@@ -24,35 +25,16 @@
     </style>
     <style name="inputGrey">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">#121212</item>
+        <item name="android:textColor">#000000</item>
         <item name="android:textColorHint">#C4C4C4</item>
         <item name="android:backgroundTint">#C4C4C4</item>
         <item name="colorControlNormal">#C4C4C4</item>
         <item name="colorControlActivated">#C4C4C4</item>
     </style>
 
-    <style name="inputGreyAntracite">
-        <item name="android:textColor">#7C9299</item>
-        <item name="android:textColorHint">#7C9299</item>
-        <item name="android:backgroundTint">#DADADA</item>
-        <item name="colorControlNormal">#DADADA</item>
-        <item name="colorControlActivated">#DADADA</item>
-        <item name="android:textSize">15sp</item>
-    </style>
-
-    <style name="inputGreyAntraciteBold">
-        <item name="android:textColor">#7C9299</item>
-        <item name="android:textColorHint">#7C9299</item>
-        <item name="android:backgroundTint">#DADADA</item>
-        <item name="colorControlNormal">#DADADA</item>
-        <item name="colorControlActivated">#DADADA</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="textSmallGrey" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">#7C9299</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#C4C4C4</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="buttonGreenFull" parent="TextAppearance.AppCompat">
@@ -97,51 +79,14 @@
     </style>
 
     <style name="userNameTrip">
-        <item name="android:textColor">#121212</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#4B4B4B</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="textTitleBlack">
-        <item name="android:textColor">#121212</item>
-        <item name="android:textSize">18sp</item>
+    <style name="textTripCountry">
+        <item name="android:textColor">#4B4B4B</item>
         <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="textGreyAntraciteBold">
-        <item name="android:textColor">#7C9299</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="textGreen">
-        <item name="android:textSize">15sp</item>
-        <item name="android:textColor">#4CEBA0</item>
-    </style>
-
-    <style name="textGrey">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#C4C4C4</item>
-    </style>
-
-    <style name="labelBlack">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#121212</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="MyRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="colorAccent">#4CEBA0</item>
-        <item name="android:textColorPrimaryDisableOnly">#121212</item>
-        <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
-    </style>
-
-
-    <style name="formInputTransparentWhite">
-        <item name="android:textSize">16sp</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:textColorHint">#FFFFFF</item>
     </style>
 
     <style name="textBold">
@@ -154,9 +99,5 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
-    <style name="CustomTextAppearanceTab" parent="Widget.Design.TabLayout">
-        <item name="textAllCaps">false</item>
-        <item name="android:textAllCaps">false</item>
-    </style>
 
 </resources>

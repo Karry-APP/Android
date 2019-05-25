@@ -1,6 +1,5 @@
 package myapp.com.karry
 
-import myapp.com.karry.entity.Trip
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -11,13 +10,8 @@ import org.junit.Test
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
-
     @Test
-    fun testTrip() {
-        val trip = Trip("2", "Desc_","Berlin", "Munich")
-        assertEquals(trip.id,"2")
-        assertEquals(trip.description, "Desc_")
-        assertEquals(trip.departureCity, "Berlin")
-        assertEquals(trip.destinationCity, "Munich")
+    fun addition_isCorrect() {
+        assertEquals(4, 2 + 2)
     }
 }

@@ -4,29 +4,19 @@ class ApiManager {
 
     class URL {
         companion object {
-            const val BASE = "https://api.karry.fr"
+            const val BASE = "https://karry-dev.herokuapp.com"
 
             // USERS
-            const val USER_LOGIN = "$BASE/auth/login"
-            const val USER_REGISTER = "$BASE/auth/register"
-            const val ME = "$BASE/users/me"
-            const val USER_PATCH = "$BASE/users/"
+            const val USER_LOGIN = "$BASE/users/login"
+            const val USER_REGISTER = "$BASE/users"
             const val USER_LOGOUT = "$BASE/users/me/token"
-            const val USER_TRIPS = "$BASE/users/me/trips"
-
-            // REQUESTS
-            fun USER_REQUESTS(id: String) = "$BASE/requests/$id"
-            const val USER_JOIN_LIST = ""
+            fun USER_TRIPS(userId: String?): String {
+                return "$BASE/users/$userId/trips"
+            }
 
             // TRIPS
             const val TRIP_SEARCH = "$BASE/trips/search"
             const val TRIP_CREATE = "$BASE/trips"
-            fun TRIP_DETAIL(tripId: String?): String {
-                return "$BASE/trips/$tripId"
-            }
-
-            //ORDER
-            const val REQUESTS_CREATE = "$BASE/requests"
         }
     }
 }
