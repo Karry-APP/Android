@@ -3,6 +3,7 @@ package myapp.com.karry.activities
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_trip_details.*
 import myapp.com.karry.R
@@ -19,16 +20,19 @@ class TripDetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trip_details)
 
-        model = this.run {
+      model = this.run {
             ViewModelProviders.of(this).get(SharedViewModel::class.java)
-        }
+        } ?: throw Exception("Invalid Activity")
 
-        val tripId:String = intent.getStringExtra("EVENT_ID")
         val token = TokenManager(this).deviceToken.toString()
 
+        buttonOrderForm.setOnClickListener { startOrderForm() }
         closeDetailTrip.setOnClickListener { replaceFragment() }
 
-        TripsManager.loadDetails(tripId, token, { tripDetails: Trip ->
+        val jsonTrip: String = intent.getStringExtra("TRIP")
+        val trip = Gson().fromJson(jsonTrip, Trip::class.java)
+
+        TripsManager.loadDetails(trip.id,token, { tripDetails: Trip ->
             runOnUiThread {
                 karryTax.text = tripDetails.carryTaxe
                 availableWeight.text = tripDetails.carryWeight
@@ -36,25 +40,34 @@ class TripDetails : AppCompatActivity() {
                 tripDepartureCityDetails.text = tripDetails.departureCity
                 tripDestinationCity.text = tripDetails.destinationCity
                 descriptionValue.text = tripDetails.description
-
                 linkTravelerProfile.setOnClickListener { startTravelerProfileActivity() }
-
             }
         }, {
             runOnUiThread {
             }
         })
     }
-
-    private fun startTravelerProfileActivity() {
+  
+  private fun startTravelerProfileActivity() {
         val intent = Intent(this, TravelerProfileActivity::class.java)
         startActivity(intent)
     }
+  
+  private fun startOrderForm() {
+        val jsonTrip: String = intent.getStringExtra("TRIP")
+        val trip = Gson().fromJson(jsonTrip, Trip::class.java)
 
-    private fun replaceFragment() {
+        val intent = Intent(this, OrderFormActivity::class.java)
+        intent.putExtra("trip_id", trip.id)
+
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+  }
+  
+  private fun replaceFragment() {
         model.cleanTripsList()
         onBackPressed()
-    }
+  }
 
 
 }

@@ -1,19 +1,22 @@
 package myapp.com.karry.modules
 
 import android.content.Context
-import android.content.Intent
-import android.preference.PreferenceManager
 import android.util.Log
 import com.google.gson.Gson
-import myapp.com.karry.activities.TripDetails
 import myapp.com.karry.entity.Trip
 import okhttp3.*
 import java.io.IOException
+import kotlin.Result.Companion.failure
 
 class TripsManager(context: Context) {
 
     companion object {
-        fun loadDetails(tripId: String?, token: String, success: (tripDetails: Trip) -> Unit, failure: () -> Unit) {
+        fun loadDetails(
+            tripId: String?,
+            token: String,
+            success: (tripDetails: Trip) -> Unit,
+            failure: () -> Unit
+        ) {
             val request = okhttp3.Request.Builder().url(ApiManager.URL.TRIP_DETAIL(tripId)).header("X-Auth", token).get().build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {

@@ -24,6 +24,9 @@ class ApiManager {
             fun TRIP_DETAIL(tripId: String?): String {
                 return "$BASE/trips/$tripId"
             }
+
+            //ORDER
+            const val REQUESTS_CREATE = "$BASE/requests"
         }
     }
 }
