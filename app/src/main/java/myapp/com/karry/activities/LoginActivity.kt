@@ -20,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         loginButton.setOnClickListener { loginUser() }
         loginDontHaveAccount.setOnClickListener { startRegisterActivity() }
         loginForgotPassword.setOnClickListener { forgotPassword() }
@@ -29,7 +28,6 @@ class LoginActivity : AppCompatActivity() {
     private fun userInfoAsJson(): String {
         val email = loginEmail.text.toString()
         val password = loginPassword.text.toString()
-
         val userObject= JSONObject()
         userObject.put("email",email)
         userObject.put("password",password)
@@ -39,11 +37,7 @@ class LoginActivity : AppCompatActivity() {
     private fun validateForm(): Boolean {
         val email = loginEmail.text.toString()
         val password = loginPassword.text.toString()
-
-        // TODO: Check is email is valid
         userEmail = email
-
-        // TODO: Check is password is valid
         userPassword = password
         return true
     }
@@ -56,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 val jsonData: String = response.body()!!.string()
                 val userObj = JSONObject(jsonData)
                 TokenManager(baseContext).deviceToken = response.header("x-auth")
-                UserInfoManager(baseContext).id = userObj.getString("id")
+                UserInfoManager(baseContext).id = userObj.getString("_id")
                 UserInfoManager(baseContext).firstname = userObj.getString("firstname")
                 UserInfoManager(baseContext).lastname = userObj.getString("lastname")
                 UserInfoManager(baseContext).phone = userObj.getString("phone")
@@ -67,9 +61,8 @@ class LoginActivity : AppCompatActivity() {
             }, {
                 runOnUiThread {
                     loginError.text = getString(R.string.LoginActivity_loginError_text)
-                    loginButton.visibility = View.VISIBLE
                     loginProgress.visibility = View.INVISIBLE
-                    loginButton.text = "Se connecter"
+                    loginButton.visibility = View.VISIBLE
                 }
             })
         }
@@ -82,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
     private fun startRegisterActivity() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun startMainActivity() {

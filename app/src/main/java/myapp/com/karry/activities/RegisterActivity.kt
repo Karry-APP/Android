@@ -5,14 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.StrictMode
 import android.view.View
-import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_register_profil.*
-import myapp.com.karry.R
-import myapp.com.karry.fragments.register.RegisterProfilFragment
+import kotlinx.android.synthetic.main.activity_register.*
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.UsersService
 import org.json.JSONObject
+import myapp.com.karry.R
+
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -22,15 +21,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var userEmail: String
     private lateinit var userPassword: String
 
-
-    private fun replaceFragment(fragment: Fragment) {
-
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
-        fragmentTransaction.commit()
-    }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -38,31 +28,26 @@ class RegisterActivity : AppCompatActivity() {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
 
-        if (savedInstanceState == null) {
-
-            replaceFragment(RegisterProfilFragment())
-        }
-
+        registerHaveAccount.setOnClickListener { startLoginActivity() }
+        registerButton.setOnClickListener { registerUser() }
     }
 
-    private val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
-
     private fun validateForm(): Boolean {
-        //val firstname = registerFirstname.text.toString()
-        //val lastname = registerLastname.text.toString()
-        //val phone = registerPhone.text.toString()
+        val firstname = registerFirstname.text.toString()
+        val lastname = registerLastname.text.toString()
+        val phone = registerPhone.text.toString()
         val email = registerEmail.text.toString()
         val password = registerPassword.text.toString()
         //val confirmPassword = registerConfirmPassword.text.toString()
 
         // TODO: Check is firstname is valid
-        //userFirstname = firstname
+        userFirstname = firstname
 
         // TODO: Check is lastname is valid
-        //userLastname = lastname
+        userLastname = lastname
 
         // TODO: Check is phone is valid
-        //userPhone = phone
+        userPhone = phone
 
         // TODO: Check is email is valid
         userEmail = email
@@ -74,20 +59,12 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun userInfoAsJson(): String {
-        val randomFirstName = (1..8)
-            .map { i -> kotlin.random.Random.nextInt(0, charPool.size) }
-            .map(charPool::get)
-            .joinToString("")
-        val randomLastName = (1..8)
-            .map { i -> kotlin.random.Random.nextInt(0, charPool.size) }
-            .map(charPool::get)
-            .joinToString("")
         val userObject = JSONObject()
-        userObject.put("firstname", randomFirstName)
-        userObject.put("lastname", randomLastName)
+        userObject.put("firstname", userFirstname)
+        userObject.put("lastname", userLastname)
+        userObject.put("phone", userPhone)
         userObject.put("email", userEmail)
         userObject.put("password", userPassword)
-        userObject.put("phone", "0000000000")
         return userObject.toString()
     }
 
@@ -108,7 +85,7 @@ class RegisterActivity : AppCompatActivity() {
                 UserInfoManager(baseContext).email = user.email
                 UserInfoManager(baseContext).profilePicture = user.profilePicture
 
-                //startMainActivity()
+                startMainActivity()
             }, {
                 runOnUiThread {
                     registerError.text = getString(R.string.LoginActivity_loginError_text)
@@ -125,8 +102,8 @@ class RegisterActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
-    //private fun startMainActivity() {
-    //    startActivity(Intent(this, MainActivity::class.java))
-    //    finish()
-    //}
+    private fun startMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
 }

@@ -23,7 +23,7 @@ class TripFormActivity : AppCompatActivity() {
     private var tripCarryWeight: Int = 0
     private var tripCarryMaxAmount: Int = 0
     private var tripCarryTaxe: Int = 0
-    private lateinit var tripOwner: String
+    private lateinit var tripCreator: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +67,7 @@ class TripFormActivity : AppCompatActivity() {
         tripCarryWeight = tripFormCarryWeight.text.toString().toInt()
         tripCarryMaxAmount = tripFormCarryMaxAmount.text.toString().toInt()
         tripCarryTaxe = tripFormCarryTaxe.text.toString().toInt()
-        tripOwner = UserInfoManager(this.baseContext).id!!
+        tripCreator = UserInfoManager(this.baseContext).id!!
 
         if(isValidDescription && isValidDestinationCity && isValidDepartureCity) {
             return true
@@ -85,7 +85,7 @@ class TripFormActivity : AppCompatActivity() {
         tripObject.put("carryWeight", tripCarryWeight)
         tripObject.put("carryMaxAmount", tripCarryMaxAmount)
         tripObject.put("carryTaxe", tripCarryTaxe)
-        tripObject.put("owner", tripOwner)
+        tripObject.put("creator", tripCreator)
         return tripObject.toString()
     }
 

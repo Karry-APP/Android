@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="@string/tchatFragment_navigation_message" android:id="@+id/chat_navigation_message"/>
-    <item android:title="@string/tchatFragment_navigation_contact" android:id="@+id/chat_navigation_contact"/>
-</menu>
