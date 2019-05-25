@@ -8,13 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_user_trip.*
 import kotlinx.android.synthetic.main.fragment_running_requests.view.*
 import kotlinx.android.synthetic.main.fragment_search_results.view.*
 import myapp.com.karry.R
+import myapp.com.karry.adapters.CardBackersAdapter
 import myapp.com.karry.adapters.RequestedTripsAdapter
 import myapp.com.karry.adapters.TripsAdapter
 import myapp.com.karry.adapters.UserRequestsAdapter
 import myapp.com.karry.entity.Trip
+import myapp.com.karry.entity.User
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
@@ -36,6 +40,7 @@ class RunningRequests : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val v: View = inflater.inflate(R.layout.fragment_running_requests, container, false)
+        loadUserTrips(v)
         bindView(v)
 
         return v
@@ -43,24 +48,24 @@ class RunningRequests : Fragment() {
 
     private fun loadUserTrips(v: View) {
         val token = TokenManager(context!!).deviceToken.toString()
-        val userId = UserInfoManager(this.requireContext()).id
 
-        // if (model.tripListArray.isNullOrEmpty()) {
-        //     UsersService.getCreatedTrips(token, userId,  {
-        //         if (it.isNullOrEmpty()) {
-        //             Log.d("yay", "Empty")
-        //         } else {
-        //             model.storeTrips(it)
-        //             bindView(v)
-        //         }
-        //     }, {
-        //         Log.d("yay", "Something bad happened")
-        //     })
-        // }
+        if (model.tripListArray.isNullOrEmpty()) {
+            UsersService.getCreatedTrips(token,  {
+                if (it.isNullOrEmpty()) {
+                    Log.d("yay", "Empty")
+                } else {
+                    model.storeTrips(it)
+                    bindView(v)
+                }
+            }, {
+                Log.d("yay", "Something bad happened")
+            })
+        }
     }
 
+
+
     private fun bindView(v: View) {
-        model.storeTrips(model.tripListArray)
         val tripListArray = model.tripListArray
 
         activity?.runOnUiThread {

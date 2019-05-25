@@ -14,11 +14,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".activities.SaveSearchActivity">
+        </activity>
         <activity android:name=".activities.UserTripActivity">
         </activity>
         <activity android:name=".activities.UserTripBackersActivity">
-        </activity>
-        <activity android:name=".activities.UserTripDetailsActivity">
         </activity>
         <activity android:name=".activities.TransactionDetailsActivity">
         </activity>

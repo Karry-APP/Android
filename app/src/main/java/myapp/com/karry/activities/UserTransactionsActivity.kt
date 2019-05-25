@@ -3,6 +3,7 @@ package myapp.com.karry.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_user_transactions.*
 import myapp.com.karry.R
 import myapp.com.karry.adapters.TransactionsAdapter

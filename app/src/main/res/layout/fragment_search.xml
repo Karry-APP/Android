@@ -132,14 +132,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/textView3"/>
+                app:layout_constraintBottom_toTopOf="@+id/postSearch"/>
         <TextView
                 android:text="@string/SearchFragment_postTripTooltipButton"
                 android:layout_width="wrap_content"
                 android:textColor="#4CEBA0"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:layout_height="25dp" android:id="@+id/textView3"
+                
+                android:layout_height="25dp" android:id="@+id/postSearch"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"

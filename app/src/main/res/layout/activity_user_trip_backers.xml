@@ -28,6 +28,13 @@
                 android:textStyle="bold"
                 android:textColor="@color/colorLightBLue" android:textSize="20sp" android:text="Commanditaires"
                 android:layout_marginBottom="16dp"/>
+        <TextView
+                android:text="Modifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/updateList" android:layout_weight="1"
+                android:layout_marginTop="32dp" android:layout_marginStart="16dp" android:layout_marginBottom="16dp"
+                android:layout_marginEnd="24dp" android:textAlignment="textEnd" android:textColor="@color/green_karry"
+                android:textSize="16sp"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="0dp"

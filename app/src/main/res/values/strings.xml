@@ -124,7 +124,7 @@
     <string name="SearchFragment_searchBottomTooltip">Vous partez bientot et pouvez \n ramener un produit à quelqu\'un
         ?
     </string>
-    <string name="SearchFragment_postTripTooltipButton">Postez votre voyage</string>
+    <string name="SearchFragment_postTripTooltipButton">Dites nous où vous partez</string>
 
     <!-- Account Page -->
     <string name="accountActivity_buttonUpdateInformation">Modifier mes informations</string>

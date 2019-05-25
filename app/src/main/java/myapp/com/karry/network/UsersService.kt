@@ -94,8 +94,26 @@ class UsersService {
             })
         }
 
-        fun getCreatedTrips(token: String, userId: String?, success: (tripsList: List<Trip>) -> Unit, failure: () -> Unit) {
-            val request = Request.Builder().url(ApiManager.URL.USER_TRIPS(userId)).header("x-auth", token).build()
+        fun getCreatedTrips(token: String, success: (tripsList: List<Trip>) -> Unit, failure: () -> Unit) {
+            val request = Request.Builder().url(ApiManager.URL.USER_TRIPS).header("x-auth", token).build()
+
+            OkHttpClient().newCall(request).enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    if (response.code() == 200) {
+                        val tripsArray = Gson().fromJson(response.body()!!.string(), Array<Trip>::class.java).toList()
+                        success(tripsArray)
+                    } else {
+                        failure()
+                    }
+                }
+                override fun onFailure(call: Call, e: IOException) {
+                    failure()
+                }
+            })
+        }
+
+        fun removeCreatedTrips(token: String, success: (tripsList: List<Trip>) -> Unit, failure: () -> Unit) {
+            val request = Request.Builder().url(ApiManager.URL.USER_TRIPS).header("x-auth", token).build()
 
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {

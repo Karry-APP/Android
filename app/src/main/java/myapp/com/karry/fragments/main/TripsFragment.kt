@@ -31,10 +31,9 @@ class TripsFragment : Fragment() {
     }
 
     private fun loadUserCreatedTrips() {
-        val userId = UserInfoManager(requireContext()).id
         val token: String = TokenManager(requireContext()).deviceToken ?: ""
 
-        UsersService.getCreatedTrips(token, userId, { tripsArray ->
+        UsersService.getCreatedTrips(token, { tripsArray ->
             activity?.runOnUiThread {
                 userTripsList.adapter = TripsAdapter(tripsArray)
                 Toast.makeText(context, "Succeed", Toast.LENGTH_LONG).show()
