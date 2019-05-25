@@ -66,12 +66,12 @@
                         android:id="@+id/myProposals"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:layout_weight="1"
                         android:background="@drawable/card_border">
                     <ImageView
                             android:src="@drawable/ic_profile_flight"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/imageView4"
+                            android:layout_height="20dp" android:id="@+id/imageView4"
                             android:layout_weight="0" android:layout_gravity="center"
                             android:layout_marginStart="20dp" android:layout_marginTop="20dp"
                             android:layout_marginEnd="24dp" android:layout_marginBottom="20dp"/>
@@ -82,7 +82,7 @@
                             android:paddingStart="8dp" android:paddingTop="8dp" android:paddingBottom="8dp"
                             android:paddingEnd="8dp" android:layout_gravity="center">
                         <TextView
-                                android:text="Mes annonces"
+                                android:text="Voyages"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="normal"
@@ -102,7 +102,7 @@
                         android:layout_width="match_parent"
                         android:id="@+id/myTransactions"
 
-                        android:layout_height="match_parent" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:layout_weight="1"
                         android:background="@drawable/card_border">
                     <ImageView
                             android:src="@drawable/ic_profile_money"

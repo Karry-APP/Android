@@ -46,5 +46,23 @@ class TripsService {
                 }
             })
         }
+
+        fun tripById(tripID: String, token: String, success: (trip: Trip) -> Unit, failure: () -> Unit) {
+            val request = okhttp3.Request.Builder().header("X-Auth", token).url(ApiManager.URL.TRIP_DETAIL(tripID)).build()
+
+            OkHttpClient().newCall(request).enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    if (response.code() == 200) {
+                        val tripDetails = Gson().fromJson(response.body()?.string(), Trip::class.java)
+                        success(tripDetails)
+                    } else {
+                        failure()
+                    }
+                }
+                override fun onFailure(call: Call, e: IOException) {
+                    failure()
+                }
+            })
+        }
     }
 }

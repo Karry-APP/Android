@@ -23,14 +23,16 @@ class TripDetails : AppCompatActivity() {
       model = this.run {
             ViewModelProviders.of(this).get(SharedViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
-      
+
+        val token = TokenManager(this).deviceToken.toString()
+
         buttonOrderForm.setOnClickListener { startOrderForm() }
         closeDetailTrip.setOnClickListener { replaceFragment() }
 
         val jsonTrip: String = intent.getStringExtra("TRIP")
         val trip = Gson().fromJson(jsonTrip, Trip::class.java)
 
-        TripsManager.loadDetails(trip.id, { tripDetails: Trip ->
+        TripsManager.loadDetails(trip.id,token, { tripDetails: Trip ->
             runOnUiThread {
                 karryTax.text = tripDetails.carryTaxe
                 availableWeight.text = tripDetails.carryWeight

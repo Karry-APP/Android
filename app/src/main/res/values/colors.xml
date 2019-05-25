@@ -11,6 +11,8 @@
     <color name="inputBorderColor">#EFF3FB</color>
 
     <color name="colorDarkBLue">#7C9299</color>
+    <color name="colorDarkBLueOpac">#667C9299</color>
+
     <color name="colorLightBLue">#004E64</color>
     <color name="shadow">#C3CBD0</color>
     <color name="city_picker_background">#F0F3F9</color>

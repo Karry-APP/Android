@@ -47,11 +47,11 @@ class SearchResultsFragment : Fragment() {
 
     private fun bindView(v: View) {
 
-        val tripListArray = model.tripLisArray
+        val tripListArray = model.tripListArray
 
         activity?.runOnUiThread {
             v.tripsList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
-            v.tripsList.adapter = TripsAdapter(tripLisArray) { trip ->
+            v.tripsList.adapter = TripsAdapter(tripListArray) { trip ->
                 val intent = Intent(this.context, TripDetails::class.java)
                 intent.putExtra("TRIP", Gson().toJson(trip))
                 startActivity(intent)
@@ -68,7 +68,7 @@ class SearchResultsFragment : Fragment() {
             if (it.isNullOrEmpty()) {
 
             } else {
-                model.storeSearchResults(it)
+                model.storeTrips(it)
                 bindView(v)
             }
         }, {
