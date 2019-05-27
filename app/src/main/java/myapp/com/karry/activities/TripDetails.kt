@@ -2,15 +2,18 @@ package myapp.com.karry.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_trip_details.*
 import myapp.com.karry.R
 import myapp.com.karry.entity.Trip
+import myapp.com.karry.entity.User
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.TripsManager
+import myapp.com.karry.modules.UserInfoManager
 import java.lang.Exception
 
 class TripDetails : AppCompatActivity() {
@@ -34,6 +37,10 @@ class TripDetails : AppCompatActivity() {
 
         TripsManager.loadDetails(trip.id,token, { tripDetails: Trip ->
             runOnUiThread {
+                userName.text = trip.owner.firstname + " " + trip.owner.lastname
+                userRate.text = trip.owner.ratings
+                searchStartDate.text = "TODO" //TODO: Wait date in voyage form
+                searchEndDate.text = "TODO" //TODO: Wait date in voyage form
                 karryTax.text = tripDetails.carryTaxe
                 availableWeight.text = tripDetails.carryWeight
                 maxAmount.text = tripDetails.carryMaxAmount
@@ -49,9 +56,17 @@ class TripDetails : AppCompatActivity() {
     }
   
   private fun startTravelerProfileActivity() {
-        val intent = Intent(this, TravelerProfileActivity::class.java)
-        startActivity(intent)
-    }
+      val jsonTrip: String = intent.getStringExtra("TRIP")
+      val trip = Gson().fromJson(jsonTrip, Trip::class.java)
+
+      val intent = Intent(this, TravelerProfileActivity::class.java)
+      intent.putExtra("ownerName", trip.owner.firstname + " " + trip.owner.lastname)
+      intent.putExtra("ownerRatings", trip.owner.ratings)
+      intent.putExtra("ownerDescription", trip.owner.description)
+
+      startActivity(intent)
+      overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+  }
   
   private fun startOrderForm() {
         val jsonTrip: String = intent.getStringExtra("TRIP")
