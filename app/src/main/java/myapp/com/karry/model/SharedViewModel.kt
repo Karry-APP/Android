@@ -1,13 +1,21 @@
 package myapp.com.karry.model
 import android.util.Log
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_update_profile.*
 import myapp.com.karry.entity.*
+import myapp.com.karry.modules.UserInfoManager
+import org.json.JSONObject
 
 class SharedViewModel : ViewModel() {
+    val departureValue = MutableLiveData<String>()
     val destinationValue = MutableLiveData<String>()
-    val arrivalValue = MutableLiveData<String>()
+    val carryWeight = MutableLiveData<Float>()
+    val carryTax= MutableLiveData<Int>()
+    val carryVolume= MutableLiveData<Int>()
+
+
     val transactionId = MutableLiveData<String>()
     private val defaultSharedImageList: ArrayList<SharedImage> = arrayListOf()
 
@@ -17,17 +25,32 @@ class SharedViewModel : ViewModel() {
     val transactionListArray: ArrayList<Transaction> = arrayListOf()
     val backerListArray: ArrayList<User> = arrayListOf()
 
+
+    val orderPayload = CreateOrderPayload()
+
+
+    fun fillCreateOrderFormPayload(): JSONObject {
+        val userObject= JSONObject()
+        userObject.put("departure",departureValue.value)
+        userObject.put("destination",destinationValue.value)
+        userObject.put("carryWeight",carryWeight.value)
+        userObject.put("carryVolume",carryVolume.value)
+        userObject.put("carryTax",carryTax.value)
+
+        return userObject
+    }
+    
     fun setDestination(item: String) {
         destinationValue.value = item
     }
 
-    fun setArrival(item: String) {
-        arrivalValue.value = item
+    fun setDeparture(item: String) {
+        departureValue.value = item
     }
   
     fun cleanValues() {
+        departureValue.value = ""
         destinationValue.value = ""
-        arrivalValue.value = ""
     }
 
     fun cleanTripsList() {

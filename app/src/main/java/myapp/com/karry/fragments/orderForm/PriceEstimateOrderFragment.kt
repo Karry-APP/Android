@@ -6,9 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_order_form_price_estimate.*
-import myapp.com.karry.R
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import kotlinx.android.synthetic.main.fragment_order_form_price_estimate.view.*
 
 
@@ -38,7 +35,7 @@ class PriceEstimateOrderFragment: Fragment() {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left,
             android.R.anim.slide_out_right)
-        fragmentTransaction.replace(myapp.com.karry.R.id.fragmentContainer, fragment)
+        fragmentTransaction.replace(myapp.com.karry.R.id.cityPickerContainer, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
 

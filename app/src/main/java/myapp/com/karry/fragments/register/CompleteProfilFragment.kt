@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_complete_profil.*
 import kotlinx.android.synthetic.main.fragment_complete_profil.view.*
-import kotlinx.android.synthetic.main.fragment_register_profil.*
 import myapp.com.karry.R
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
@@ -27,7 +26,7 @@ class CompleteProfilFragment : Fragment() {
     private fun launchFragment(fragment: Fragment) {
 
         val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
 

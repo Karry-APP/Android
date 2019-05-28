@@ -26,7 +26,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun replaceFragment(fragment: Fragment) {
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
         fragmentTransaction.commit()
     }
 
