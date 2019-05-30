@@ -1,6 +1,7 @@
 package myapp.com.karry.fragments.main
 
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -21,6 +22,7 @@ import java.lang.Integer.parseInt
 class CreateTripStepTwoFragment : Fragment() {
 
     private lateinit var model: SharedViewModel
+    private lateinit var weight: Editable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,20 +49,25 @@ class CreateTripStepTwoFragment : Fragment() {
             replaceFragment(CreateTripStepTreeFragment())
         }
 
-        v.weightParam.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            }
-
-            override fun afterTextChanged(s: Editable) {
-                model.carryWeight.value = parseFloat(s.toString())
-            }
-        })
-
         // Inflate the layout for this fragment
         return v
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity?.runOnUiThread {
+            weightParam.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                }
+
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                }
+
+                override fun afterTextChanged(s: Editable) {
+                    model.carryWeight.value = parseFloat(s.toString())
+                }
+            })
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {

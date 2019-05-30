@@ -16,6 +16,10 @@ class ChooseVolumeFragment : Fragment() {
 
     private lateinit var model: SharedViewModel
 
+    private val SMALL = 1
+    private val MEDIUM = 2
+    private val BIG = 3
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,15 +39,15 @@ class ChooseVolumeFragment : Fragment() {
 
         v.small.setOnClickListener {
             replaceFragment(CreateTripStepTwoFragment())
-            model.carryVolume.value = 1
+            model.carryVolume.value = SMALL
         }
         v.medium.setOnClickListener {
             replaceFragment(CreateTripStepTwoFragment())
-            model.carryVolume.value = 2
+            model.carryVolume.value = MEDIUM
         }
         v.big.setOnClickListener {
             replaceFragment(CreateTripStepTwoFragment())
-            model.carryVolume.value = 3
+            model.carryVolume.value = BIG
         }
 
         // Inflate the layout for this fragment
