@@ -11,12 +11,14 @@ import kotlinx.android.synthetic.main.fragment_order_form.*
 import kotlinx.android.synthetic.main.fragment_order_form.view.*
 import myapp.com.karry.R
 import myapp.com.karry.activities.MainActivity
+import myapp.com.karry.activities.TripDetails
 import myapp.com.karry.entity.Request
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.RequestsService
 
 class OrderFormFragment: Fragment() {
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(myapp.com.karry.R.layout.fragment_order_form, container, false)
 

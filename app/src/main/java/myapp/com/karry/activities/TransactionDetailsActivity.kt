@@ -18,7 +18,7 @@ import myapp.com.karry.entity.User
 
 class TransactionDetailsActivity : AppCompatActivity() {
     private val sharedImageList: ArrayList<SharedImage> = arrayListOf()
-    private val author: User = User("toto", "Nicolas", "Leroy", "0646862158", "nico@kkarry.fr", "https://png.pngtree.com/element_origin_min_pic/17/09/18/d555144313d6d69a8820a3baaf5d81fe.jpg")
+    private val author: User = User("toto", "Nicolas", "Leroy", "0646862158", "nico@kkarry.fr", "https://png.pngtree.com/element_origin_min_pic/17/09/18/d555144313d6d69a8820a3baaf5d81fe.jpg", "", "Pas encore de description")
     private val transaction = Transaction("test", "Hahahahhahahahha", "Huilde d'olive", "24, 30 €", sharedImageList, author)
 
     override fun onCreate(savedInstanceState: Bundle?) {

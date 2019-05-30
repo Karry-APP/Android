@@ -12,6 +12,6 @@ class Trip (
     val carryWeight: String,
     val carryMaxAmount: String,
     val carryTaxe: String,
-    val creator: String,
+    val owner: User,
     val joinList: ArrayList<User>
 )

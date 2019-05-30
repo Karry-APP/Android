@@ -30,6 +30,10 @@ class TripsAdapter(private val tripList: List<Trip>, val click: (trip: Trip) -> 
         val trip = tripList[position]
         holder.view.tripDepartureCityDetails.text = trip.departureCity
         holder.view.tripDestinationCity.text = trip.destinationCity
+        holder.view.userName.text = trip.owner.firstname + " " + trip.owner.lastname
+        holder.view.userRate.text = trip.owner.ratings
+        holder.view.searchEndDate.text = "TODO" // TODO: Get trip date
+
         holder.view.tripCard.setOnClickListener { click(trip) }
     }
 }
