@@ -22,7 +22,7 @@ import java.lang.Integer.parseInt
 class CreateTripStepTwoFragment : Fragment() {
 
     private lateinit var model: SharedViewModel
-    private lateinit var weight: Editable
+    private var weight: Float = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +30,22 @@ class CreateTripStepTwoFragment : Fragment() {
         model = activity?.run {
             ViewModelProviders.of(this).get(SharedViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
+    }
+
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putFloat("weight", weight)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        if (savedInstanceState !== null) {
+            weight = savedInstanceState.getFloat("weight", 0.0f)
+        }
+
     }
 
 
@@ -53,6 +69,7 @@ class CreateTripStepTwoFragment : Fragment() {
         return v
     }
 
+
     override fun onResume() {
         super.onResume()
         activity?.runOnUiThread {
@@ -74,7 +91,7 @@ class CreateTripStepTwoFragment : Fragment() {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
             .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
 
-        fragmentTransaction.replace(R.id.fragmentContainer2, fragment)
+        fragmentTransaction.add(R.id.fragmentContainer2, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }

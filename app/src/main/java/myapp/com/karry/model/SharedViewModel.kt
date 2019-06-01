@@ -14,6 +14,7 @@ class SharedViewModel : ViewModel() {
     val carryWeight = MutableLiveData<Float>()
     val carryTax= MutableLiveData<Int>()
     val carryVolume= MutableLiveData<Int>()
+    val userID = MutableLiveData<String>()
 
 
     val transactionId = MutableLiveData<String>()
@@ -31,11 +32,13 @@ class SharedViewModel : ViewModel() {
 
     fun fillCreateOrderFormPayload(): JSONObject {
         val userObject= JSONObject()
-        userObject.put("departure",departureValue.value)
-        userObject.put("destination",destinationValue.value)
+        userObject.put("departureCity",departureValue.value)
+        userObject.put("destinationCity",destinationValue.value)
         userObject.put("carryWeight",carryWeight.value)
         userObject.put("carryVolume",carryVolume.value)
-        userObject.put("carryTax",carryTax.value)
+        userObject.put("carryTaxe",carryTax.value)
+        userObject.put("owner",userID.value)
+
 
         return userObject
     }

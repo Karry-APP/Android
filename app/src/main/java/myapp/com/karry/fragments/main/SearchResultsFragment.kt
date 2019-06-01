@@ -34,8 +34,8 @@ class SearchResultsFragment : Fragment() {
     ): View? {
         val v : View= inflater.inflate(R.layout.fragment_search_results, container, false)
 
+        v.departureValue.text = model.departureValue.value?.toUpperCase()
         v.destinationValue.text = model.destinationValue.value?.toUpperCase()
-        v.arrivalValue.text = model.arrivalValue.value?.toUpperCase()
         v.closeSearchResult.setOnClickListener { launchFragment(SearchFragment()) }
 
         loadTripsQuery(v)

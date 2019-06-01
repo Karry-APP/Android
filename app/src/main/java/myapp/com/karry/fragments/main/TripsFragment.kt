@@ -2,6 +2,7 @@ package myapp.com.karry.fragments.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,8 @@ class TripsFragment : Fragment() {
 
     private fun loadUserCreatedTrips() {
         val token: String = TokenManager(requireContext()).deviceToken ?: ""
+
+        Log.d("yoy", token)
 
         UsersService.getCreatedTrips(token, { tripsArray ->
             activity?.runOnUiThread {

@@ -14,6 +14,9 @@ import kotlinx.android.synthetic.main.fragment_create_trip_step_tree.view.*
 
 import myapp.com.karry.R
 import myapp.com.karry.model.SharedViewModel
+import myapp.com.karry.modules.TokenManager
+import myapp.com.karry.modules.UserInfoManager
+import myapp.com.karry.network.TripsService
 import java.lang.Integer.parseInt
 
 class CreateTripStepTreeFragment : Fragment() {
@@ -54,7 +57,14 @@ class CreateTripStepTreeFragment : Fragment() {
 
 
         v.validStepTree.setOnClickListener {
-            Log.d("yay", model.fillCreateOrderFormPayload().toString())
+            val token = TokenManager(context!!).deviceToken.toString()
+            val userID = UserInfoManager(requireContext()).id
+            model.userID.value = userID
+            val payload = model.fillCreateOrderFormPayload().toString()
+
+            TripsService.create(payload, token,{}, {})
+
+            replaceFragment(TripsFragment())
         }
 
         return v

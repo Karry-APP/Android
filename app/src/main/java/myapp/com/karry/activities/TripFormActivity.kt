@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_trip_form.*
 import myapp.com.karry.R
 import myapp.com.karry.modules.EditTextChecker
 import myapp.com.karry.modules.SpinnerChecker
+import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.TripsService
 import org.json.JSONObject
@@ -93,8 +94,9 @@ class TripFormActivity : AppCompatActivity() {
         if (validateForm()) {
             tripFormButton.visibility = View.INVISIBLE
             tripFormProgress.visibility = View.VISIBLE
+            val token = TokenManager(this).deviceToken.toString()
 
-            TripsService.create(tripInfoAsJson(), {
+            TripsService.create(tripInfoAsJson(), token, {
                 startMainActivity()
             }, {
                 runOnUiThread {
