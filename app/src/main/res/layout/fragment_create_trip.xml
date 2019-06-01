@@ -41,7 +41,7 @@
                 android:text="Allez-retour ?"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/switch2" app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/roundTrip" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="24dp" android:layout_marginTop="24dp"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textColor="@color/darker_gray" android:textSize="16sp"/>
@@ -142,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView23" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="24dp" app:layout_constraintTop_toBottomOf="@+id/switch2"
+                android:layout_marginStart="24dp" app:layout_constraintTop_toBottomOf="@+id/roundTrip"
                 android:textColor="@color/colorDarkBLueOpac"/>
         <ImageView
                 android:layout_width="wrap_content"
