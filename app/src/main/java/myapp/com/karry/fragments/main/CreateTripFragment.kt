@@ -30,7 +30,7 @@ class CreateTripFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_create_trip, container, false)
 
-        v.closeIcon.setOnClickListener { replaceFragment(SearchFragment()) }
+        v.closeIcon.setOnClickListener { activity?.finish() }
 
         v.departureCity.setOnClickListener { openCitySearch("departure", "createTrip") }
         v.departureLabel.setOnClickListener { openCitySearch("departure", "createTrip") }
@@ -68,6 +68,13 @@ class CreateTripFragment : Fragment() {
             .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
 
         fragmentTransaction.replace(R.id.fragmentContainer2, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+
+    private fun closeForm() {
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.cityPickerContainer, SearchFragment())
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }

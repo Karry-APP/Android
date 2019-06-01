@@ -1,6 +1,7 @@
 package myapp.com.karry.fragments.main
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,11 +14,13 @@ import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_create_trip_step_tree.view.*
 
 import myapp.com.karry.R
+import myapp.com.karry.activities.MainActivity
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.TripsService
 import java.lang.Integer.parseInt
+
 
 class CreateTripStepTreeFragment : Fragment() {
 
@@ -41,7 +44,7 @@ class CreateTripStepTreeFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_create_trip_step_tree, container, false)
 
         v.backButton.setOnClickListener { replaceFragment(CreateTripStepTwoFragment()) }
-        v.closeIcon.setOnClickListener { replaceFragment(SearchFragment()) }
+        v.closeIcon.setOnClickListener { activity?.finish() }
 
 
         v.carryTax.addTextChangedListener(object : TextWatcher {
@@ -51,7 +54,9 @@ class CreateTripStepTreeFragment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable) {
-                model.carryTax.value = parseInt(s.toString())
+                if (s.isNotEmpty()) {
+                    model.carryTax.value = parseInt(s.toString())
+                }
             }
         })
 
@@ -77,6 +82,9 @@ class CreateTripStepTreeFragment : Fragment() {
         fragmentTransaction.replace(R.id.fragmentContainer2, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+    }
+    private fun closeForm() {
+
     }
 
 

@@ -35,7 +35,7 @@ class ChooseVolumeFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_choose_volume, container, false)
 
         v.backButton.setOnClickListener { replaceFragment(CreateTripStepTwoFragment()) }
-        v.closeIcon.setOnClickListener { replaceFragment(SearchFragment()) }
+        v.closeIcon.setOnClickListener { activity?.finish() }
 
         v.small.setOnClickListener {
             replaceFragment(CreateTripStepTwoFragment())
