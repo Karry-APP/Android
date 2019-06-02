@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import myapp.com.karry.R
+import myapp.com.karry.activities.RatingActivity
 import myapp.com.karry.activities.SaveSearchActivity
 import myapp.com.karry.model.SharedViewModel
 
@@ -40,7 +41,7 @@ class SearchFragment : Fragment() {
         v.searchButton.setOnClickListener { redirectToSearchResults() }
 
         v.postSearch.setOnClickListener {
-            val intent = Intent(v.context, SaveSearchActivity::class.java)
+            val intent = Intent(v.context, RatingActivity::class.java)
             startActivity(intent)
         }
         displayReceivedData(v)
