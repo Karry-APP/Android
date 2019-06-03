@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
      private fun replaceFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-        fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }
 }

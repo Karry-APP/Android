@@ -2,6 +2,7 @@ package myapp.com.karry.fragments.orderForm
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import myapp.com.karry.R
 import myapp.com.karry.activities.MainActivity
 import myapp.com.karry.activities.TripDetails
 import myapp.com.karry.entity.Request
+import myapp.com.karry.entity.Trip
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.RequestsService
@@ -53,7 +55,7 @@ class OrderFormFragment: Fragment() {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.setCustomAnimations(R.anim.slide_in_right,
             R.anim.slide_out_left)
-        fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
@@ -63,7 +65,7 @@ class OrderFormFragment: Fragment() {
         buttonSendOrder.visibility = View.INVISIBLE
         progressSendOrder.visibility = View.VISIBLE
         if (orderInfoAsJson() != "") {
-            RequestsService.create(orderInfoAsJson(), token, { request -> goToMainActivity() }, { onError() })
+            RequestsService.create(orderInfoAsJson(), token, { _ -> goToMainActivity() }, { onError() })
 
         } else {
             onError()

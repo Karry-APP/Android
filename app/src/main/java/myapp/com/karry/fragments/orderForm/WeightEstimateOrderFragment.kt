@@ -36,7 +36,7 @@ class WeightEstimateOrderFragment: Fragment() {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left,
             android.R.anim.slide_out_right)
-        fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
         //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
