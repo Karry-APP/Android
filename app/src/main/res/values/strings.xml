@@ -148,14 +148,16 @@
     <!-- Order -->
     <string name="orderFormActivity_title">Demande de contact</string>
     <string name="orderFormActivity_name">Nom du produit recherché</string>
-    <string name="orderFormActivity_hint_name">ex: huile d\'olive, sneakers ... </string>
+    <string name="orderFormActivity_hint_name">ex: huile d\'olive, sneakers ...</string>
     <string name="orderFormActivity_reward">Montant de la récompense</string>
-    <string name="orderFormActivity_hint_reward">0,00€ </string>
+    <string name="orderFormActivity_hint_reward">0,00€</string>
     <string name="orderFormActivity_price">Prix estimé du produit</string>
     <string name="orderFormActivity_volume">Volume estimé du produit</string>
     <string name="orderFormActivity_weight">Poids estimé du produit</string>
     <string name="orderFormActivity_message">Message personnalisé</string>
-    <string name="orderFormActivity_hint_message">ex: Bonjour ! Je cherche ce produit depuis très longtemps et il est simple à trouver</string>
+    <string name="orderFormActivity_hint_message">ex: Bonjour ! Je cherche ce produit depuis très longtemps et il est
+        simple à trouver
+    </string>
     <string name="orderFormActivity_image">Ajouter une image du produit</string>
     <string name="PriceEstimate_OrderFormFragment_title">Prix estimé du produit</string>
     <string name="PriceEstimate_OrderFormFragment_price_perso">Ajouter un prix personalisé</string>
@@ -163,7 +165,7 @@
     <string name="VolumeEstimateFragment_small">PETIT</string>
     <string name="VolumeEstimateFragment_hint_small">Bijoux, sachet de bonbons, livre de poche ...</string>
     <string name="VolumeEstimateFragment_medium">MOYEN</string>
-    <string name="VolumeEstimateFragment_hint_medium">Pull, jean, vêtements, équipements  ...</string>
+    <string name="VolumeEstimateFragment_hint_medium">Pull, jean, vêtements, équipements ...</string>
     <string name="VolumeEstimateFragment_large">GRAND</string>
     <string name="VolumeEstimateFragment_hint_large">Boîte de chaussures, ballon de basket ...</string>
 
