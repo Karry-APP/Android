@@ -16,6 +16,10 @@
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".activities.CreateTripWrapperActivity">
         </activity>
+        <activity android:name=".activities.RatingActivity">
+        </activity>
+        <activity android:name=".activities.SaveSearchActivity">
+        </activity>
         <activity android:name=".activities.UserTripActivity">
         </activity>
         <activity android:name=".activities.UserTripBackersActivity">
@@ -26,7 +30,7 @@
         </activity>
         <activity android:name=".activities.UserTripsActivity">
         </activity>
-        <activity android:name=".activities.OrderFormActivity" />
+        <activity android:name=".activities.OrderFormActivity"/>
         <activity android:name=".activities.UpdateProfileActivity">
         </activity>
         <activity android:name=".activities.TravelerProfileActivity">

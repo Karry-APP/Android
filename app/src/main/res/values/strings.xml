@@ -169,6 +169,13 @@
     <string name="VolumeEstimateFragment_large">GRAND</string>
     <string name="VolumeEstimateFragment_hint_large">Boîte de chaussures, ballon de basket ...</string>
 
+    <!-- Rating -->
+    <string name="rating_header">Transaction du</string>
+    <string name="rating_form_header">Cool 👍</string>
+    <string name="rating_form_subtitle">Votre transaction est terminée</string>
+    <string name="rating_form_label">Comment noteriez-vous l’expérience?</string>
+    <string name="rating_form_hint_comment">Laisser un commentaire (facultatif)</string>
+    <string name="rating_form_btn_text">Envoyer</string>
 
     <!-- City -->
     <string name="city_Roma">Rome</string>
