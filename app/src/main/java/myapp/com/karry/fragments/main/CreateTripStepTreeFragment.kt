@@ -55,6 +55,24 @@ class CreateTripStepTreeFragment : Fragment() {
             v.carryMaxAmount.text = Editable.Factory.getInstance().newEditable(model.carryMaxAmount.value.toString())
         }
 
+        if (model.carryVolume.value !== null && model.carryWeight.value !== null) {
+            v.validStepTree.setOnClickListener {
+                val token = TokenManager(context!!).deviceToken.toString()
+                val userID = UserInfoManager(requireContext()).id
+                model.userID.value = userID
+                val payload = model.fillCreateOrderFormPayload().toString()
+
+                TripsService.create(payload, token,{
+                    val intent = Intent(this.context, MainActivity::class.java)
+                    intent.putExtra("fragmentToDisplay", 2)
+                    startActivity(intent)
+                }, {
+                })
+            }
+        } else {
+            v.validStepTree.isEnabled = false
+        }
+
 
         v.carryTax.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -83,19 +101,7 @@ class CreateTripStepTreeFragment : Fragment() {
         })
 
 
-        v.validStepTree.setOnClickListener {
-            val token = TokenManager(context!!).deviceToken.toString()
-            val userID = UserInfoManager(requireContext()).id
-            model.userID.value = userID
-            val payload = model.fillCreateOrderFormPayload().toString()
 
-            TripsService.create(payload, token,{
-                val intent = Intent(this.context, MainActivity::class.java)
-                intent.putExtra("fragmentToDisplay", 2)
-                startActivity(intent)
-            }, {
-            })
-        }
 
         return v
     }

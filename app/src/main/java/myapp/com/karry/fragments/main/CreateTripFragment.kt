@@ -50,19 +50,22 @@ class CreateTripFragment : Fragment() {
         }
 
 
+        if (model.departureValue.value.isNullOrEmpty() && model.destinationValue.value.isNullOrEmpty() && model.arrivalDate.value.isNullOrEmpty()) {
+            v.validStepOne.isEnabled = false
+        } else {
+            v.validStepOne.setOnClickListener {
+                replaceFragment(CreateTripStepTwoFragment())
+                model.roundTrip.value = v.roundTrip.isChecked
+            }
+        }
 
         v.departureCity.setOnClickListener { openCitySearch("departure", "createTrip") }
         v.departureLabel.setOnClickListener { openCitySearch("departure", "createTrip") }
         v.destinationCity.setOnClickListener { openCitySearch("destination", "createTrip") }
         v.destinationLabel.setOnClickListener { openCitySearch("destination", "createTrip") }
 
-        v.validStepOne.setOnClickListener {
-            replaceFragment(CreateTripStepTwoFragment())
-            model.roundTrip.value = v.roundTrip.isChecked
-        }
-
         v.helpButton.setOnClickListener {
-            showNewNameDialog(v)
+            showHelperDialog(v)
         }
 
         v.arrivalDate.setOnClickListener {
@@ -111,8 +114,8 @@ class CreateTripFragment : Fragment() {
         destinationValue = model.destinationValue.value.toString()
         departureValue = model.departureValue.value.toString()
 
-        v.departureCity.text = departureValue
-        v.destinationCity.text = destinationValue
+        v.departureCity.text = Editable.Factory.getInstance().newEditable(departureValue)
+        v.destinationCity.text = Editable.Factory.getInstance().newEditable(destinationValue)
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -131,7 +134,7 @@ class CreateTripFragment : Fragment() {
         fragmentTransaction.commit()
     }
 
-    private fun showNewNameDialog(v: View) {
+    private fun showHelperDialog(v: View) {
         val helpDialogLayout = R.layout.help_dialog_layout
         val mDialogView = LayoutInflater.from(v.context).inflate(helpDialogLayout, null)
 

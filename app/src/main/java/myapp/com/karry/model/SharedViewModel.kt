@@ -26,7 +26,7 @@ class SharedViewModel : ViewModel() {
     private val defaultAuthor: User = User("toto", "Nicolas", "Leroy", "0646862158", "nico@kkarry.fr", "https://png.pngtree.com/element_origin_min_pic/17/09/18/d555144313d6d69a8820a3baaf5d81fe.jpg", "", "Pas de description encore")
     private val defaultTransaction = Transaction("test", "Hahahahhahahahha", "Huilde d'olive", "24, 30 €", defaultSharedImageList, defaultAuthor)
     val tripListArray: ArrayList<Trip> = arrayListOf()
-    val transactionListArray: ArrayList<Transaction> = arrayListOf()
+    val transactionListArray: ArrayList<UserRequest> = arrayListOf()
     val backerListArray: ArrayList<User> = arrayListOf()
 
 
@@ -86,7 +86,9 @@ class SharedViewModel : ViewModel() {
         Log.d("yay", backerListArray.first().email.toString())
     }
 
-    fun storeTransactions() {
-        transactionListArray.add(defaultTransaction)
+    fun storeTransactions(transactions: Array<UserRequest>) {
+        for (transaction in transactions) {
+            transactionListArray.add(transaction)
+        }
     }
 }
