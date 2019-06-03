@@ -11,8 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import myapp.com.karry.R
 import myapp.com.karry.activities.CreateTripWrapperActivity
-import myapp.com.karry.activities.RatingActivity
-import myapp.com.karry.activities.SaveSearchActivity
 import myapp.com.karry.model.SharedViewModel
 
 
@@ -79,7 +77,7 @@ class SearchFragment : Fragment() {
 
     private fun launchFragment(fragment: Fragment) {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }

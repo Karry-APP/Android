@@ -113,7 +113,7 @@ class CreateTripFragment : Fragment() {
 
     private fun closeForm() {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.cityPickerContainer, SearchFragment())
+        fragmentTransaction.replace(R.id.fragmentContainer, SearchFragment())
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }

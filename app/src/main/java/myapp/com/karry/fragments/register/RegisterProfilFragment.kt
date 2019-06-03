@@ -30,7 +30,7 @@ class RegisterProfilFragment: Fragment() {
         activity?.intent!!.putExtra("userPassword", password)
 
         val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
 

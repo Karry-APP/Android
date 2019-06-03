@@ -83,9 +83,6 @@ class CreateTripStepTreeFragment : Fragment() {
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
-    private fun closeForm() {
-
-    }
 
 
 }
