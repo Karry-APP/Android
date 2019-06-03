@@ -35,7 +35,7 @@ class PriceEstimateOrderFragment: Fragment() {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left,
             android.R.anim.slide_out_right)
-        fragmentTransaction.replace(myapp.com.karry.R.id.cityPickerContainer, fragment)
+        fragmentTransaction.replace(myapp.com.karry.R.id.fragmentContainer, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
 

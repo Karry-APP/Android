@@ -70,6 +70,7 @@ class TripDetails : AppCompatActivity() {
         val trip = Gson().fromJson(jsonTrip, Trip::class.java)
         val intent = Intent(this, OrderFormActivity::class.java)
         intent.putExtra("trip_id", trip.id)
+        intent.putExtra("TRIP", jsonTrip)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
   }

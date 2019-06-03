@@ -41,7 +41,7 @@ class CityPickerFragment : Fragment() {
 
         if (fragment === "search") {
             currentFragment = SearchFragment()
-            currentContainer = R.id.cityPickerContainer
+            currentContainer = R.id.fragmentContainer
         }
         if (fragment === "createTrip") {
             currentFragment = CreateTripFragment()

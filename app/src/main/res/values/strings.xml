@@ -95,7 +95,7 @@
     <string name="searchResultActivity_availableProductIcon">Available Product Icon</string>
     <string name="searchResultActivity_proposalLocationIcon">proposal location icon</string>
     <string name="searchResultActivity_seeSearchResultsDetails">Voir détails</string>
-    <string name="searchResultActivity_seeProfile">Voir le profile</string>
+    <string name="searchResultActivity_seeProfile">Voir le profil</string>
     <string name="searchResultActivity_descriptionPlaceholder">Description</string>
     <string name="searchResultActivity_defaultRate">4.8</string>
     <string name="searchResultActivity_defaultDate">02/01/19</string>
