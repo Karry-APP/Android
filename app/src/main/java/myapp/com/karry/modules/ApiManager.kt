@@ -13,6 +13,9 @@ class ApiManager {
             const val USER_PATCH = "$BASE/users/"
             const val USER_LOGOUT = "$BASE/users/me/token"
             const val USER_TRIPS = "$BASE/users/me/trips"
+            fun USER_LOAD(userId: String?): String {
+                return "$BASE/users/$userId"
+            }
 
             // REQUESTS
             fun USER_REQUESTS(id: String) = "$BASE/requests/$id"

@@ -30,6 +30,26 @@ class UsersService {
             })
         }
 
+        fun userById(userId: String?, token: String, success: (user: User) -> Unit, failure: () -> Unit) {
+            val request = okhttp3.Request.Builder().header("X-Auth", token).url(ApiManager.URL.USER_LOAD(userId)).build()
+            OkHttpClient().newCall(request).enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    if (response.code() == 200) {
+                        val user = Gson().fromJson(response.body()?.string(), User::class.java)
+                        Log.d("reussiteUserById", response.body().toString())
+                        success(user)
+                    } else {
+                        Log.d("failureUserById", response.body()?.string())
+                        failure()
+                    }
+                }
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.d("failure", e.toString())
+                    failure()
+                }
+            })
+        }
+
         fun login(userJson: String, success: (response: Response) -> Unit, failure: () -> Unit) {
             val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), userJson)
             val request = Request.Builder().url(ApiManager.URL.USER_LOGIN).post(body).build()
