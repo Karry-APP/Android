@@ -10,6 +10,7 @@ import myapp.com.karry.R
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.UsersService
+import okhttp3.Response
 import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
@@ -29,7 +30,6 @@ class LoginActivity : AppCompatActivity() {
     private fun userInfoAsJson(): String {
         val email = loginEmail.text.toString()
         val password = loginPassword.text.toString()
-
         val userObject= JSONObject()
         userObject.put("email",email)
         userObject.put("password",password)
@@ -39,40 +39,45 @@ class LoginActivity : AppCompatActivity() {
     private fun validateForm(): Boolean {
         val email = loginEmail.text.toString()
         val password = loginPassword.text.toString()
-
-        // TODO: Check is email is valid
         userEmail = email
-
-        // TODO: Check is password is valid
         userPassword = password
         return true
     }
 
     private fun loginUser() {
         if (validateForm()) {
-            loginButton.visibility = View.INVISIBLE
-            loginProgress.visibility = View.VISIBLE
-            UsersService.login(userInfoAsJson(), { response ->
-                val jsonData: String = response.body()!!.string()
-                val userObj = JSONObject(jsonData)
-                TokenManager(baseContext).deviceToken = response.header("x-auth")
-                UserInfoManager(baseContext).id = userObj.getString("id")
-                UserInfoManager(baseContext).firstname = userObj.getString("firstname")
-                UserInfoManager(baseContext).lastname = userObj.getString("lastname")
-                UserInfoManager(baseContext).phone = userObj.getString("phone")
-                UserInfoManager(baseContext).email = userObj.getString("email")
-                UserInfoManager(baseContext).profilePicture = userObj.getString("profilePicture")
-
-                startMainActivity()
-            }, {
-                runOnUiThread {
-                    loginError.text = getString(R.string.LoginActivity_loginError_text)
-                    loginButton.visibility = View.VISIBLE
-                    loginProgress.visibility = View.INVISIBLE
-                    loginButton.text = "Se connecter"
-                }
-            })
+            setStartLoadingUi()
+            UsersService.login(userInfoAsJson(), { response -> onSuccess(response) }, { onError() })
         }
+    }
+
+    private fun onSuccess(response: Response) = runOnUiThread {
+        val jsonData: String = response.body()!!.string()
+        val userObj = JSONObject(jsonData)
+        TokenManager(baseContext).deviceToken = response.header("x-auth")
+        UserInfoManager(baseContext).id = userObj.getString("id")
+        UserInfoManager(baseContext).firstname = userObj.getString("firstname")
+        UserInfoManager(baseContext).lastname = userObj.getString("lastname")
+        UserInfoManager(baseContext).phone = userObj.getString("phone")
+        UserInfoManager(baseContext).email = userObj.getString("email")
+        UserInfoManager(baseContext).profilePicture = userObj.getString("profilePicture")
+        startMainActivity()
+    }
+
+    private fun onError() = runOnUiThread {
+        loginError.text = getString(R.string.LoginActivity_loginError_text)
+        loginButton.text = "Se connecter"
+        setFinishLoadingUi()
+    }
+
+    private fun setStartLoadingUi() {
+        loginButton.visibility = View.INVISIBLE
+        loginProgress.visibility = View.VISIBLE
+
+    }
+    private fun setFinishLoadingUi() {
+        loginButton.visibility = View.VISIBLE
+        loginProgress.visibility = View.INVISIBLE
     }
 
     private fun forgotPassword() {
@@ -88,6 +93,4 @@ class LoginActivity : AppCompatActivity() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
-
-
 }

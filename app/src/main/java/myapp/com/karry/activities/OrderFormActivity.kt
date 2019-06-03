@@ -6,7 +6,6 @@ import android.os.StrictMode
 import androidx.fragment.app.Fragment
 import myapp.com.karry.R
 import myapp.com.karry.fragments.orderForm.OrderFormFragment
-import myapp.com.karry.fragments.register.RegisterProfilFragment
 
 class OrderFormActivity : AppCompatActivity() {
 
@@ -16,17 +15,14 @@ class OrderFormActivity : AppCompatActivity() {
 
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
-
         if (savedInstanceState == null) {
-
             replaceFragment(OrderFormFragment())
         }
     }
 
     private fun replaceFragment(fragment: Fragment) {
-
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
         fragmentTransaction.commit()
     }
 

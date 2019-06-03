@@ -22,8 +22,6 @@ class CommentsAdapter(private var commentList: List<Comment>, val click: (commen
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
         val comment = commentList[position]
-
-
         holder.view.userName.text = comment.creator
         holder.view.commentContent.text = comment.value
         holder.view.createdDate.text = comment.created

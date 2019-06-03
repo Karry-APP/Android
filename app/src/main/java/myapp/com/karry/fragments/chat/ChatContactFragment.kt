@@ -12,9 +12,7 @@ import myapp.com.karry.activities.AskingContactActivity
 
 class ChatContactFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_chat_contact, container, false)
 
         v.askingContactRow.setOnClickListener {
