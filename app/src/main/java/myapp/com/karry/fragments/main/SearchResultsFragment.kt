@@ -7,15 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProviders
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_search_results.view.*
-import kotlinx.android.synthetic.main.trip_row.view.*
 import myapp.com.karry.R
 import myapp.com.karry.activities.TripDetails
 import myapp.com.karry.adapters.TripsAdapter
-import myapp.com.karry.entity.Trip
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.network.TripsService
@@ -37,8 +34,8 @@ class SearchResultsFragment : Fragment() {
     ): View? {
         val v : View= inflater.inflate(R.layout.fragment_search_results, container, false)
 
+        v.departureValue.text = model.departureValue.value?.toUpperCase()
         v.destinationValue.text = model.destinationValue.value?.toUpperCase()
-        v.arrivalValue.text = model.arrivalValue.value?.toUpperCase()
         v.closeSearchResult.setOnClickListener { launchFragment(SearchFragment()) }
 
         loadTripsQuery(v)
@@ -62,10 +59,10 @@ class SearchResultsFragment : Fragment() {
 
     private fun loadTripsQuery(v: View) {
         val token = TokenManager(context!!).deviceToken.toString()
+        val departure = model.departureValue.value.toString()
         val destination = model.destinationValue.value.toString()
-        val arrival = model.arrivalValue.value.toString()
 
-        TripsService.searchByCities(destination, arrival,token, {
+        TripsService.searchByCities(departure, destination,token, {
             if (it.isNullOrEmpty()) {
 
             } else {
@@ -80,7 +77,7 @@ class SearchResultsFragment : Fragment() {
     private fun launchFragment(fragment: Fragment) {
         model.cleanTripsList()
         val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }

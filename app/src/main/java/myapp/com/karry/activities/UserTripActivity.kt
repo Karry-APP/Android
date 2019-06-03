@@ -22,6 +22,7 @@ import myapp.com.karry.model.SharedViewModel
 
 
 class UserTripActivity : AppCompatActivity() {
+
     private lateinit var  model: SharedViewModel
 
     private var backerList: ArrayList<User> = arrayListOf()
@@ -31,10 +32,9 @@ class UserTripActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_trip)
 
         model = ViewModelProviders.of(this).get(SharedViewModel::class.java)
-
         loadTripDetails()
-        backers.setOnClickListener { loadBackers(this) }
-        addedBackersList.setOnClickListener { loadBackers(this) }
+        backers.setOnClickListener { loadBackers() }
+        addedBackersList.setOnClickListener { loadBackers() }
         closeDetailsTripButton.setOnClickListener { onBackPressed() }
     }
 
@@ -43,50 +43,45 @@ class UserTripActivity : AppCompatActivity() {
         val tripID = intent.getStringExtra("EVENT_ID")
         val token = TokenManager(this).deviceToken.toString()
 
-        TripsService.tripById(tripID, token, {
-            if (it.id.isEmpty()) {
-                Log.d("yay", "Empty")
-            } else {
-                backerList = it.joinList
-                setTexts(it)
-            }
-        }, {
-            Log.d("yoy", "Something bad happened")
-        })
+        TripsService.tripById(tripID, token, {trip -> onSuccess(trip) }, { onError() })
+    }
+
+    private fun onSuccess(trip: Trip) = runOnUiThread{
+        if (trip.id.isNotEmpty()) {
+            backerList = trip.joinList
+            setTexts(trip)
+        }
+    }
+
+    private fun onError() = runOnUiThread {
+        Log.d("yoy", "Something bad happened")
     }
 
     private fun loadAddedBackers(backerArray: ArrayList<User>) {
-        addedBackersList.layoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL, false
-        )
+        addedBackersList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         addedBackersList.addItemDecoration(OverlapDecoration())
         addedBackersList.setHasFixedSize(true)
         addedBackersList.adapter = CardBackersAdapter(backerArray)
     }
 
-    private fun setTexts(it: Trip) = runOnUiThread {
-        loadAddedBackers(it.joinList)
-        departureCity.text = it.departureCity.capitalize()
-        destinationCity.text = it.destinationCity.capitalize()
-        tripDescription.text = it.description
+    private fun setTexts(trip: Trip) = runOnUiThread {
+        loadAddedBackers(trip.joinList)
+        departureCity.text = trip.departureCity.capitalize()
+        destinationCity.text = trip.destinationCity.capitalize()
+        tripDescription.text = trip.description
     }
 
-    private fun loadBackers(c: Context) {
-        val intent = Intent(c, UserTripBackersActivity::class.java)
+    private fun loadBackers() {
+        val intent = Intent(this, UserTripBackersActivity::class.java)
         val jsonArray = Gson().toJson(backerList)
-
         intent.putExtra("JOIN_LIST", jsonArray)
-        c.startActivity(intent)
+        startActivity(intent)
     }
 }
 
 class OverlapDecoration : RecyclerView.ItemDecoration() {
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-        val itemPosition = parent.getChildAdapterPosition(view)
-        outRect.set(0, 0, vertOverlap, 0)
-    }
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) = outRect.set(0, 0, vertOverlap, 0)
     companion object {
-        private val vertOverlap = -40
+        private const val vertOverlap = -40
     }
 }

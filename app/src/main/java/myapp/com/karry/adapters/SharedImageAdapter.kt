@@ -25,10 +25,6 @@ class SharedImagesAdapter(private var sharedImagesList: List<SharedImage>) : and
 
     override fun onBindViewHolder(holder: SharedImageViewHolder, position: Int) {
         val sharedImage = sharedImagesList[position]
-
-        Glide
-            .with(holder.view)
-            .load(sharedImage.src)
-            .into(holder.view.sharedImage)
+        Glide.with(holder.view).load(sharedImage.src).into(holder.view.sharedImage)
     }
 }

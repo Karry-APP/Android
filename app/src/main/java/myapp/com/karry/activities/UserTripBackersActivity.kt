@@ -25,13 +25,14 @@ class UserTripBackersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_trip_backers)
-        val jsonArray = intent.getStringExtra("JOIN_LIST")
 
+        val jsonArray = intent.getStringExtra("JOIN_LIST")
         val backerArray = Gson().fromJson(jsonArray, Array<User>::class.java)
         backerArrayList = backerArray.toCollection(ArrayList())
-        backersAdapter = BackersAdapter(backerArrayList, {}, {
+        backersAdapter = BackersAdapter(backerArrayList, {
             Log.d("yay", it)
-
+        }, {
+            Log.d("yay", it)
         })
         updateList.setOnClickListener { backersAdapter.setTrashButtons() }
         closeTripBackersButton.setOnClickListener { onBackPressed() }

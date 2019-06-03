@@ -12,12 +12,16 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.fragment_chat_message.*
+import kotlinx.android.synthetic.main.fragment_create_trip.*
 import myapp.com.karry.R
 import myapp.com.karry.adapters.CitiesAdapter
 import myapp.com.karry.model.SharedViewModel
 
 class CityPickerFragment : Fragment() {
     private val cityLisArray: ArrayList<City> = arrayListOf()
+    private var currentFragment: Fragment? = null
+    private var currentContainer: Int? = null
 
     var arrivalValue: String = ""
     var destinationValue: String = ""
@@ -31,10 +35,23 @@ class CityPickerFragment : Fragment() {
         model = activity?.run {
             ViewModelProviders.of(this).get(SharedViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
+
+        val bundleArgs = arguments
+        val fragment = bundleArgs?.getString("currentFragment").toString()
+
+        if (fragment === "search") {
+            currentFragment = SearchFragment()
+            currentContainer = R.id.cityPickerContainer
+        }
+        if (fragment === "createTrip") {
+            currentFragment = CreateTripFragment()
+            currentContainer = R.id.fragmentContainer2
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_city_picker, container, false)
+
         createCityList()
         v.arrivalCitiesList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
         v.arrivalCitiesList.adapter = CitiesAdapter(cityLisArray) { cityName ->
@@ -54,31 +71,32 @@ class CityPickerFragment : Fragment() {
         })
 
         v.closeSearchResult.setOnClickListener {
-            val searchFragment = SearchFragment()
-            closeCityPicker(searchFragment)
+
+            closeCityPicker(currentFragment, currentContainer)
         }
 
         return v
     }
     private fun  fillSearchBar(cityName: String) {
-        val searchFragment = SearchFragment()
         val bundleArgs = arguments
         val direction = bundleArgs?.getString("currentDirection").toString()
 
         if (direction === "destination") {
             model.setDestination(cityName)
-        } else if (direction === "arrival") {
-            model.setArrival(cityName)
+        } else if (direction === "departure") {
+            model.setDeparture(cityName)
         }
 
-        closeCityPicker(searchFragment)
+        closeCityPicker(currentFragment, currentContainer)
     }
 
-    private fun closeCityPicker(fragment: Fragment) {
-        val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+    private fun closeCityPicker(fragment: Fragment?, currentContainer: Int?) {
+        if (fragment !== null && currentContainer !== null) {
+            val fragmentTransaction = fragmentManager!!.beginTransaction()
+            fragmentTransaction.replace(currentContainer, fragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
     }
 
     private fun filter(text: String) {

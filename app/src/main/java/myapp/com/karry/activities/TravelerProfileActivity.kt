@@ -19,14 +19,12 @@ class TravelerProfileActivity : AppCompatActivity() {
 
         closeTravelerProfile.setOnClickListener { onBackPressed() }
         travelerName.text = intent.getStringExtra("ownerName")
-        travelerLocation.text = "TODO" //TODO location traveler dans son compte
-        tripsCount.text = "TODO" //TODO get Count trip
-        transactionCount.text = "TODO" //TODO get Count transaction
-        rate.text = intent.getStringExtra("ownerRatings") //TODO rating traveler dans son compte
-        travelerDescriptionValue.text = intent.getStringExtra("ownerDescription") //TODO description traveler dans son compte
-
+        travelerLocation.text = "TODO"
+        tripsCount.text = "TODO"
+        transactionCount.text = "TODO"
+        rate.text = intent.getStringExtra("ownerRatings")
+        travelerDescriptionValue.text = intent.getStringExtra("ownerDescription")
         fillComments()
-
         bindView()
     }
 
@@ -34,7 +32,7 @@ class TravelerProfileActivity : AppCompatActivity() {
 
     private fun bindView() {
         runOnUiThread {
-            travelerComments.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            travelerComments.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             travelerComments.adapter = CommentsAdapter(commentList) {}
         }
     }
