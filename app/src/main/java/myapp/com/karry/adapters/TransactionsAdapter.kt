@@ -27,11 +27,9 @@ class TransactionsAdapter(private val transactionList: List<Transaction>) :
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         val transaction = transactionList[position]
-
         holder.view.transactionPrice.text = transaction.price
         holder.view.transactionName.text = transaction.name
         holder.view.transactionDescription.text = transaction.description
-
         holder.view.transactionCard.setOnClickListener { v -> loadTransaction(v.context, transaction) }
     }
 

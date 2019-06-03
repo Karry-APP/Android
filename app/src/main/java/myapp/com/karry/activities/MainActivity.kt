@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Setup fragments
         if (savedInstanceState == null) {
             navigation.isSelected
             navigation.selectedItemId = R.id.navigation_search
@@ -49,8 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
      private fun replaceFragment(fragment: Fragment) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+        val fragmentTransaction = supportFragmentManager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
         fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
         fragmentTransaction.commit()
     }

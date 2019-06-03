@@ -34,7 +34,6 @@ class TripFormActivity : AppCompatActivity() {
         val adapterDestinationCities = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, SpinnerChecker.itemsDestination)
         tripFormDepartureCity.adapter = adapterDepartureCities
         tripFormDestinationCity.adapter = adapterDestinationCities
-
         tripFormButton.setOnClickListener { createTrip() }
     }
 
@@ -56,12 +55,6 @@ class TripFormActivity : AppCompatActivity() {
             .notEqualTo(SpinnerChecker.itemsDestination[0])
             .check { tripDepartureCity = it }
 
-
-        // TODO: Check if departure city !== destination city
-
-        // TODO: Check carry Weight
-        // TODO: Check carry MaxAmount
-        // TODO: Check carry Taxe
 
         tripDestinationCountry = "France"
         tripDepartureCountry = "France"
@@ -92,20 +85,30 @@ class TripFormActivity : AppCompatActivity() {
 
     private fun createTrip() {
         if (validateForm()) {
-            tripFormButton.visibility = View.INVISIBLE
-            tripFormProgress.visibility = View.VISIBLE
             val token = TokenManager(this).deviceToken.toString()
-
-            TripsService.create(tripInfoAsJson(), token, {
-                startMainActivity()
-            }, {
-                runOnUiThread {
-                    tripFormProgress.visibility = View.INVISIBLE
-                    tripFormButton.visibility = View.VISIBLE
-                }
-            })
+            setStartLoadingUi()
+            TripsService.create(tripInfoAsJson(), token, { onSuccess() }, { onError() })
         }
     }
+
+    private fun onSuccess() = runOnUiThread {
+        startMainActivity()
+    }
+
+    private fun onError() = runOnUiThread {
+        setFinishLoadingUi()
+    }
+
+    private fun setStartLoadingUi() {
+        tripFormButton.visibility = View.INVISIBLE
+        tripFormProgress.visibility = View.VISIBLE
+
+    }
+    private fun setFinishLoadingUi() {
+        tripFormProgress.visibility = View.INVISIBLE
+        tripFormButton.visibility = View.VISIBLE
+    }
+
     private fun startMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()

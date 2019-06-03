@@ -19,9 +19,7 @@ class CreateTripWrapperActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_trip_wrapper)
 
         model = ViewModelProviders.of(this).get(SharedViewModel::class.java)
-
         model.cleanValues()
-
         replaceFragment(CreateTripFragment())
     }
 

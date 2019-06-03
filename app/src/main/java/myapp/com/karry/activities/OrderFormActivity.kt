@@ -15,15 +15,12 @@ class OrderFormActivity : AppCompatActivity() {
 
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
-
         if (savedInstanceState == null) {
-
             replaceFragment(OrderFormFragment())
         }
     }
 
     private fun replaceFragment(fragment: Fragment) {
-
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
         fragmentTransaction.commit()

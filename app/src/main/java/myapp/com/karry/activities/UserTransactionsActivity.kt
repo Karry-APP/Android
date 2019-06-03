@@ -10,17 +10,15 @@ import myapp.com.karry.adapters.TransactionsAdapter
 import myapp.com.karry.model.SharedViewModel
 
 class UserTransactionsActivity : AppCompatActivity() {
+
     private lateinit var  model: SharedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_transactions)
-        model = ViewModelProviders.of(this).get(SharedViewModel::class.java)
 
-        closeMytTransactionsButton.setOnClickListener {
-            model.cleanTransactionList()
-            onBackPressed()
-        }
+        model = ViewModelProviders.of(this).get(SharedViewModel::class.java)
+        closeMytTransactionsButton.setOnClickListener { model.cleanTransactionList(); onBackPressed() }
         bindView()
     }
 

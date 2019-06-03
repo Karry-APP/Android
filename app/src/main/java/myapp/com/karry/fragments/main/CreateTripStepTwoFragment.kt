@@ -1,7 +1,5 @@
 package myapp.com.karry.fragments.main
 
-
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,11 +11,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_create_trip_step_two.*
 import kotlinx.android.synthetic.main.fragment_create_trip_step_two.view.*
-
 import myapp.com.karry.R
 import myapp.com.karry.model.SharedViewModel
 import java.lang.Float.parseFloat
-import java.lang.Integer.parseInt
 
 class CreateTripStepTwoFragment : Fragment() {
 
@@ -49,10 +45,7 @@ class CreateTripStepTwoFragment : Fragment() {
     }
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater.inflate(R.layout.fragment_create_trip_step_two, container, false)
 
@@ -64,6 +57,7 @@ class CreateTripStepTwoFragment : Fragment() {
             model.orderPayload.carryWeight = parseFloat(weightParam.text.toString())
             replaceFragment(CreateTripStepTreeFragment())
         }
+
 
         // Inflate the layout for this fragment
         return v

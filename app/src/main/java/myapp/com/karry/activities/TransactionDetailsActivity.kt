@@ -1,17 +1,12 @@
 package myapp.com.karry.activities
 
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_transaction_details.*
-import kotlinx.android.synthetic.main.activity_traveler_profile.*
-import kotlinx.android.synthetic.main.shared_image_row.view.*
 import myapp.com.karry.R
-import myapp.com.karry.adapters.CommentsAdapter
 import myapp.com.karry.adapters.SharedImagesAdapter
-import myapp.com.karry.entity.Comment
 import myapp.com.karry.entity.SharedImage
 import myapp.com.karry.entity.Transaction
 import myapp.com.karry.entity.User
@@ -24,17 +19,17 @@ class TransactionDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaction_details)
-        fillSharedImages()
 
+        fillSharedImages()
         setTransactionDetails()
         setSharedImagesView()
-
         closeTransactionDetailsButton.setOnClickListener { onBackPressed() }
     }
 
     private fun setTransactionDetails() {
         transactionName.text = transaction.name
-        transactionAuthorName.text = transaction.author.firstname + " " + transaction.author.lastname
+        val fullname = "${transaction.author.firstname} ${transaction.author.lastname}"
+        transactionAuthorName.text = fullname
 
         Glide
             .with(this)
@@ -43,11 +38,9 @@ class TransactionDetailsActivity : AppCompatActivity() {
             .into(transactionAuthorImage)
     }
 
-    private fun setSharedImagesView() {
-        runOnUiThread {
-            transactionSharedImagesList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-            transactionSharedImagesList.adapter = SharedImagesAdapter(sharedImageList)
-        }
+    private fun setSharedImagesView() = runOnUiThread {
+        transactionSharedImagesList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        transactionSharedImagesList.adapter = SharedImagesAdapter(sharedImageList)
     }
 
     private fun fillSharedImages() {
