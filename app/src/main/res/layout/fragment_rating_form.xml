@@ -60,39 +60,42 @@
                 android:layout_height="wrap_content" android:id="@+id/rating_label" android:gravity="center"
                 android:textSize="18sp"/>
         <TextView
-                android:text="TextView"
+                android:text="@string/rating_form_label"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/rating_text"/>
+                android:layout_height="wrap_content" android:id="@+id/rating_text" android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp" android:layout_marginTop="24dp" android:gravity="center"/>
         <RatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/ratingBar" android:numStars="5"
                 android:progressTint="#4CEBA0" android:progressBackgroundTint="#DADADA"
-                android:stepSize="1"/>
+                android:stepSize="1" android:layout_marginTop="8dp"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textMultiLine"
-                android:gravity="start|top"
+                android:minLines="3"
+                android:maxLines="6"
+                android:gravity="top"
+                android:verticalScrollbarPosition="right"
+                android:scrollbars="vertical"
                 android:ems="10"
                 android:id="@+id/edit_comment" android:hint="@string/rating_form_hint_comment"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginStart="45dp" android:layout_marginEnd="45dp"/>
     </LinearLayout>
 
     <Button
-            android:text="Button"
+            android:text="@string/rating_form_btn_text"
             android:id="@+id/btn_sendForm"
             android:shadowRadius="0"
             android:layout_width="match_parent"
             android:background="@drawable/btn_rounded_normal"
             style="?android:attr/borderlessButtonStyle" android:textColor="@android:color/white"
             android:layout_height="55dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout24"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="45dp" android:layout_marginEnd="45dp"/>
+            android:layout_marginStart="45dp" android:layout_marginEnd="45dp" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout24"/>
     <ProgressBar
             style="?android:attr/progressBarStyle"
             android:layout_width="0dp"

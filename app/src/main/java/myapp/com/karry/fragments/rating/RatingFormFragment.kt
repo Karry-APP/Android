@@ -6,9 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RatingBar
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_update_profile.*
@@ -18,17 +15,9 @@ import myapp.com.karry.R
 import myapp.com.karry.activities.MainActivity
 import myapp.com.karry.entity.Request
 import myapp.com.karry.entity.RequestRating
-import myapp.com.karry.entity.Trip
 import myapp.com.karry.modules.TokenManager
-import myapp.com.karry.modules.UserInfoManager
-import myapp.com.karry.network.RequestsService
-import myapp.com.karry.network.TripsService
 import myapp.com.karry.network.UsersService
 import org.json.JSONObject
-
-
-
-
 
 
 class RatingFormFragment: Fragment() {
@@ -38,7 +27,10 @@ class RatingFormFragment: Fragment() {
 
         setText(v)
 
-        v.btn_sendForm.setOnClickListener{ sendRatingForm() }
+        v.btn_sendForm.setOnClickListener{
+            if(ratingBar.getRating() != 0.0f) {
+                sendRatingForm()
+            } }
 
         return v
     }
@@ -54,22 +46,8 @@ class RatingFormFragment: Fragment() {
 
     }
 
-    fun onRatingChanged(v: View) {
-
-        activity?.intent!!.putExtra("ratingValue", v.ratingBar.getRating().toString())
-        rating_text.text = v.ratingBar.getRating().toString()
-    }
-
-
     private fun setText(v: View) {
 
-        if (activity?.intent!!.getStringExtra("ownerId") == activity?.intent!!.getStringExtra("actualUserId")) {
-            v.rating_text.text = "Si vous deviez noter la personne qui vous a commandé cet objet vous lui donneriez: "
-
-        } else {
-            v.rating_text.text = "Si vous deviez noter le voyageur qui vous a rapporté cet objet vous lui donneriez: "
-
-        }
         v.rating_trip_date.text = activity?.intent!!.getStringExtra("endDate")
     }
 
@@ -80,13 +58,6 @@ class RatingFormFragment: Fragment() {
 
         UsersService.patchProfile(ratingInfoAsJson(), token, { request -> goToMainActivity() }, { onError() })
 
-
-        //if (ratingInfoAsJson() != "") {
-        //    UsersService.patchProfile(ratingInfoAsJson(), token, { request -> goToMainActivity() }, { onError() })
-//
-        //} else {
-        //    onError()
-        //}
     }
 
     private fun goToMainActivity() = activity?.runOnUiThread {
@@ -103,26 +74,30 @@ class RatingFormFragment: Fragment() {
     private fun ratingInfoAsJson():JSONObject {
         val userObject= JSONObject()
 
-        userObject.put("ratings", ratingBar.getRating().toString())
+        val oldRate = activity?.intent!!.getStringExtra("actualRatings").toFloat()
+        val formRate = ratingBar.getRating()
+        var newRate: Float = 0.0f
+
+        if (formRate > oldRate) {
+            newRate = (formRate - oldRate)
+            newRate = oldRate + (newRate / 2) //TODO get et increment un attribut du user qui continet le nombre de vote qu'il a reçu
+
+        } else {
+            newRate = (oldRate - formRate)
+            newRate = oldRate - (newRate / 2) //TODO get et increment un attribut du user qui continet le nombre de vote qu'il a reçu
+
+        }
+
+        //TODO iterer nombre de vote
+
+        val number3digits:Double = String.format("%.3f", newRate).toDouble()
+        val number2digits:Double = String.format("%.2f", number3digits).toDouble()
+        val solutionRate:Double = String.format("%.1f", number2digits).toDouble()
+
+        userObject.put("ratings", solutionRate)
         userObject.put("userID", activity?.intent!!.getStringExtra("actualUserId"))
 
         return userObject
-
-
-        //val rate: String = activity?.intent!!.getStringExtra("radioRate")
-        ////val comment: String = edit_comment.text.toString()
-        //val user_id = activity?.intent!!.getStringExtra("actualUserId")
-        //val user_firstname = activity?.intent!!.getStringExtra("actualFirstname")
-        //val user_lastname = activity?.intent!!.getStringExtra("actualLastname")
-//
-        //if (rate != "" ) {
-        //    val request = RequestRating(user_id, user_firstname, user_lastname, rate)
-        //    return userObject
-//
-        //} else {
-        //    val request = ""
-        //    //return request
-        //}
     }
 
 }

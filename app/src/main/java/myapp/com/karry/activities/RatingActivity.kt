@@ -52,7 +52,7 @@ class RatingActivity : AppCompatActivity() {
             } else {
                 Log.d("yay", "Ca a marché")
                 val trip = it
-                intent.putExtra("endDate", trip.destinationCity) //TODO à remplacer par la date de retour quand on l'aura
+                intent.putExtra("endDate", "TODO") //TODO à remplacer par la date de retour quand on l'aura
                 intent.putExtra("ownerId", trip.owner._id)
                 intent.putExtra("backerList", trip.joinList)
             }

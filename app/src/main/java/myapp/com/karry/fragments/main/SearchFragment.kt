@@ -41,7 +41,7 @@ class SearchFragment : Fragment() {
         v.searchButton.setOnClickListener { redirectToSearchResults() }
 
         v.postSearch.setOnClickListener {
-            val intent = Intent(v.context, RatingActivity::class.java)
+            val intent = Intent(v.context, SaveSearchActivity::class.java)
             startActivity(intent)
         }
         displayReceivedData(v)
