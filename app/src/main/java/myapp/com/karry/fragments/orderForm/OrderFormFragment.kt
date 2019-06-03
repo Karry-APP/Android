@@ -35,7 +35,8 @@ class OrderFormFragment: Fragment() {
         v.link_weight_estimate_fragment.setOnClickListener { launchFragment(WeightEstimateOrderFragment()) }
         v.link_volume_estimate_fragment.setOnClickListener { launchFragment(VolumeEstimateOrderFragment()) }
 
-        v.buttonSendOrder.setOnClickListener{sendOrderForm()}
+        v.back_arrow.setOnClickListener{ goTripDetailsActivity() }
+        v.buttonSendOrder.setOnClickListener{ sendOrderForm() }
 
         return v
     }
@@ -81,6 +82,14 @@ class OrderFormFragment: Fragment() {
 
     private fun goToMainActivity() = activity?.runOnUiThread {
         startActivity(Intent(this.context, MainActivity::class.java))
+    }
+
+    private fun goTripDetailsActivity() = activity?.runOnUiThread {
+        val intent = Intent(this.context, TripDetails::class.java)
+        val trip = activity?.intent!!.getStringExtra("TRIP")
+        intent.putExtra("TRIP", trip)
+        startActivity(intent)
+        activity?.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
     private fun orderInfoAsJson(): String {
