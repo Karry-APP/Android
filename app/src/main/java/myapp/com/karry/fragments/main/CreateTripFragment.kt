@@ -9,14 +9,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_create_trip.*
 import kotlinx.android.synthetic.main.fragment_create_trip.view.*
+import kotlinx.android.synthetic.main.help_dialog_layout.view.*
 
 import myapp.com.karry.R
 import myapp.com.karry.model.SharedViewModel
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 
@@ -58,6 +59,10 @@ class CreateTripFragment : Fragment() {
         v.validStepOne.setOnClickListener {
             replaceFragment(CreateTripStepTwoFragment())
             model.roundTrip.value = v.roundTrip.isChecked
+        }
+
+        v.helpButton.setOnClickListener {
+            showNewNameDialog(v)
         }
 
         v.arrivalDate.setOnClickListener {
@@ -126,5 +131,18 @@ class CreateTripFragment : Fragment() {
         fragmentTransaction.commit()
     }
 
+    private fun showNewNameDialog(v: View) {
+        val helpDialogLayout = R.layout.help_dialog_layout
+        val mDialogView = LayoutInflater.from(v.context).inflate(helpDialogLayout, null)
 
+        val alertDialog = AlertDialog.Builder(v.context) // this: Activity
+            .setView(mDialogView)
+            .create()
+        alertDialog.show()
+
+        mDialogView.skipButton.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+    }
 }
