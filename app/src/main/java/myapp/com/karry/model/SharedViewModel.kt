@@ -15,6 +15,7 @@ class SharedViewModel : ViewModel() {
     val carryTax= MutableLiveData<Int>()
     val carryVolume= MutableLiveData<Int>()
     val userID = MutableLiveData<String>()
+    val roundTrip = MutableLiveData<Boolean>()
 
 
     val transactionId = MutableLiveData<String>()
@@ -38,6 +39,7 @@ class SharedViewModel : ViewModel() {
         userObject.put("carryVolume",carryVolume.value)
         userObject.put("carryTaxe",carryTax.value)
         userObject.put("owner",userID.value)
+        userObject.put("roundTrip",roundTrip.value)
 
 
         return userObject

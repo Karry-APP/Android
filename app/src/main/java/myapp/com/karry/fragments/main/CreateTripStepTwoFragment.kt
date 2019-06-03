@@ -49,8 +49,13 @@ class CreateTripStepTwoFragment : Fragment() {
 
         val v = inflater.inflate(R.layout.fragment_create_trip_step_two, container, false)
 
+
+        if (model.carryWeight.value !== null ) {
+            v.weightParam.text = Editable.Factory.getInstance().newEditable(model.carryWeight.value.toString())
+        }
+
         v.backButton.setOnClickListener { replaceFragment(CreateTripFragment()) }
-        v.closeIcon.setOnClickListener { replaceFragment(SearchFragment()) }
+        v.closeIcon.setOnClickListener { activity?.finish() }
 
         v.volumeParamContainer.setOnClickListener { replaceFragment(ChooseVolumeFragment()) }
         v.validStepTwo.setOnClickListener {
@@ -75,7 +80,9 @@ class CreateTripStepTwoFragment : Fragment() {
                 }
 
                 override fun afterTextChanged(s: Editable) {
-                    model.carryWeight.value = parseFloat(s.toString())
+                    if (s.isNotEmpty()) {
+                        model.carryWeight.value = parseFloat(s.toString())
+                    }
                 }
             })
         }
@@ -89,5 +96,6 @@ class CreateTripStepTwoFragment : Fragment() {
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
+
 
 }
