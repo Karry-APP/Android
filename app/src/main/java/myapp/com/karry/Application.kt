@@ -36,9 +36,6 @@ class MainApplication : Application() {
                     Log.w(TAG, "getInstanceId failed", task.exception)
                     return@OnCompleteListener
                 }
-
-                val token = task.result?.token
-                Toast.makeText(this.applicationContext, token, Toast.LENGTH_SHORT).show()
             })
     }
 }
