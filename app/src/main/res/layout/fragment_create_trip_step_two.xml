@@ -86,7 +86,7 @@
             android:paddingBottom="24dp">
 
         <TextView
-                android:text="CreateTrip_volumeLabel"
+                android:text="@string/CreateTrip_volumeLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/volumeParamLabel"

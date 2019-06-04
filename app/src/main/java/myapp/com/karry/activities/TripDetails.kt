@@ -53,8 +53,6 @@ class TripDetails : AppCompatActivity() {
                 descriptionValue.text = tripDetails.description
                 linkTravelerProfile.setOnClickListener { startTravelerProfileActivity() }
 
-                Log.d("yay", tripDetails.owner._id)
-                Log.d("yay", UserInfoManager(this).id)
                 if (tripDetails.owner._id == UserInfoManager(this).id) {
                     buttonOrderForm.visibility = View.INVISIBLE
                 }

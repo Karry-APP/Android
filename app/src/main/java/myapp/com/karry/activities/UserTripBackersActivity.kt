@@ -30,9 +30,7 @@ class UserTripBackersActivity : AppCompatActivity() {
         val backerArray = Gson().fromJson(jsonArray, Array<User>::class.java)
         backerArrayList = backerArray.toCollection(ArrayList())
         backersAdapter = BackersAdapter(backerArrayList, {
-            Log.d("yay", it)
         }, {
-            Log.d("yay", it)
         })
         closeTripBackersButton.setOnClickListener { onBackPressed() }
         backersList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.baseContext)

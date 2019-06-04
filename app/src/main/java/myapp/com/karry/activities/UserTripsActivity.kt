@@ -15,7 +15,6 @@ class UserTripsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_trips)
 
-        Log.d("yay", "yaaay")
         val viewPager = userTripsViewPager
         val tabLayout = userTripsTabLayout
         configureTabLayout(viewPager, tabLayout)

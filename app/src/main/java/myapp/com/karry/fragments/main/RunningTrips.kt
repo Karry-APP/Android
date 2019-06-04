@@ -16,6 +16,7 @@ import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.network.UsersService
 import java.lang.Exception
+import java.time.OffsetDateTime
 
 class RunningTrips : Fragment() {
 
@@ -26,8 +27,6 @@ class RunningTrips : Fragment() {
         model = activity?.run {
             ViewModelProviders.of(this).get(SharedViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
-
-        Log.d("yay", "yay")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -44,14 +43,15 @@ class RunningTrips : Fragment() {
 
         UsersService.getCreatedTrips(token,  {
             if (it.isNullOrEmpty()) {
-                Log.d("yay", "Empty")
             } else {
-                model.storeTrips(it)
-                Log.d("yay", it.size.toString())
+                val cleanTrip = it.filter {currentTrip ->
+                    val date = OffsetDateTime.parse(currentTrip.arrivalDate)
+                    date.isAfter(OffsetDateTime.now())
+                }
+                model.storeTrips(cleanTrip)
                 bindView(v)
             }
         }, {
-            Log.d("yay", "Something bad happened")
         })
     }
 

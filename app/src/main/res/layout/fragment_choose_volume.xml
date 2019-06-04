@@ -43,7 +43,7 @@
                 android:layout_height="match_parent" android:layout_weight="10"
                 android:gravity="center">
             <TextView
-                    android:text="ChooseVolume_SMALL"
+                    android:text="@string/ChooseVolume_SMALL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/smallLabel" android:textColor="@color/black"
                     android:textSize="20sp"/>
@@ -74,12 +74,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:layout_weight="10" android:gravity="center">
             <TextView
-                    android:text="ChooseVolume_MEDIUM"
+                    android:text="@string/ChooseVolume_MEDIUM_helpers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/mediumLabel" android:textColor="@color/black"
                     android:textSize="20sp"/>
             <TextView
-                    android:text="ChooseVolume_MEDIUM_helpers"
+                    android:text="@string/ChooseVolume_MEDIUM_helpers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/mediumDescription"
                     android:textColor="@color/colorDarkBLue"/>
@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:layout_weight="10" android:gravity="center">
             <TextView
-                    android:text="ChooseVolume_BIG"
+                    android:text="@string/ChooseVolume_BIG"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/bigLabel" android:textColor="@color/black"
                     android:textSize="20sp"/>

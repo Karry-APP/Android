@@ -34,7 +34,6 @@ class UserTransactionsActivity : AppCompatActivity() {
 
             } else {
                 runOnUiThread {
-                    Log.d("yay", it.size.toString())
                     bindView(it)
                 }
             }
