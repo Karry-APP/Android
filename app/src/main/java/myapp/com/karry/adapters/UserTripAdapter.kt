@@ -12,6 +12,7 @@ import myapp.com.karry.R
 import myapp.com.karry.activities.OverlapDecoration
 import myapp.com.karry.activities.UserTripActivity
 import myapp.com.karry.entity.Trip
+import java.lang.Exception
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -42,17 +43,21 @@ class RequestedTripsAdapter(private val tripList: List<Trip>) : androidx.recycle
         holder.view.addedBackersList.setHasFixedSize(true)
         holder.view.addedBackersList.adapter = CardBackersAdapter(trip.joinList)
         holder.view.tripCreatedDate.text = getFormattedDateSimple(trip.createdAt)
-        holder.view.arrivalDateValue.text = trip.arrivalDate
+        holder.view.arrivalDateValue.text = getFormattedDateSimple(trip.arrivalDate)
     }
 
     private fun getFormattedDateSimple(dateInString: String): String {
-        if (dateInString !== null) {
-            val date = OffsetDateTime.parse(dateInString)
-            val f = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-                .withLocale(Locale.FRANCE)  // Or Locale.CANADA_FRENCH and such.
+        try {
+            if (dateInString !== null) {
+                val date = OffsetDateTime.parse(dateInString)
+                val f = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+                    .withLocale(Locale.FRANCE)  // Or Locale.CANADA_FRENCH and such.
 
-            return date.format(f)
-        } else {
+                return date.format(f)
+            } else {
+                return dateInString
+            }
+        } catch (e: Exception) {
             return dateInString
         }
     }
