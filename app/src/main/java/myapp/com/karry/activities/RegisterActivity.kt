@@ -20,7 +20,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var userEmail: String
     private lateinit var userPassword: String
 
-
     private fun replaceFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.cityPickerContainer, fragment)
@@ -30,7 +29,6 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         if (savedInstanceState == null) {
@@ -50,11 +48,11 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun userInfoAsJson(): String {
         val randomFirstName = (1..8)
-            .map { i -> kotlin.random.Random.nextInt(0, charPool.size) }
+            .map { kotlin.random.Random.nextInt(0, charPool.size) }
             .map(charPool::get)
             .joinToString("")
         val randomLastName = (1..8)
-            .map { i -> kotlin.random.Random.nextInt(0, charPool.size) }
+            .map { kotlin.random.Random.nextInt(0, charPool.size) }
             .map(charPool::get)
             .joinToString("")
         val userObject = JSONObject()
@@ -81,7 +79,7 @@ class RegisterActivity : AppCompatActivity() {
         UserInfoManager(baseContext).phone = user.phone
         UserInfoManager(baseContext).email = user.email
         UserInfoManager(baseContext).profilePicture = user.profilePicture
-        //startMainActivity()
+        //oToMainActivity()
     }
 
     private fun onError() = runOnUiThread {

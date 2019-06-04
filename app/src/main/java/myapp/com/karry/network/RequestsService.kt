@@ -1,17 +1,13 @@
 package myapp.com.karry.network
 
-import android.view.View
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_order_form.*
 import myapp.com.karry.entity.Request
 import myapp.com.karry.modules.ApiManager
 import okhttp3.*
 import java.io.IOException
 
 class RequestsService {
-
     companion object {
-
         fun create(orderJson: String, token: String, success: (request: Request) -> Unit, failure: () -> Unit) {
             val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), orderJson)
             val request = okhttp3.Request.Builder().header("X-Auth", token).url(ApiManager.URL.REQUESTS_CREATE).post(body).build()
@@ -24,11 +20,8 @@ class RequestsService {
                 }
                 override fun onFailure(call: Call, e: IOException) {
                     failure()
-                    //android.app.Fragment.buttonSendOrder.visibility = View.VISIBLE
-                    //progressSendOrder.visibility = View.INVISIBLE
                 }
             })
         }
-
     }
 }
