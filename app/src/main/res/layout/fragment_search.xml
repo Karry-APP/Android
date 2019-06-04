@@ -59,7 +59,7 @@
                         android:textStyle="bold"
 
                         android:textColor="@color/colorDarkBLue"
-                        android:text="SearchFragment_destinationLabel"
+                        android:text="@string/SearchFragment_destinationLabel"
                         android:layout_width="match_parent"
                         android:textSize="18sp"
 

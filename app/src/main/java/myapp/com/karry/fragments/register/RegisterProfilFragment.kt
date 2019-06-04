@@ -33,13 +33,11 @@ class RegisterProfilFragment: Fragment() {
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
-
     }
 
     private fun startLoginActivity() {
         startActivity(Intent(this.context, LoginActivity::class.java))
         activity?.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
-
     }
 
     //private lateinit var userEmail: String
