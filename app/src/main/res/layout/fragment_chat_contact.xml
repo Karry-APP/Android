@@ -6,43 +6,10 @@
              android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
              tools:context=".fragments.chat.ChatContactFragment">
 
-
-    <LinearLayout
-            android:orientation="horizontal"
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRequestsList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_profile" android:id="@+id/profil"
-                android:layout_weight="1" android:layout_gravity="center_vertical"/>
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_weight="1">
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <TextView
-                        android:text="Requête: "
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/demande_title"
-                        style="@style/userNameTrip"/>
-                <TextView
-                        android:text="Huile d'olive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/demande_object" android:layout_weight="1"
-                        android:layout_marginLeft="8dp" style="@style/textSmallGrey"/>
-            </LinearLayout>
-            <TextView
-                    android:text="10h54"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/date" style="@style/textSmallGrey"/>
-        </LinearLayout>
-        <TextView
-                android:text="20€"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" android:id="@+id/demande_price" android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical" android:textColor="#121212"/>
-    </LinearLayout>
+            android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 </FrameLayout>

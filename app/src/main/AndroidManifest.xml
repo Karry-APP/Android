@@ -14,11 +14,13 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".activities.ChatActivity">
+        </activity>
         <activity android:name=".activities.CreateTripWrapperActivity">
         </activity>
         <activity android:name=".activities.RatingActivity">
         </activity>
-        <activity android:name=".activities.SaveSearchActivity">
+        <activity android:name=".activities.AskingContactActivity">
         </activity>
         <activity android:name=".activities.UserTripActivity">
         </activity>

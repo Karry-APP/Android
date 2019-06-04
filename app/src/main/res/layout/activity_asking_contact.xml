@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent" >
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".activities.AskingContactActivity" android:background="@color/colorWhiteBackground">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" android:id="@+id/linearLayout22">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" android:paddingTop="32dp"
+                    android:paddingBottom="32dp" android:background="@drawable/card_border">
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" app:srcCompat="@drawable/ic_arrow_back"
+                        android:id="@+id/backButton"
+                        android:background="@android:color/transparent"
+                        android:layout_weight="0.3"/>
+                <TextView
+                        android:text="Demande de contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView28"
+                        android:textColor="@color/colorLightBLue"
+                        android:textSize="20sp" android:textStyle="bold"
+                        android:layout_weight="1"/>
+            </LinearLayout>
+            <TextView
+                    android:text="Annonce: Paris - Londres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView30" android:paddingTop="12dp"
+                    android:paddingBottom="12dp" android:paddingStart="24dp" android:paddingEnd="24dp"
+                    android:background="@drawable/card_border"/>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                           xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                           xmlns:tools="http://schemas.android.com/tools"
+                                                           android:layout_width="match_parent"
+                                                           android:layout_height="wrap_content"
+                                                           android:background="@drawable/card_border"
+                                                           android:id="@+id/backerCard"
+                                                           android:layout_marginTop="24dp"
+                                                           app:layout_constraintTop_toBottomOf="@+id/linearLayout22"
+                                                           app:layout_constraintEnd_toEndOf="parent"
+                                                           app:layout_constraintStart_toStartOf="parent">
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" tools:srcCompat="@tools:sample/avatars"
+                    android:id="@+id/backerAvatar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginBottom="24dp" android:layout_marginTop="24dp"
+                    app:layout_constraintStart_toEndOf="@+id/trashButton" android:layout_marginStart="16dp"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/backerName" android:layout_marginTop="24dp"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/backerAvatar"
+                    android:layout_marginStart="16dp" android:textColor="@android:color/black" android:textStyle="bold"
+                    android:textSize="16sp" android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton3"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/backerRate"
+                    app:layout_constraintTop_toBottomOf="@+id/backerName"
+                    app:layout_constraintStart_toEndOf="@+id/backerAvatar"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="24dp"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton3" android:layout_marginEnd="16dp"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="@drawable/ic_right_arrow"
+                    android:id="@+id/imageButton3"
+                    android:background="@android:color/transparent" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="24dp"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:srcCompat="@drawable/ic_trash_icon"
+                    android:id="@+id/trashButton"
+                    android:background="@android:color/transparent"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" android:visibility="gone"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/backerCard" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:background="@drawable/card_border"
+                android:id="@+id/linearLayout23">
+            <TextView
+                    android:text="Huilde d'olive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/productName" android:paddingStart="24dp"
+                    android:paddingTop="24dp" android:textColor="@color/black" android:textStyle="bold"
+                    android:textSize="18sp"/>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:paddingStart="24dp" android:paddingBottom="24dp">
+                <TextView
+                        android:text="Petit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/carryVolume" android:layout_weight="0.3"/>
+                <TextView
+                        android:text="0 - 2 kg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/carryWeight" android:layout_weight="0.3"/>
+                <TextView
+                        android:text="0 - 20 €"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/carryMaxAmount"
+                        android:layout_weight="2"/>
+            </LinearLayout>
+            <TextView
+                    android:text="Récompense proposé"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView44" android:paddingStart="24dp"
+                    android:paddingTop="16dp"/>
+            <TextView
+                    android:text="7 €"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/carryTaxe" android:paddingStart="24dp"
+                    android:textColor="@color/black" android:textStyle="bold" android:textSize="18sp"/>
+            <Button
+                    android:text="Accepter la demande"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/acceptButton"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp" android:layout_marginTop="24dp"/>
+            <Button
+                    android:text="Refuser la demande"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/denyButton"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp" android:layout_marginBottom="24dp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout23" android:background="@drawable/card_border"
+                android:id="@+id/linearLayout24">
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView46" android:paddingStart="24dp"
+                    android:paddingTop="16dp" android:paddingEnd="24dp" android:textColor="@color/black"
+                    android:textStyle="bold" android:textSize="18sp"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/description" android:paddingStart="24dp"
+                    android:paddingEnd="24dp" android:paddingBottom="16dp" android:textSize="16sp"
+                    android:paddingTop="8dp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout24" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp">
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" tools:srcCompat="@tools:sample/avatars"
+                    android:id="@+id/imageView17"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

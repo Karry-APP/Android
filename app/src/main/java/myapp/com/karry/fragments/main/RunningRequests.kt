@@ -69,7 +69,7 @@ class RunningRequests : Fragment() {
         val tripListArray = model.tripListArray
 
         activity?.runOnUiThread {
-            v.runningTripListRecylcerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
+            v.runningTripListRecylcerView.layoutManager = LinearLayoutManager(this.context)
             v.runningTripListRecylcerView.adapter = RequestedTripsAdapter(tripListArray)
         }
     }
