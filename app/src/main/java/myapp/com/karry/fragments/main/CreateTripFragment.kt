@@ -5,7 +5,6 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -47,7 +46,7 @@ class CreateTripFragment : Fragment() {
         }
 
         if (model.arrivalDate.value !== null) {
-            v.arrivalDate.text = Editable.Factory.getInstance().newEditable(model.arrivalDate.value)
+            v.textView.text = Editable.Factory.getInstance().newEditable(model.arrivalDate.value)
         }
 
         if (model.departureValue.value.isNullOrEmpty() && model.destinationValue.value.isNullOrEmpty() && model.arrivalDate.value.isNullOrEmpty()) {
@@ -68,7 +67,7 @@ class CreateTripFragment : Fragment() {
             showHelperDialog(v)
         }
 
-        v.arrivalDate.setOnClickListener {
+        v.textView.setOnClickListener {
             val curCalender = Calendar.getInstance()
             val datePickerDialog = DatePickerDialog(this.context!!,
                 DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
@@ -79,7 +78,7 @@ class CreateTripFragment : Fragment() {
                     val dateShipMillis = calendar.timeInMillis
 
                     model.arrivalDate.value = getFormattedDateSimple(dateShipMillis)
-                    arrivalDate.text = Editable.Factory.getInstance().newEditable(model.arrivalDate.value)
+                    textView.text = Editable.Factory.getInstance().newEditable(model.arrivalDate.value)
                 },
 
                 curCalender.get(Calendar.YEAR),

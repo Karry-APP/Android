@@ -12,7 +12,7 @@
             android:background="@color/colorWhiteBackground"
     >
         <TextView
-                android:text="Recherche de voyageurs"
+                android:text="@string/SearchFragment_Title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView"

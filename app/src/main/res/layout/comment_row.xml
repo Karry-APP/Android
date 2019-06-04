@@ -10,7 +10,6 @@
             android:drawableBottom="@android:color/black" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/userName"
             android:textColor="#121212" android:textSize="16sp"
-            android:text="@string/ProfileFragment_logoutButton_text"
             android:layout_marginBottom="10dp"/>
     <TextView
             android:text="TextView"

@@ -24,7 +24,7 @@
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
                 <TextView
-                        android:text="Recherche de voyageurs"
+                        android:text="@string/SearchFragment_Title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView"
@@ -59,7 +59,7 @@
                         android:textStyle="bold"
 
                         android:textColor="@color/colorDarkBLue"
-                        android:text="Où se trouve votre produit ?"
+                        android:text="@string/SearchFragment_destinationLabel"
                         android:layout_width="match_parent"
                         android:textSize="18sp"
 
@@ -98,7 +98,7 @@
                 <TextView
                         android:textColor="@color/colorDarkBLue"
                         android:textStyle="bold"
-                        android:text="Où souhaitez vous être livré ?"
+                        android:text="@string/SearchFragment_departureLabel"
                         android:layout_width="match_parent"
                         android:textSize="18sp"
                         android:layout_marginTop="12dp"
