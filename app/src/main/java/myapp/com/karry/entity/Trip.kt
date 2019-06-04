@@ -14,5 +14,6 @@ class Trip (
     val carryTaxe: String,
     val owner: User,
     val joinList: ArrayList<User>,
-    val arrivalDate: String
+    val arrivalDate: String,
+    val createdAt: String
 )

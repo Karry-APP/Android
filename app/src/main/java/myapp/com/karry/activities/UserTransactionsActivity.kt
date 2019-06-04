@@ -34,6 +34,7 @@ class UserTransactionsActivity : AppCompatActivity() {
 
             } else {
                 runOnUiThread {
+                    Log.d("yay", it.size.toString())
                     bindView(it)
                 }
             }
@@ -44,9 +45,8 @@ class UserTransactionsActivity : AppCompatActivity() {
 
 
     private fun bindView(transactionListArray: Array<UserRequest>) {
-            val cleanListArray = transactionListArray.filter{ trip -> trip.creator === UserInfoManager(this).id}
             transactionsList.layoutManager = LinearLayoutManager(this.baseContext)
-            transactionsList.adapter = TransactionsAdapter(cleanListArray.toTypedArray())
+            transactionsList.adapter = TransactionsAdapter(transactionListArray)
 
     }
 }

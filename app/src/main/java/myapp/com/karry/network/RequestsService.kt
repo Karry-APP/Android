@@ -37,8 +37,6 @@ class RequestsService {
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
-                    Log.d("yay", e.toString())
-
                     failure()
                 }
             })

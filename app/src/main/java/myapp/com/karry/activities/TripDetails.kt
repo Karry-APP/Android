@@ -3,6 +3,7 @@ package myapp.com.karry.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import androidx.lifecycle.ViewModelProviders
@@ -14,6 +15,7 @@ import myapp.com.karry.fragments.main.SearchResultsFragment
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.TripsManager
+import myapp.com.karry.modules.UserInfoManager
 
 class TripDetails : AppCompatActivity() {
     private lateinit var model: SharedViewModel
@@ -51,6 +53,12 @@ class TripDetails : AppCompatActivity() {
                 descriptionValue.text = tripDetails.description
                 linkTravelerProfile.setOnClickListener { startTravelerProfileActivity() }
 
+                Log.d("yay", tripDetails.owner._id)
+                Log.d("yay", UserInfoManager(this).id)
+                if (tripDetails.owner._id == UserInfoManager(this).id) {
+                    buttonOrderForm.visibility = View.INVISIBLE
+                }
+
                 Glide
                     .with(this)
                     .load("https://" + tripDetails.owner.profilePicture)
@@ -61,6 +69,8 @@ class TripDetails : AppCompatActivity() {
             runOnUiThread {
             }
         })
+
+
     }
   
   private fun startTravelerProfileActivity() {

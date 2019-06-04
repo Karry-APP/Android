@@ -9,24 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_user_trip.*
-import kotlinx.android.synthetic.main.fragment_running_requests.view.*
-import kotlinx.android.synthetic.main.fragment_search_results.view.*
+import kotlinx.android.synthetic.main.fragment_running_trips.view.*
 import myapp.com.karry.R
-import myapp.com.karry.adapters.CardBackersAdapter
 import myapp.com.karry.adapters.RequestedTripsAdapter
-import myapp.com.karry.adapters.TripsAdapter
-import myapp.com.karry.adapters.UserRequestsAdapter
-import myapp.com.karry.entity.Trip
-import myapp.com.karry.entity.User
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
-import myapp.com.karry.modules.UserInfoManager
-import myapp.com.karry.network.TripsService
 import myapp.com.karry.network.UsersService
 import java.lang.Exception
 
-class RunningRequests : Fragment() {
+class RunningTrips : Fragment() {
 
     private lateinit var  model: SharedViewModel
 
@@ -35,11 +26,13 @@ class RunningRequests : Fragment() {
         model = activity?.run {
             ViewModelProviders.of(this).get(SharedViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
+
+        Log.d("yay", "yay")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val v: View = inflater.inflate(R.layout.fragment_running_requests, container, false)
+        val v: View = inflater.inflate(R.layout.fragment_running_trips, container, false)
         loadUserTrips(v)
         bindView(v)
 
@@ -49,18 +42,17 @@ class RunningRequests : Fragment() {
     private fun loadUserTrips(v: View) {
         val token = TokenManager(context!!).deviceToken.toString()
 
-        if (model.tripListArray.isNullOrEmpty()) {
-            UsersService.getCreatedTrips(token,  {
-                if (it.isNullOrEmpty()) {
-                    Log.d("yay", "Empty")
-                } else {
-                    model.storeTrips(it)
-                    bindView(v)
-                }
-            }, {
-                Log.d("yay", "Something bad happened")
-            })
-        }
+        UsersService.getCreatedTrips(token,  {
+            if (it.isNullOrEmpty()) {
+                Log.d("yay", "Empty")
+            } else {
+                model.storeTrips(it)
+                Log.d("yay", it.size.toString())
+                bindView(v)
+            }
+        }, {
+            Log.d("yay", "Something bad happened")
+        })
     }
 
 

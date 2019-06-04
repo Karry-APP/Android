@@ -2,15 +2,21 @@ package myapp.com.karry.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.request_trips_row.view.*
+import kotlinx.android.synthetic.main.user_trips_row.view.*
 import myapp.com.karry.R
 import myapp.com.karry.activities.OverlapDecoration
 import myapp.com.karry.activities.UserTripActivity
 import myapp.com.karry.entity.Trip
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import java.util.*
+
 
 class RequestedTripViewHolder(val view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view)
 
@@ -22,12 +28,13 @@ class RequestedTripsAdapter(private val tripList: List<Trip>) : androidx.recycle
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RequestedTripViewHolder {
         val layoutInflater: LayoutInflater = LayoutInflater.from(parent.context)
-        val cellForRow = layoutInflater.inflate(R.layout.request_trips_row, parent, false)
+        val cellForRow = layoutInflater.inflate(R.layout.user_trips_row, parent, false)
         return RequestedTripViewHolder(cellForRow)
     }
 
     override fun onBindViewHolder(holder: RequestedTripViewHolder, position: Int) {
         val trip = tripList[position]
+        Log.d("yay", trip.createdAt.toString())
         holder.view.requestTripCard.setOnClickListener { v -> loadTrip(v.context, trip) }
         holder.view.departureCity.text = trip.departureCity.capitalize()
         holder.view.arrivalCity.text = trip.destinationCity.capitalize()
@@ -35,6 +42,15 @@ class RequestedTripsAdapter(private val tripList: List<Trip>) : androidx.recycle
         holder.view.addedBackersList.addItemDecoration(OverlapDecoration())
         holder.view.addedBackersList.setHasFixedSize(true)
         holder.view.addedBackersList.adapter = CardBackersAdapter(trip.joinList)
+        holder.view.tripCreatedDate.text = getFormattedDateSimple(trip.createdAt)
+    }
+
+    private fun getFormattedDateSimple(dateInString: String): String {
+        val date = OffsetDateTime.parse(dateInString)
+        val f = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+            .withLocale(Locale.FRANCE)  // Or Locale.CANADA_FRENCH and such.
+
+        return date.format(f)
     }
 
     private fun loadTrip(c: Context, trip: Trip) {
