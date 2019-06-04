@@ -25,7 +25,7 @@
                         android:background="@android:color/transparent"
                         android:layout_weight="0.3"/>
                 <TextView
-                        android:text="Demande de contact"
+                        android:text="@string/tchatFragment_navigation_contact"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView28"
@@ -129,7 +129,7 @@
                         android:layout_weight="2"/>
             </LinearLayout>
             <TextView
-                    android:text="Récompense proposé"
+                    android:text="@string/tchatFragment_tips"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/textView44" android:paddingStart="24dp"
                     android:paddingTop="16dp"/>
@@ -139,17 +139,22 @@
                     android:layout_height="wrap_content" android:id="@+id/carryTaxe" android:paddingStart="24dp"
                     android:textColor="@color/black" android:textStyle="bold" android:textSize="18sp"/>
             <Button
-                    android:text="Accepter la demande"
+                    android:text="@string/tchatFragment_acceptButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/acceptButton"
                     android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp" android:layout_marginTop="24dp"/>
+                    android:layout_marginEnd="24dp" android:layout_marginTop="24dp"
+                    android:background="@drawable/btn_rounded_normal"
+                    android:textColor="#FFFFFF"/>
             <Button
-                    android:text="Refuser la demande"
+                    android:text="@string/tchatFragment_rejectButton"
                     android:layout_width="match_parent"
+
                     android:layout_height="wrap_content" android:id="@+id/denyButton"
                     android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp" android:layout_marginBottom="24dp"/>
+                    android:layout_marginEnd="24dp" android:layout_marginBottom="24dp"
+                    android:background="@drawable/btn_rounded_red"
+                    android:textColor="#FFFFFF" android:layout_marginTop="8dp"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"

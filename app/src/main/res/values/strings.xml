@@ -10,6 +10,7 @@
     <!-- LoginActivity -->
     <string name="LoginActivity_loginLogo_contentDescription">Logo Karry</string>
     <string name="LoginActivity_inputEmail_hint">Email</string>
+    <string name="LoginActivity_logoutButton">Déconnexion</string>
     <string name="LoginActivity_inputPassword_hint">Mot de passe</string>
     <string name="LoginActivity_buttonLogin_text">Se connecter</string>
     <string name="LoginActivity_linkForgotPassword_text">Mot de passe oublié ?</string>
@@ -51,6 +52,7 @@
     <string name="MainActivity_bottomNavigation_chatTitle">Chat</string>
     <string name="MainActivity_bottomNavigation_profileTitle">Profil</string>
     <string name="MainActivity_bottomNavigation_updateProfileTitle">Modifier mon profil</string>
+    <string name="MainActivity_bottomNavigation_updateProfileButtonTitle">Modifier</string>
 
     <!-- Announcement Page -->
     <string name="announcementActivity_userName">Adrien F.</string>
@@ -74,6 +76,9 @@
     <string name="title_activity_trip_form">TripFormActivity</string>
     <string name="ProfileFragment_profilePicture_contentDescription">Image du profil</string>
     <string name="ProfilFragment_titleProfil">Profil</string>
+    <string name="tripFragment_titleTripList">Mes voyages</string>
+    <string name="tripFragment_placeholderTripList">Il semble que vous n\'avez jamais créé de voyage</string>
+    <string name="tripFragment_placeholderTripList_link">Créez-en un maintenant</string>
 
     <!-- TripFormActivity -->
     <string name="TripFormActivity_TripPageTitle_text">Créer un voyage</string>
@@ -110,6 +115,7 @@
     <string name="searchResultActivity_maxAmount">Taille</string>
     <string name="searchResultActivity_tripDetailsInformationsPlaceholder">Informations</string>
     <string name="searchResultActivity_tripDetailsAvailabilityPlaceholder">Disponibilitées</string>
+    <string name="searchResultActivity_tripDetailsTitle">Détails de ma commande</string>
 
     <!-- TravelerProfileFragment -->
     <string name="TravelerProfileFragment_trips_stats">Voyages</string>
@@ -126,6 +132,9 @@
         ?
     </string>
     <string name="SearchFragment_postTripTooltipButton">Dites nous où vous partez</string>
+    <string name="SearchFragment_Title">Recherche de voyageurs</string>
+    <string name="SearchFragment_destinationLabel">Où se trouve votre produit ?</string>
+    <string name="SearchFragment_departureLabel">Où souhaitez vous être livré ?</string>
 
     <!-- Account Page -->
     <string name="accountActivity_buttonUpdateInformation">Modifier mes informations</string>
@@ -145,6 +154,9 @@
     <string name="tchatFragment_title">Messagerie</string>
     <string name="tchatFragment_navigation_message">Messages</string>
     <string name="tchatFragment_navigation_contact">Demande de contact</string>
+    <string name="tchatFragment_tips">Récompense proposé</string>
+    <string name="tchatFragment_acceptButton">Accepter la demande</string>
+    <string name="tchatFragment_rejectButton">Refuser la demande</string>
 
     <!-- Order -->
     <string name="orderFormActivity_title">Demande de contact</string>
@@ -193,4 +205,63 @@
 
     <!-- UserTripFragment -->
     <string name="UserTripFragment_page_title">Détails de l\'annonce</string>
+
+    <!-- Reuests -->
+    <string name="UserRequestsTitle">Mes commandes</string>
+    <string name="UserRequests_addedBackers">Commanditaires ajoutés</string>
+    <string name="UserTripBackerstitle">Commanditaires</string>
+
+    <string name="UserTripBackerCardCreatedAd">Annonce créé le </string>
+    <string name="UserTripBackerCardarrivalDate">Arrivé prévu le</string>
+
+
+    <!-- ChooseVolumeFragment -->
+    <string name="ChooseVolumeTitle">Commanditaires</string>
+    <string name="ChooseVolume_SMALL">PETIT</string>
+    <string name="ChooseVolume_SMALL_helpers">Bijou, sachet de bonbon, livre de poche ...</string>
+    <string name="ChooseVolume_MEDIUM">MOYEN</string>
+    <string name="ChooseVolume_MEDIUM_helpers">Pull, jean, vêtements, équipements  ...</string>
+    <string name="ChooseVolume_BIG">GRAND</string>
+    <string name="ChooseVolume_BIG_helpers">Boîte de chaussures, ballon de basket ...</string>
+
+    <!-- CityPickerFragment -->
+    <string name="CityPickerTitle">Je souhaite etre livré à : </string>
+    <string name="CityPicker_searchbarHint">Ville de départ du voyageur</string>
+
+    <!-- CreateTripFragment -->
+    <string name="CreateTripTitle">Déposer une annonce</string>
+    <string name="CreateTrip_roundTripOption">Allez-retour ?</string>
+    <string name="CreateTrip_validStepOne">Valider les informations</string>
+    <string name="CreateTrip_stepOne_departureLabel">D\'où partez-vous ? *</string>
+    <string name="CreateTrip_stepOne_descriptionLabel">Description du voyage *</string>
+    <string name="CreateTrip_stepOne_destinationLabel">Où allez vous ? *</string>
+    <string name="CreateTrip_stepOne_arrivalDateLabel">Quand arrivez vous ? *</string>
+    <string name="CreateTrip_roundTripOption_helpers">2 voyages seront créés sur l’app.</string>
+    <string name="CreateTripsSubtitle">Renseignez d’abord les informations sur votre voyage.</string>
+
+
+    <!-- CreateTripFragment_STEP_2 -->
+    <string name="CreateTripTitle_STEP_2">Renseignez vos contraintes </string>
+    <string name="CreateTripSubtitle_STEP_2">Renseignez vos contraintes de transport. Cela réduira les demandes de contact qui ne vous correspondent pas. </string>
+    <string name="CreateTrip_weightLabel">Quel poids pouvez-vous transporter ?</string>
+    <string name="CreateTrip_volumeLabel">Quel volume pouvez-vous transporter ?</string>
+    <string name="CreateTrip_helperLabel">(En plus de vos affaires)</string>
+    <string name="CreateTrip_validStepTwo">Valider les contraintes</string>
+
+    <!-- CreateTripFragment_STEP_3 -->
+    <string name="CreateTripTitle_STEP_3">Quel est votre prix ?</string>
+    <string name="CreateTripSubtitle_STEP_3">Dites pour quelle commission minimum vous acceptez de ramener un produit. </string>
+    <string name="CreateTrip_validStepthree">Déposer l\'annonce</string>
+    <string name="CreateTrip_stepThree_taxLabel">Montant de la commission </string>
+    <string name="CreateTrip_stepThree_maxPriceLabel">Prix maximum que vous pouvez avancer</string>
+
+    <!-- HelpDialog -->
+
+    <string name="HelpDialog_title">2 voyages seront créés sur l’app.</string>
+    <string name="HelpDialog_content">Lors d’un voyage aller-retour, nous créons 2 voyages : 1 pour l’aller  et un pour le retour. Vous serez donc contacté soit pour l’un, soit pour l’autre.</string>
+    <string name="HelpDialog_content_part_2">ex: pour un Paris-Rome aller-retour, les 2 voyages seront Paris->Rome et Rome->Paris</string>
+    <string name="HelpDialog_closeButton">J\'ai compris !</string>
+
+
+
 </resources>

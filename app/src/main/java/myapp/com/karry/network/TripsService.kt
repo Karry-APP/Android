@@ -14,9 +14,12 @@ class TripsService {
             val request = okhttp3.Request.Builder().header("x-auth", token).url(ApiManager.URL.TRIP_CREATE).post(body).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    when (response.code()) {
-                        201 -> success(response)
-                        else -> failure()
+
+                    if (response.code() == 201) {
+                        success(response)
+                    } else {
+
+                        failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {

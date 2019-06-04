@@ -24,11 +24,6 @@ class BackersAdapter(private var backerList: List<User>, val click: (userId: Str
         return backerList.count()
     }
 
-    fun setTrashButtons() {
-        isDeleteMode = !isDeleteMode
-        notifyDataSetChanged()
-    }
-
     override fun onBindViewHolder(holder: BackerViewHolder, position: Int) {
         val backer = backerList[position]
         val fullname = backer.firstname + " " + backer.lastname

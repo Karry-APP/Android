@@ -17,20 +17,21 @@
             android:layout_marginBottom="16dp" app:layout_constraintBottom_toTopOf="@+id/tripDepartureCityDetails"/>
     <TextView
             android:text="@string/searchResultActivity_defaultName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/userName"
             app:layout_constraintStart_toEndOf="@+id/userAvatar"
-            android:layout_marginStart="8dp" tools:text="Adrien F."
+            android:layout_marginStart="16dp" tools:text="Adrien F."
             android:textColor="@android:color/black" android:textStyle="bold" android:layout_marginTop="24dp"
-            app:layout_constraintTop_toTopOf="parent" android:textSize="16sp"/>
+            app:layout_constraintTop_toTopOf="parent" android:textSize="16sp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/linkTripDetails"/>
     <TextView
             android:text="@string/searchResultActivity_defaultRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/userRate"
             app:layout_constraintStart_toEndOf="@+id/userAvatar"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             tools:text="4.8"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@+id/userName" android:textSize="16sp" android:layout_marginTop="4dp"/>

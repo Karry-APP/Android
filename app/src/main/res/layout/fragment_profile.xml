@@ -15,14 +15,15 @@
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:layout_weight="1" android:paddingStart="16dp"
-                    android:paddingTop="32dp" android:paddingEnd="16dp" android:paddingBottom="32dp">
+                    android:layout_height="match_parent" android:layout_weight="1"
+                    android:paddingTop="32dp" android:paddingBottom="32dp"
+                    android:background="@android:color/white">
                 <TextView
                         android:text="@string/ProfilFragment_titleProfil"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_weight="1"
-                        android:layout_marginStart="16dp" android:textSize="20sp"
-                        android:textColor="#004E64" android:textStyle="bold"/>
+                        android:layout_marginStart="24dp" android:textSize="20sp"
+                        android:textColor="#004E64" android:textStyle="bold" android:layout_marginEnd="24dp"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="horizontal"
@@ -82,7 +83,7 @@
                             android:paddingStart="8dp" android:paddingTop="8dp" android:paddingBottom="8dp"
                             android:paddingEnd="8dp" android:layout_gravity="center">
                         <TextView
-                                android:text="Voyages"
+                                android:text="@string/MainActivity_bottomNavigation_tripsTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="normal"
@@ -118,7 +119,7 @@
                             android:paddingStart="8dp" android:paddingTop="8dp" android:paddingBottom="8dp"
                             android:paddingEnd="8dp" android:layout_gravity="center">
                         <TextView
-                                android:text="Mes commandes"
+                                android:text="@string/UserRequestsTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="normal"
@@ -154,7 +155,7 @@
                             android:paddingStart="8dp" android:paddingTop="8dp" android:paddingBottom="8dp"
                             android:paddingEnd="8dp" android:layout_gravity="center">
                         <TextView
-                                android:text="Déconnexion"
+                                android:text="@string/LoginActivity_logoutButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="normal"

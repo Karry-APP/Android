@@ -42,7 +42,16 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             navigation.isSelected
             navigation.selectedItemId = R.id.navigation_search
-            replaceFragment(SearchFragment())
+
+            val extra = intent.getIntExtra("fragmentToDisplay", 1)
+
+            when (extra) {
+                1 -> replaceFragment(SearchFragment())
+                2 -> replaceFragment(TripsFragment())
+                3 -> replaceFragment(ChatFragment())
+                4 -> replaceFragment(ProfileFragment())
+                else -> replaceFragment(SearchFragment())
+            }
         }
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }

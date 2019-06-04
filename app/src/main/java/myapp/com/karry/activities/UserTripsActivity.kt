@@ -2,11 +2,12 @@ package myapp.com.karry.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_user_trips.*
 import myapp.com.karry.R
-import myapp.com.karry.adapters.UserRequestsAdapter
+import myapp.com.karry.adapters.UserTripsManagment
 
 class UserTripsActivity : AppCompatActivity() {
 
@@ -21,11 +22,11 @@ class UserTripsActivity : AppCompatActivity() {
     }
 
     private fun configureTabLayout(viewPager: ViewPager, tabLayout: TabLayout) {
-        val adapter = UserRequestsAdapter(supportFragmentManager, tabLayout.tabCount)
-        viewPager.adapter = adapter
         tabLayout.addTab(tabLayout.newTab().setText("En cours"))
         tabLayout.addTab(tabLayout.newTab().setText("Historique"))
 
+        val adapter = UserTripsManagment(supportFragmentManager, tabLayout.tabCount)
+        viewPager.adapter = adapter
 
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         tabLayout.addOnTabSelectedListener(object :

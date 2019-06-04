@@ -29,12 +29,10 @@ class ChatFragment : Fragment() {
         val viewPager = v.profileViewPager
         val tabLayout = v.profileTabLayout
         configureTabLayout(viewPager, tabLayout)
-
         return v
     }
 
     private fun configureTabLayout(viewPager: ViewPager, tabLayout: TabLayout) {
-
         tabLayout.addTab(tabLayout.newTab().setText("Messages"))
         tabLayout.addTab(tabLayout.newTab().setText("Demande de contact"))
 

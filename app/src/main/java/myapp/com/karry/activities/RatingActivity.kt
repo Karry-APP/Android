@@ -48,9 +48,7 @@ class RatingActivity : AppCompatActivity() {
 
         TripsService.tripById(tripId, token, {
             if (it.id.isEmpty()) {
-                Log.d("yay", "Empty")
             } else {
-                Log.d("yay", "Ca a marché")
                 val trip = it
                 intent.putExtra("endDate", "TODO") //TODO à remplacer par la date de retour quand on l'aura
                 intent.putExtra("ownerId", trip.owner._id)
@@ -69,7 +67,6 @@ class RatingActivity : AppCompatActivity() {
             if (it._id.isEmpty()) {
                 Log.d("yay", "Empty")
             } else {
-                Log.d("yay", "Ca a marché")
                 val actualUser = it
                 intent.putExtra("actualUserId", actualUser._id)
                 intent.putExtra("actualFirstname", actualUser.firstname)

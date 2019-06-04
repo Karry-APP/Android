@@ -8,6 +8,7 @@
 >
     <ScrollView
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -15,19 +16,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/mainSearchPage">
-
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/linearLayout15"
-                    android:background="@android:color/white"
+                    android:background="@android:color/transparent"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
                 <TextView
-                        android:text="Recherche de voyageurs"
+                        android:text="@string/SearchFragment_Title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView"
+                        android:id="@+id/arrivalDate"
                         android:textStyle="bold"
 
                         app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
@@ -59,9 +59,10 @@
                         android:textStyle="bold"
 
                         android:textColor="@color/colorDarkBLue"
-                        android:text="Où se trouve votre produit ?"
+                        android:text="@string/SearchFragment_destinationLabel"
                         android:layout_width="match_parent"
                         android:textSize="18sp"
+
                         android:layout_height="wrap_content" android:id="@+id/destinationCityLabel"
                         android:padding="5dp"/>
                 <TextView
@@ -97,10 +98,11 @@
                 <TextView
                         android:textColor="@color/colorDarkBLue"
                         android:textStyle="bold"
-                        android:text="Où souhaitez vous être livré ?"
+                        android:text="@string/SearchFragment_departureLabel"
                         android:layout_width="match_parent"
                         android:textSize="18sp"
                         android:layout_marginTop="12dp"
+
 
                         android:layout_height="wrap_content" android:id="@+id/departureCityLabel"
                         android:padding="5dp"/>
@@ -126,6 +128,7 @@
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="45dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintHorizontal_bias="0.494"
+
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout5" android:layout_marginTop="24dp"
                     style="?android:attr/borderlessButtonStyle" android:textSize="14sp"/>
 

@@ -16,6 +16,10 @@ class SharedViewModel : ViewModel() {
     val carryVolume= MutableLiveData<Int>()
     val userID = MutableLiveData<String>()
     val roundTrip = MutableLiveData<Boolean>()
+    val arrivalDate = MutableLiveData<String>()
+    val parsedArrivalDate = MutableLiveData<String>()
+    val description = MutableLiveData<String>()
+    val carryMaxAmount = MutableLiveData<Int>()
 
 
     val transactionId = MutableLiveData<String>()
@@ -24,7 +28,7 @@ class SharedViewModel : ViewModel() {
     private val defaultAuthor: User = User("toto", "Nicolas", "Leroy", "0646862158", "nico@kkarry.fr", "https://png.pngtree.com/element_origin_min_pic/17/09/18/d555144313d6d69a8820a3baaf5d81fe.jpg", "", "Pas de description encore", "2", "4")
     private val defaultTransaction = Transaction("test", "Hahahahhahahahha", "Huilde d'olive", "24, 30 €", defaultSharedImageList, defaultAuthor)
     val tripListArray: ArrayList<Trip> = arrayListOf()
-    val transactionListArray: ArrayList<Transaction> = arrayListOf()
+    val transactionListArray: ArrayList<UserRequest> = arrayListOf()
     val backerListArray: ArrayList<User> = arrayListOf()
 
 
@@ -39,7 +43,10 @@ class SharedViewModel : ViewModel() {
         userObject.put("carryVolume",carryVolume.value)
         userObject.put("carryTaxe",carryTax.value)
         userObject.put("owner",userID.value)
-        userObject.put("roundTrip",roundTrip.value)
+        userObject.put("isRound",roundTrip.value)
+        userObject.put("arrivalDate",arrivalDate.value)
+        userObject.put("carryMaxAmount",carryMaxAmount.value)
+        userObject.put("description",description.value)
 
 
         return userObject
@@ -79,10 +86,11 @@ class SharedViewModel : ViewModel() {
         for (backer in backers) {
             backerListArray.add(backer)
         }
-        Log.d("yay", backerListArray.first().email.toString())
     }
 
-    fun storeTransactions() {
-        transactionListArray.add(defaultTransaction)
+    fun storeTransactions(transactions: Array<UserRequest>) {
+        for (transaction in transactions) {
+            transactionListArray.add(transaction)
+        }
     }
 }
