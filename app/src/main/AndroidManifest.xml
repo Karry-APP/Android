@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".activities.RatingActivity">
         </activity>
+
         <activity android:name=".activities.AskingContactActivity">
         </activity>
         <activity android:name=".activities.UserTripActivity">

@@ -53,15 +53,33 @@ class CreateTripStepTwoFragment : Fragment() {
         if (model.carryWeight.value !== null ) {
             v.weightParam.text = Editable.Factory.getInstance().newEditable(model.carryWeight.value.toString())
         }
+        if (model.carryVolume.value !== null ) {
+            v.volumeValue.text = when (model.carryVolume.value.toString()) {
+                "1" -> "Petit"
+                "2" -> "Moyen"
+                "3" -> "Grand"
+                else -> ""
+            }
+        } else {
+            v.volumeValue.visibility = View.GONE
+        }
+
+        if (model.carryVolume.value !== null && model.carryWeight.value !== null) {
+            v.validStepTwo.setOnClickListener {
+                model.orderPayload.carryWeight = parseFloat(weightParam.text.toString())
+                replaceFragment(CreateTripStepTreeFragment())
+            }
+        } else {
+            v.validStepTwo.isEnabled = false
+        }
+
+
 
         v.backButton.setOnClickListener { replaceFragment(CreateTripFragment()) }
         v.closeIcon.setOnClickListener { activity?.finish() }
 
         v.volumeParamContainer.setOnClickListener { replaceFragment(ChooseVolumeFragment()) }
-        v.validStepTwo.setOnClickListener {
-            model.orderPayload.carryWeight = parseFloat(weightParam.text.toString())
-            replaceFragment(CreateTripStepTreeFragment())
-        }
+
 
 
         // Inflate the layout for this fragment

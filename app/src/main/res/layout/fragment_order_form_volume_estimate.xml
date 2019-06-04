@@ -117,7 +117,7 @@
                 <ImageView
                         android:layout_width="40dp"
                         android:layout_height="wrap_content" app:srcCompat="@drawable/ic_large_volume"
-                        android:id="@+id/imageView7" android:layout_weight="1"/>
+                        android:id="@+id/helpButton" android:layout_weight="1"/>
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"

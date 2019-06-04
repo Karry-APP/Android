@@ -35,6 +35,7 @@ class ChatFragment : Fragment() {
 
     private fun configureTabLayout(viewPager: ViewPager, tabLayout: TabLayout) {
 
+
         tabLayout.addTab(tabLayout.newTab().setText("Messages"))
         tabLayout.addTab(tabLayout.newTab().setText("Demande de contact"))
 
