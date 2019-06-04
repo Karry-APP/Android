@@ -2,6 +2,7 @@ package myapp.com.karry.fragments.main
 
 
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,7 +17,11 @@ import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.network.UsersService
 import java.lang.Exception
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.time.OffsetDateTime
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 class PassedTrips: Fragment() {
 
@@ -44,8 +49,10 @@ class PassedTrips: Fragment() {
             if (it.isNullOrEmpty()) {
             } else {
                 val cleanTrip = it.filter {currentTrip ->
-                    val date = OffsetDateTime.parse(currentTrip.arrivalDate)
-                    date.isBefore(OffsetDateTime.now())
+
+                    val days = getDaysBetweenDates(currentTrip.arrivalDate)
+
+                    days < 0
                 }
                 model.storeTrips(cleanTrip)
                 bindView(v)
@@ -63,5 +70,36 @@ class PassedTrips: Fragment() {
         }
     }
 
+    fun getDaysBetweenDates(end: String): Long {
+        val calendar = Calendar.getInstance()
+        val DATE_FORMAT = "dd/MM/yyyy"
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val month = calendar.get(Calendar.MONTH) + 1
+        val year = calendar.get(Calendar.YEAR)
+        val start = "$day/$month/$year"
+        val dateFormat = SimpleDateFormat(DATE_FORMAT, Locale.FRENCH)
+
+        val startDate: Date
+        val endDate: Date
+        var numberOfDays: Long = 0
+        try {
+            startDate = dateFormat.parse(start)
+            endDate = dateFormat.parse(end)
+            Log.d("yay", startDate.toString())
+            Log.d("yay", endDate.toString())
+            numberOfDays = getUnitBetweenDates(startDate, endDate, TimeUnit.DAYS)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+
+        Log.d("yay", numberOfDays.toString())
+
+        return numberOfDays
+    }
+
+    private fun getUnitBetweenDates(startDate: Date, endDate: Date, unit: TimeUnit): Long {
+        val timeDiff = endDate.time - startDate.time
+        return unit.convert(timeDiff, TimeUnit.MILLISECONDS)
+    }
 
 }
