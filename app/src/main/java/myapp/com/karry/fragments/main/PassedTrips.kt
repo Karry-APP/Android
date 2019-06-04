@@ -45,7 +45,7 @@ class PassedTrips: Fragment() {
             } else {
                 val cleanTrip = it.filter {currentTrip ->
                     val date = OffsetDateTime.parse(currentTrip.arrivalDate)
-                    date.isAfter(OffsetDateTime.now())
+                    date.isBefore(OffsetDateTime.now())
                 }
                 model.storeTrips(cleanTrip)
                 bindView(v)

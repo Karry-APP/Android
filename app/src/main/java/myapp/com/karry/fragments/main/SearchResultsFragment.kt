@@ -86,7 +86,6 @@ class SearchResultsFragment : Fragment() {
                     }
                 }
             }, {
-                Log.d("yay", "Something bad happened")
             })
     }
 

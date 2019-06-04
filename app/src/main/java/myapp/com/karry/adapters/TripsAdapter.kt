@@ -32,8 +32,6 @@ class TripsAdapter(private val tripList: List<Trip>, val click: (trip: Trip) -> 
         val trip = tripList[position]
         val fullname = "${trip.owner.firstname} ${trip.owner.lastname}"
 
-
-        Log.d("yay",Gson().toJson(trip))
         Glide
             .with(holder.view)
             .load("https://" + trip.owner.profilePicture)

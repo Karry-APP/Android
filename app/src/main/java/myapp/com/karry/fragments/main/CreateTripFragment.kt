@@ -47,7 +47,7 @@ class CreateTripFragment : Fragment() {
         }
 
         if (model.arrivalDate.value !== null) {
-            v.arrivalDate.text = Editable.Factory.getInstance().newEditable(model.arrivalDate.value)
+            v.arrivalDate.text = Editable.Factory.getInstance().newEditable(model.parsedArrivalDate.value)
         }
 
         if (model.departureValue.value.isNullOrEmpty() && model.destinationValue.value.isNullOrEmpty() && model.arrivalDate.value.isNullOrEmpty()) {
@@ -79,7 +79,8 @@ class CreateTripFragment : Fragment() {
                     val dateShipMillis = calendar.timeInMillis
 
                     model.arrivalDate.value = getFormattedDateToISO8601(dateShipMillis)
-                    arrivalDate.text = Editable.Factory.getInstance().newEditable(getFormattedDateSimple(dateShipMillis))
+                    model.parsedArrivalDate.value = getFormattedDateSimple(dateShipMillis)
+                    arrivalDate.text = Editable.Factory.getInstance().newEditable(model.parsedArrivalDate.value)
                 },
 
                 curCalender.get(Calendar.YEAR),

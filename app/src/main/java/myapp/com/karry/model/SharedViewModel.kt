@@ -17,6 +17,7 @@ class SharedViewModel : ViewModel() {
     val userID = MutableLiveData<String>()
     val roundTrip = MutableLiveData<Boolean>()
     val arrivalDate = MutableLiveData<String>()
+    val parsedArrivalDate = MutableLiveData<String>()
     val description = MutableLiveData<String>()
     val carryMaxAmount = MutableLiveData<Int>()
 
@@ -85,7 +86,6 @@ class SharedViewModel : ViewModel() {
         for (backer in backers) {
             backerListArray.add(backer)
         }
-        Log.d("yay", backerListArray.first().email.toString())
     }
 
     fun storeTransactions(transactions: Array<UserRequest>) {
