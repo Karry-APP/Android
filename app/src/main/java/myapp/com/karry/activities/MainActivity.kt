@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import myapp.com.karry.R
-import myapp.com.karry.fragments.ChatFragment
-import myapp.com.karry.fragments.ProfileFragment
-import myapp.com.karry.fragments.SearchFragment
-import myapp.com.karry.fragments.TripsFragment
+import myapp.com.karry.fragments.main.ChatFragment
+import myapp.com.karry.fragments.main.ProfileFragment
+import myapp.com.karry.fragments.main.SearchFragment
+import myapp.com.karry.fragments.main.TripsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,13 +42,22 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             navigation.isSelected
             navigation.selectedItemId = R.id.navigation_search
-            replaceFragment(SearchFragment())
+
+            val extra = intent.getIntExtra("fragmentToDisplay", 1)
+
+            when (extra) {
+                1 -> replaceFragment(SearchFragment())
+                2 -> replaceFragment(TripsFragment())
+                3 -> replaceFragment(ChatFragment())
+                4 -> replaceFragment(ProfileFragment())
+                else -> replaceFragment(SearchFragment())
+            }
         }
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
+     private fun replaceFragment(fragment: Fragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }

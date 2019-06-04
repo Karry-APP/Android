@@ -5,6 +5,18 @@
     <color name="colorAccent">#008577</color>
 
     <color name="colorBackground">#fffafa</color>
+    <color name="colorWhiteBackground">#F8FAFE</color>
+
     <color name="colorRed">#FF3C3C</color>
+    <color name="inputBorderColor">#EFF3FB</color>
+
+    <color name="colorDarkBLue">#7C9299</color>
+    <color name="colorDarkBLueOpac">#667C9299</color>
+
+    <color name="colorLightBLue">#004E64</color>
+    <color name="shadow">#C3CBD0</color>
+    <color name="city_picker_background">#F0F3F9</color>
+    <color name="green_karry">#4CEBA0</color>
+
 
 </resources>

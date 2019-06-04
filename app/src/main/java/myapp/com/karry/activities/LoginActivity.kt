@@ -10,6 +10,7 @@ import myapp.com.karry.R
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.UsersService
+import okhttp3.Response
 import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
@@ -20,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         loginButton.setOnClickListener { loginUser() }
         loginDontHaveAccount.setOnClickListener { startRegisterActivity() }
         loginForgotPassword.setOnClickListener { forgotPassword() }
@@ -44,28 +46,38 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginUser() {
         if (validateForm()) {
-            loginButton.visibility = View.INVISIBLE
-            loginProgress.visibility = View.VISIBLE
-            UsersService.login(userInfoAsJson(), { response ->
-                val jsonData: String = response.body()!!.string()
-                val userObj = JSONObject(jsonData)
-                TokenManager(baseContext).deviceToken = response.header("x-auth")
-                UserInfoManager(baseContext).id = userObj.getString("_id")
-                UserInfoManager(baseContext).firstname = userObj.getString("firstname")
-                UserInfoManager(baseContext).lastname = userObj.getString("lastname")
-                UserInfoManager(baseContext).phone = userObj.getString("phone")
-                UserInfoManager(baseContext).email = userObj.getString("email")
-                UserInfoManager(baseContext).profilePicture = userObj.getString("profilePicture")
-
-                startMainActivity()
-            }, {
-                runOnUiThread {
-                    loginError.text = getString(R.string.LoginActivity_loginError_text)
-                    loginProgress.visibility = View.INVISIBLE
-                    loginButton.visibility = View.VISIBLE
-                }
-            })
+            setStartLoadingUi()
+            UsersService.login(userInfoAsJson(), { response -> onSuccess(response) }, { onError() })
         }
+    }
+
+    private fun onSuccess(response: Response) = runOnUiThread {
+        val jsonData: String = response.body()!!.string()
+        val userObj = JSONObject(jsonData)
+        TokenManager(baseContext).deviceToken = response.header("x-auth")
+        UserInfoManager(baseContext).id = userObj.getString("id")
+        UserInfoManager(baseContext).firstname = userObj.getString("firstname")
+        UserInfoManager(baseContext).lastname = userObj.getString("lastname")
+        UserInfoManager(baseContext).phone = userObj.getString("phone")
+        UserInfoManager(baseContext).email = userObj.getString("email")
+        UserInfoManager(baseContext).profilePicture = userObj.getString("profilePicture")
+        startMainActivity()
+    }
+
+    private fun onError() = runOnUiThread {
+        loginError.text = getString(R.string.LoginActivity_loginError_text)
+        loginButton.text = "Se connecter"
+        setFinishLoadingUi()
+    }
+
+    private fun setStartLoadingUi() {
+        loginButton.visibility = View.INVISIBLE
+        loginProgress.visibility = View.VISIBLE
+
+    }
+    private fun setFinishLoadingUi() {
+        loginButton.visibility = View.VISIBLE
+        loginProgress.visibility = View.INVISIBLE
     }
 
     private fun forgotPassword() {
@@ -75,13 +87,10 @@ class LoginActivity : AppCompatActivity() {
     private fun startRegisterActivity() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun startMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
-
-
 }

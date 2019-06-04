@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "810569961289",
+    "firebase_url": "https://karry-app-f106e.firebaseio.com",
+    "project_id": "karry-app-f106e",
+    "storage_bucket": "karry-app-f106e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810569961289:android:b018a6e2f6be3b78",
+        "android_client_info": {
+          "package_name": "myapp.com.karry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810569961289-ps1u01b7hgkkgr54sij3ls40ldnuopek.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "myapp.com.karry",
+            "certificate_hash": "5d098f6d06d784e7d1ffc595a908771beca9664d"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOqi7fpFQcYxSIgyyl4eHJpxO4sWLKm_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810569961289-lf17j3fofk7degbvrbc3c19udm9nunjp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
