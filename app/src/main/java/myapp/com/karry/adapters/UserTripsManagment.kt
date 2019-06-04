@@ -3,18 +3,17 @@ package myapp.com.karry.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import myapp.com.karry.fragments.main.PassedRequests
-import myapp.com.karry.fragments.main.RunningRequests
+import myapp.com.karry.fragments.main.PassedTrips
+import myapp.com.karry.fragments.main.RunningTrips
 
-class UserRequestsAdapter(fm: FragmentManager, private var tabCount: Int) :
+class UserTripsManagment(fm: FragmentManager, private var tabCount: Int) :
     FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-
         return when (position) {
-            0 -> RunningRequests()
-            1 -> PassedRequests()
-            else -> RunningRequests()
+            0 -> RunningTrips()
+            1 -> PassedTrips()
+            else -> RunningTrips()
         }
     }
 

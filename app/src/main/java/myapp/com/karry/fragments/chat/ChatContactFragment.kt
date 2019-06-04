@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+
 import kotlinx.android.synthetic.main.fragment_chat_contact.*
 import kotlinx.android.synthetic.main.fragment_chat_contact.view.*
 import myapp.com.karry.R
@@ -19,6 +20,7 @@ import myapp.com.karry.network.UsersService
 class ChatContactFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(R.layout.fragment_chat_contact, container, false)
+
         v.chatRequestsList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
 
         val token: String? = TokenManager(this.context!!).deviceToken ?: ""

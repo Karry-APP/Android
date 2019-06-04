@@ -4,19 +4,21 @@ package myapp.com.karry.fragments.main
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_create_trip.*
 import kotlinx.android.synthetic.main.fragment_create_trip.view.*
+import kotlinx.android.synthetic.main.help_dialog_layout.view.*
 
 import myapp.com.karry.R
 import myapp.com.karry.model.SharedViewModel
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 
@@ -44,14 +46,26 @@ class CreateTripFragment : Fragment() {
             v.roundTrip.isChecked = model.roundTrip.value!!
         }
 
+        if (model.arrivalDate.value !== null) {
+            v.arrivalDate.text = Editable.Factory.getInstance().newEditable(model.arrivalDate.value)
+        }
+
+        if (model.departureValue.value.isNullOrEmpty() && model.destinationValue.value.isNullOrEmpty() && model.arrivalDate.value.isNullOrEmpty()) {
+            v.validStepOne.isEnabled = false
+        } else {
+            v.validStepOne.setOnClickListener {
+                replaceFragment(CreateTripStepTwoFragment())
+                model.roundTrip.value = v.roundTrip.isChecked
+            }
+        }
+
         v.departureCity.setOnClickListener { openCitySearch("departure", "createTrip") }
         v.departureLabel.setOnClickListener { openCitySearch("departure", "createTrip") }
         v.destinationCity.setOnClickListener { openCitySearch("destination", "createTrip") }
         v.destinationLabel.setOnClickListener { openCitySearch("destination", "createTrip") }
 
-        v.validStepOne.setOnClickListener {
-            replaceFragment(CreateTripStepTwoFragment())
-            model.roundTrip.value = v.roundTrip.isChecked
+        v.helpButton.setOnClickListener {
+            showHelperDialog(v)
         }
 
         v.arrivalDate.setOnClickListener {
@@ -63,7 +77,9 @@ class CreateTripFragment : Fragment() {
                     calendar.set(Calendar.MONTH, month)
                     calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                     val dateShipMillis = calendar.timeInMillis
-                    arrivalDate.text = Editable.Factory.getInstance().newEditable(getFormattedDateSimple(dateShipMillis))
+
+                    model.arrivalDate.value = getFormattedDateSimple(dateShipMillis)
+                    arrivalDate.text = Editable.Factory.getInstance().newEditable(model.arrivalDate.value)
                 },
 
                 curCalender.get(Calendar.YEAR),
@@ -73,6 +89,20 @@ class CreateTripFragment : Fragment() {
             datePickerDialog.datePicker.minDate = curCalender.timeInMillis
             datePickerDialog.show()
         }
+
+        v.description.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                if (s.isNotEmpty()) {
+                    model.description.value = s.toString()
+                }
+            }
+        })
 
         displayReceivedData(v)
 
@@ -98,8 +128,8 @@ class CreateTripFragment : Fragment() {
         destinationValue = model.destinationValue.value.toString()
         departureValue = model.departureValue.value.toString()
 
-        v.departureCity.text = departureValue
-        v.destinationCity.text = destinationValue
+        v.departureCity.text = Editable.Factory.getInstance().newEditable(departureValue)
+        v.destinationCity.text = Editable.Factory.getInstance().newEditable(destinationValue)
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -118,5 +148,18 @@ class CreateTripFragment : Fragment() {
         fragmentTransaction.commit()
     }
 
+    private fun showHelperDialog(v: View) {
+        val helpDialogLayout = R.layout.help_dialog_layout
+        val mDialogView = LayoutInflater.from(v.context).inflate(helpDialogLayout, null)
 
+        val alertDialog = AlertDialog.Builder(v.context) // this: Activity
+            .setView(mDialogView)
+            .create()
+        alertDialog.show()
+
+        mDialogView.skipButton.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+    }
 }

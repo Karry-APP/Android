@@ -85,11 +85,7 @@ class OrderFormFragment: Fragment() {
     }
 
     private fun goTripDetailsActivity() = activity?.runOnUiThread {
-        val intent = Intent(this.context, TripDetails::class.java)
-        val trip = activity?.intent!!.getStringExtra("TRIP")
-        intent.putExtra("TRIP", trip)
-        startActivity(intent)
-        activity?.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        activity?.finish()
     }
 
     private fun orderInfoAsJson(): String {

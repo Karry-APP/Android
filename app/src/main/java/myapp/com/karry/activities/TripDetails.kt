@@ -3,18 +3,19 @@ package myapp.com.karry.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_trip_details.*
 import myapp.com.karry.R
 import myapp.com.karry.entity.Trip
-import myapp.com.karry.entity.User
+import myapp.com.karry.fragments.main.SearchResultsFragment
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.TripsManager
 import myapp.com.karry.modules.UserInfoManager
-import java.lang.Exception
 
 class TripDetails : AppCompatActivity() {
     private lateinit var model: SharedViewModel
@@ -39,22 +40,37 @@ class TripDetails : AppCompatActivity() {
                 searchEndDate.text = trip.arrivalDate
                 karryTax.text = tripDetails.carryTaxe
                 availableWeight.text = tripDetails.carryWeight
-                if (tripDetails.carryVolume != "") {
+
+                if (tripDetails.carryVolume !== "") {
                     maxAmount.text = when (tripDetails.carryVolume) {
                         "1" -> "PETIT"
                         "2" -> "MOYEN"
                         else -> "GRAND"
                     }
                 }
-                tripDepartureCityDetails.text = tripDetails.departureCity
-                tripDestinationCity.text = tripDetails.destinationCity
+                tripDepartureCityDetails.text = tripDetails.departureCity.capitalize()
+                tripDestinationCity.text = tripDetails.destinationCity.capitalize()
                 descriptionValue.text = tripDetails.description
                 linkTravelerProfile.setOnClickListener { startTravelerProfileActivity() }
+
+                Log.d("yay", tripDetails.owner._id)
+                Log.d("yay", UserInfoManager(this).id)
+                if (tripDetails.owner._id == UserInfoManager(this).id) {
+                    buttonOrderForm.visibility = View.INVISIBLE
+                }
+
+                Glide
+                    .with(this)
+                    .load("https://" + tripDetails.owner.profilePicture)
+                    .circleCrop()
+                    .into(userAvatar)
             }
         }, {
             runOnUiThread {
             }
         })
+
+
     }
   
   private fun startTravelerProfileActivity() {
@@ -83,7 +99,7 @@ class TripDetails : AppCompatActivity() {
   }
   
   private fun replaceFragment() {
-        model.cleanTripsList()
-        onBackPressed()
+      model.cleanTripsList()
+      finish()
   }
 }

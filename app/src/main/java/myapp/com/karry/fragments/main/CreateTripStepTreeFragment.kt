@@ -47,6 +47,33 @@ class CreateTripStepTreeFragment : Fragment() {
         v.closeIcon.setOnClickListener { activity?.finish() }
 
 
+        if (model.carryTax.value !== null) {
+            v.carryTax.text = Editable.Factory.getInstance().newEditable(model.carryTax.value.toString())
+        }
+
+        if (model.carryMaxAmount.value !== null) {
+            v.carryMaxAmount.text = Editable.Factory.getInstance().newEditable(model.carryMaxAmount.value.toString())
+        }
+
+        if (model.carryVolume.value !== null && model.carryWeight.value !== null) {
+            v.validStepTree.setOnClickListener {
+                val token = TokenManager(context!!).deviceToken.toString()
+                val userID = UserInfoManager(requireContext()).id
+                model.userID.value = userID
+                val payload = model.fillCreateOrderFormPayload().toString()
+
+                TripsService.create(payload, token,{
+                    val intent = Intent(this.context, MainActivity::class.java)
+                    intent.putExtra("fragmentToDisplay", 2)
+                    startActivity(intent)
+                }, {
+                })
+            }
+        } else {
+            v.validStepTree.isEnabled = false
+        }
+
+
         v.carryTax.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
@@ -60,17 +87,21 @@ class CreateTripStepTreeFragment : Fragment() {
             }
         })
 
+        v.carryMaxAmount.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            }
 
-        v.validStepTree.setOnClickListener {
-            val token = TokenManager(context!!).deviceToken.toString()
-            val userID = UserInfoManager(requireContext()).id
-            model.userID.value = userID
-            val payload = model.fillCreateOrderFormPayload().toString()
+            override fun afterTextChanged(s: Editable) {
+                if (s.isNotEmpty()) {
+                    model.carryMaxAmount.value = parseInt(s.toString())
+                }
+            }
+        })
 
-            TripsService.create(payload, token,{}, {})
 
-            replaceFragment(TripsFragment())
-        }
+
 
         return v
     }
