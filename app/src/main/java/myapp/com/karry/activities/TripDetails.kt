@@ -8,15 +8,12 @@ import com.google.gson.Gson
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_trip_details.*
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 import myapp.com.karry.R
 import myapp.com.karry.entity.Trip
-import myapp.com.karry.entity.User
+import myapp.com.karry.fragments.main.SearchResultsFragment
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
 import myapp.com.karry.modules.TripsManager
-import myapp.com.karry.modules.UserInfoManager
-import java.lang.Exception
 
 class TripDetails : AppCompatActivity() {
     private lateinit var model: SharedViewModel
@@ -38,11 +35,17 @@ class TripDetails : AppCompatActivity() {
                 val fullname = "${trip.owner.firstname} ${trip.owner.lastname}"
                 userName.text = fullname
                 userRate.text = trip.owner.ratings
-                searchStartDate.text = "TODO" //TODO: Wait date in voyage form
-                searchEndDate.text = "TODO" //TODO: Wait date in voyage form
+                searchEndDate.text = trip.arrivalDate
                 karryTax.text = tripDetails.carryTaxe
                 availableWeight.text = tripDetails.carryWeight
-                maxAmount.text = tripDetails.carryMaxAmount
+
+                if (tripDetails.carryVolume !== "") {
+                    maxAmount.text = when (tripDetails.carryVolume) {
+                        "1" -> "PETIT"
+                        "2" -> "MOYEN"
+                        else -> "GRAND"
+                    }
+                }
                 tripDepartureCityDetails.text = tripDetails.departureCity.capitalize()
                 tripDestinationCity.text = tripDetails.destinationCity.capitalize()
                 descriptionValue.text = tripDetails.description
@@ -68,6 +71,8 @@ class TripDetails : AppCompatActivity() {
       intent.putExtra("ownerName", trip.owner.firstname + " " + trip.owner.lastname)
       intent.putExtra("ownerRatings", trip.owner.ratings)
       intent.putExtra("ownerDescription", trip.owner.description)
+      intent.putExtra("ownerCreatedTripsCount", trip.owner.createdTripsCount)
+      intent.putExtra("ownerJoinedTripsCount", trip.owner.joinedTripsCount)
 
       startActivity(intent)
       overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
@@ -84,7 +89,7 @@ class TripDetails : AppCompatActivity() {
   }
   
   private fun replaceFragment() {
-        model.cleanTripsList()
-        onBackPressed()
+      model.cleanTripsList()
+      finish()
   }
 }

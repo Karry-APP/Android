@@ -31,7 +31,7 @@
                     android:id="@+id/orderFormActivity_title"
                     android:textStyle="bold"
 
-                    android:textSize="24sp"
+                    android:textSize="22sp"
                     android:textColor="#004E64"
 
                     android:paddingStart="16dp"

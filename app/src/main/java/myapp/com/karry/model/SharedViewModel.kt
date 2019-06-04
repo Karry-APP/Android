@@ -24,7 +24,7 @@ class SharedViewModel : ViewModel() {
     val transactionId = MutableLiveData<String>()
     private val defaultSharedImageList: ArrayList<SharedImage> = arrayListOf()
 
-    private val defaultAuthor: User = User("toto", "Nicolas", "Leroy", "0646862158", "nico@kkarry.fr", "https://png.pngtree.com/element_origin_min_pic/17/09/18/d555144313d6d69a8820a3baaf5d81fe.jpg", "", "Pas de description encore")
+    private val defaultAuthor: User = User("toto", "Nicolas", "Leroy", "0646862158", "nico@kkarry.fr", "https://png.pngtree.com/element_origin_min_pic/17/09/18/d555144313d6d69a8820a3baaf5d81fe.jpg", "", "Pas de description encore", "2", "4")
     private val defaultTransaction = Transaction("test", "Hahahahhahahahha", "Huilde d'olive", "24, 30 €", defaultSharedImageList, defaultAuthor)
     val tripListArray: ArrayList<Trip> = arrayListOf()
     val transactionListArray: ArrayList<UserRequest> = arrayListOf()

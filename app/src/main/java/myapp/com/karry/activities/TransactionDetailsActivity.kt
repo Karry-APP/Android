@@ -16,6 +16,7 @@ import myapp.com.karry.entity.UserRequest
 
 class TransactionDetailsActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaction_details)
@@ -26,8 +27,6 @@ class TransactionDetailsActivity : AppCompatActivity() {
 
     private fun loadDetails() {
         val USER_REQUEST = intent.getStringExtra("USER_REQUEST").toString()
-
-        Log.d("yay", USER_REQUEST)
         val currentRequest = Gson().fromJson(USER_REQUEST, UserRequest::class.java)
 
         transactionName.text = currentRequest.name

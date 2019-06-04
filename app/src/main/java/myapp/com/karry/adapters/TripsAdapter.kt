@@ -42,10 +42,11 @@ class TripsAdapter(private val tripList: List<Trip>, val click: (trip: Trip) -> 
 
         holder.view.tripDepartureCityDetails.text = trip.departureCity.capitalize()
         holder.view.tripDestinationCity.text = trip.destinationCity.capitalize()
+
         holder.view.userName.text = fullname
         holder.view.userRate.text = if (trip.owner.ratings !== "0") trip.owner.ratings else "N/A"
         holder.view.userRate.text = trip.owner.ratings
-        holder.view.searchEndDate.text = "TODO"
+        holder.view.searchEndDate.text = trip.arrivalDate
         holder.view.tripCard.setOnClickListener { click(trip) }
     }
 }
