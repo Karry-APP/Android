@@ -8,7 +8,7 @@
         tools:context=".activities.CreateTripWrapperActivity" android:background="@color/colorWhiteBackground">
 
     <TextView
-            android:text="Quel est votre prix ?"
+            android:text="@string/CreateTripTitle_STEP_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView19" android:textSize="20sp"
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView19"
             app:layout_constraintBottom_toBottomOf="@+id/textView19"/>
     <TextView
-            android:text="Dites pour quelle commission minimum vous acceptez de ramener un produit. "
+            android:text="@string/CreateTripSubtitle_STEP_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView21" app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
             app:layout_constraintHorizontal_bias="0.0" android:id="@+id/weightParamContainer">
 
         <TextView
-                android:text="Montant de la commission "
+                android:text="@string/CreateTrip_stepThree_taxLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/tripPriceLabel" app:layout_constraintStart_toStartOf="parent"
@@ -104,7 +104,7 @@
             app:layout_constraintTop_toBottomOf="@+id/weightParamContainer" android:background="@drawable/card_border"
             android:id="@+id/linearLayout25">
         <TextView
-                android:text="Prix maximum que vous pouvez avancer"
+                android:text="@string/CreateTrip_stepThree_maxPriceLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textView31" style="@style/labelBlack"
                 android:textSize="@dimen/text_size_15_sp" android:paddingStart="24dp" android:paddingEnd="24dp"

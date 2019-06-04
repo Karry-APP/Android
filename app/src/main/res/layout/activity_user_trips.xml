@@ -31,7 +31,8 @@
                     android:id="@+id/textView7"
                     android:layout_marginStart="16dp" android:layout_marginTop="32dp"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryDark" android:textSize="20sp" android:text="Mes voyages"
+                    android:textColor="@color/colorPrimaryDark" android:textSize="20sp"
+                    android:text="@string/tripFragment_titleTripList"
                     android:layout_marginBottom="16dp"/>
         </LinearLayout>
         <com.google.android.material.tabs.TabLayout

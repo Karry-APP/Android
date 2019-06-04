@@ -42,7 +42,7 @@
                         app:layout_constraintTop_toTopOf="parent" android:background="@android:color/transparent"
                         android:layout_marginLeft="5dp"/>
                 <TextView
-                        android:text="Je souhaite etre livré à : "
+                        android:text="@string/CityPickerTitle"
                         android:layout_width="wrap_content"
                         android:textStyle="bold"
                         android:textColor="@color/colorDarkBLue"
@@ -64,7 +64,7 @@
                     android:layout_marginEnd="24dp" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="24dp" app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    android:hint="Ville de départ du voyageur"
+                    android:hint="@string/CityPicker_searchbarHint"
                     android:layout_marginTop="24dp"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout13"/>
         </LinearLayout>

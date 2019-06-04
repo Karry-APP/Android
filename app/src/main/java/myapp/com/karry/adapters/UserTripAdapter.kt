@@ -34,7 +34,6 @@ class RequestedTripsAdapter(private val tripList: List<Trip>) : androidx.recycle
 
     override fun onBindViewHolder(holder: RequestedTripViewHolder, position: Int) {
         val trip = tripList[position]
-        Log.d("yay", trip.createdAt.toString())
         holder.view.requestTripCard.setOnClickListener { v -> loadTrip(v.context, trip) }
         holder.view.departureCity.text = trip.departureCity.capitalize()
         holder.view.arrivalCity.text = trip.destinationCity.capitalize()
@@ -43,14 +42,19 @@ class RequestedTripsAdapter(private val tripList: List<Trip>) : androidx.recycle
         holder.view.addedBackersList.setHasFixedSize(true)
         holder.view.addedBackersList.adapter = CardBackersAdapter(trip.joinList)
         holder.view.tripCreatedDate.text = getFormattedDateSimple(trip.createdAt)
+        holder.view.arrivalDateValue.text = trip.arrivalDate
     }
 
     private fun getFormattedDateSimple(dateInString: String): String {
-        val date = OffsetDateTime.parse(dateInString)
-        val f = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-            .withLocale(Locale.FRANCE)  // Or Locale.CANADA_FRENCH and such.
+        if (dateInString !== null) {
+            val date = OffsetDateTime.parse(dateInString)
+            val f = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+                .withLocale(Locale.FRANCE)  // Or Locale.CANADA_FRENCH and such.
 
-        return date.format(f)
+            return date.format(f)
+        } else {
+            return dateInString
+        }
     }
 
     private fun loadTrip(c: Context, trip: Trip) {

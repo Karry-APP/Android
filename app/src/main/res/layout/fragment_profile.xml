@@ -83,7 +83,7 @@
                             android:paddingStart="8dp" android:paddingTop="8dp" android:paddingBottom="8dp"
                             android:paddingEnd="8dp" android:layout_gravity="center">
                         <TextView
-                                android:text="Voyages"
+                                android:text="@string/MainActivity_bottomNavigation_tripsTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="normal"
@@ -119,7 +119,7 @@
                             android:paddingStart="8dp" android:paddingTop="8dp" android:paddingBottom="8dp"
                             android:paddingEnd="8dp" android:layout_gravity="center">
                         <TextView
-                                android:text="Mes commandes"
+                                android:text="@string/UserRequestsTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="normal"
@@ -155,7 +155,7 @@
                             android:paddingStart="8dp" android:paddingTop="8dp" android:paddingBottom="8dp"
                             android:paddingEnd="8dp" android:layout_gravity="center">
                         <TextView
-                                android:text="Déconnexion"
+                                android:text="@string/LoginActivity_logoutButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="normal"

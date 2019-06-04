@@ -8,7 +8,7 @@
         tools:context=".activities.CreateTripWrapperActivity" android:background="@color/colorWhiteBackground">
 
     <TextView
-            android:text="Volume possible"
+            android:text="@string/ChooseVolumeTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView19" android:textSize="22sp"
@@ -43,12 +43,12 @@
                 android:layout_height="match_parent" android:layout_weight="10"
                 android:gravity="center">
             <TextView
-                    android:text="PETIT"
+                    android:text="ChooseVolume_SMALL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/smallLabel" android:textColor="@color/black"
                     android:textSize="20sp"/>
             <TextView
-                    android:text="Bijou, sachet de bonbon, livre de poche ..."
+                    android:text="@string/ChooseVolume_SMALL_helpers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/smallDescription"
                     android:textColor="@color/colorDarkBLue"/>
@@ -74,12 +74,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:layout_weight="10" android:gravity="center">
             <TextView
-                    android:text="MOYEN"
+                    android:text="ChooseVolume_MEDIUM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/mediumLabel" android:textColor="@color/black"
                     android:textSize="20sp"/>
             <TextView
-                    android:text="Pull, jean, vêtements, équipements  ..."
+                    android:text="ChooseVolume_MEDIUM_helpers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/mediumDescription"
                     android:textColor="@color/colorDarkBLue"/>
@@ -106,12 +106,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:layout_weight="10" android:gravity="center">
             <TextView
-                    android:text="GRAND"
+                    android:text="ChooseVolume_BIG"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/bigLabel" android:textColor="@color/black"
                     android:textSize="20sp"/>
             <TextView
-                    android:text="Boîte de chaussures, ballon de basket ..."
+                    android:text="@string/ChooseVolume_BIG_helpers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/bigDescription"
                     android:textColor="@color/colorDarkBLue"/>

@@ -19,6 +19,11 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.google.gson.Gson
 import myapp.com.karry.model.SharedViewModel
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class UserTripActivity : AppCompatActivity() {
@@ -69,7 +74,9 @@ class UserTripActivity : AppCompatActivity() {
         departureCity.text = trip.departureCity.capitalize()
         destinationCity.text = trip.destinationCity.capitalize()
         tripDescription.text = trip.description
+        arrivalDate.text = trip.arrivalDate
     }
+
 
     private fun loadBackers() {
         val intent = Intent(this, UserTripBackersActivity::class.java)

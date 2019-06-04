@@ -34,7 +34,6 @@ class UserTripBackersActivity : AppCompatActivity() {
         }, {
             Log.d("yay", it)
         })
-        updateList.setOnClickListener { backersAdapter.setTrashButtons() }
         closeTripBackersButton.setOnClickListener { onBackPressed() }
         backersList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.baseContext)
         backersList.adapter = backersAdapter
