@@ -19,9 +19,8 @@ class TravelerProfileActivity : AppCompatActivity() {
 
         closeTravelerProfile.setOnClickListener { onBackPressed() }
         travelerName.text = intent.getStringExtra("ownerName")
-        travelerLocation.text = "TODO"
-        tripsCount.text = "TODO"
-        transactionCount.text = "TODO"
+        tripsCount.text = intent.getStringExtra("ownerCreatedTripsCount")
+        transactionCount.text = intent.getStringExtra("ownerJoinedTripsCount")
         rate.text = intent.getStringExtra("ownerRatings")
         travelerDescriptionValue.text = intent.getStringExtra("ownerDescription")
         fillComments()

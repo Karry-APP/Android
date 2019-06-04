@@ -83,6 +83,7 @@
 
     <!-- SearchResult -->
     <string name="searchResultActivity_resultLabel">Résultat pour la recherche:</string>
+    <string name="searchResultActivity_error">Il semble qu\'il n\'existe pas de voyage pour votre recherche</string>
     <string name="searchResultActivity_result">PARIS (FR)</string>
     <string name="searchResultActivity_noTripTitle">Vous n\'avez pas trouvé de voyageurs ?</string>
     <string name="searchResultActivity_noTripSubtitle">Postez votre annonce et recevez une notification lorsqu\'un
@@ -106,7 +107,7 @@
     <string name="searchResultActivity_buttonHintContact">Contacter</string>
     <string name="searchResultActivity_availableWeight">Poids (KG)</string>
     <string name="searchResultActivity_karryTax">Tips (€)</string>
-    <string name="searchResultActivity_maxAmount">Objet(s)</string>
+    <string name="searchResultActivity_maxAmount">Taille</string>
     <string name="searchResultActivity_tripDetailsInformationsPlaceholder">Informations</string>
     <string name="searchResultActivity_tripDetailsAvailabilityPlaceholder">Disponibilitées</string>
 
