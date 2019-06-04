@@ -16,35 +16,27 @@ class UsersService {
             val request = Request.Builder().url(ApiManager.URL.USER_PATCH + userId).header("x-auth", token).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                        val user = Gson().fromJson(response.body()?.string(), User::class.java)
-                    if (response.code() == 200) {
-                        success(user)
-                    } else {
-                        failure()
+                    when (response.code()) {
+                        200 -> success(Gson().fromJson(response.body()?.string(), User::class.java))
+                        else -> failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
-                    Log.d("failure", e.toString())
                     failure()
                 }
             })
         }
 
         fun userById(userId: String?, token: String, success: (user: User) -> Unit, failure: () -> Unit) {
-            val request = okhttp3.Request.Builder().header("X-Auth", token).url(ApiManager.URL.USER_LOAD(userId)).build()
+            val request = okhttp3.Request.Builder().header("x-auth", token).url(ApiManager.URL.USER_LOAD(userId)).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    if (response.code() == 200) {
-                        val user = Gson().fromJson(response.body()?.string(), User::class.java)
-                        Log.d("reussiteUserById", response.body().toString())
-                        success(user)
-                    } else {
-                        Log.d("failureUserById", response.body()?.string())
-                        failure()
+                    when (response.code()) {
+                        200 -> success(Gson().fromJson(response.body()?.string(), User::class.java))
+                        else -> failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
-                    Log.d("failure", e.toString())
                     failure()
                 }
             })
@@ -55,10 +47,9 @@ class UsersService {
             val request = Request.Builder().url(ApiManager.URL.USER_LOGIN).post(body).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    if (response.code() == 200) {
-                        success(response)
-                    } else {
-                        failure()
+                    when (response.code()) {
+                        200 -> success(response)
+                        else -> failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
@@ -72,12 +63,9 @@ class UsersService {
             val request = Request.Builder().url(ApiManager.URL.USER_REGISTER).post(body).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    if (response.code() == 201) {
-                        val header = response.header("x-auth")
-                        val user = Gson().fromJson(response.body()?.string(), User::class.java)
-                        success(user, header)
-                    } else {
-                        failure()
+                    when (response.code()) {
+                        201 -> success(Gson().fromJson(response.body()?.string(), User::class.java), response.header("x-auth"))
+                        else  -> failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
@@ -93,11 +81,9 @@ class UsersService {
             val request = Request.Builder().url(ApiManager.URL.USER_PATCH + userID).header("X-Auth", token).patch(body).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    if (response.code() == 200) {
-                        val updatedUser = Gson().fromJson(response.body()?.string(), User::class.java)
-                        success(updatedUser)
-                    } else {
-                        failure()
+                    when (response.code()) {
+                        200 -> success(Gson().fromJson(response.body()?.string(), User::class.java))
+                        else -> failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
@@ -110,16 +96,12 @@ class UsersService {
             val request = Request.Builder().url(ApiManager.URL.USER_TRIPS).header("x-auth", token).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    if (response.code() == 200) {
-                        val tripsArray = Gson().fromJson(response.body()!!.string(), Array<Trip>::class.java).toList()
-                        success(tripsArray)
-                    } else {
-                        failure()
+                    when (response.code()) {
+                        200 -> success(Gson().fromJson(response.body()!!.string(), Array<Trip>::class.java).toList())
+                        else -> failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
-                    Log.d("yay", e.toString())
-
                     failure()
                 }
             })
@@ -129,10 +111,9 @@ class UsersService {
             val request = Request.Builder().url(ApiManager.URL.USER_REQUESTS).header("x-auth", token).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    if (response.code() == 200) {
-                        success(Gson().fromJson(response.body()!!.string(), Array<myapp.com.karry.entity.Request>::class.java).toList())
-                    } else {
-                        failure()
+                    when (response.code()) {
+                        200 -> success(Gson().fromJson(response.body()!!.string(), Array<myapp.com.karry.entity.Request>::class.java).toList())
+                        else -> failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
@@ -145,10 +126,9 @@ class UsersService {
             val request = Request.Builder().url(ApiManager.URL.USER_ROOMS).header("x-auth", token).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    if (response.code() == 200) {
-                        success(Gson().fromJson(response.body()!!.string(), Array<Room>::class.java).toList())
-                    } else {
-                        failure()
+                    when (response.code()) {
+                        200 -> success(Gson().fromJson(response.body()!!.string(), Array<Room>::class.java).toList())
+                        else -> failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
@@ -161,11 +141,9 @@ class UsersService {
             val request = Request.Builder().url(ApiManager.URL.USER_TRIPS).header("x-auth", token).build()
             OkHttpClient().newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response) {
-                    if (response.code() == 200) {
-                        val tripsArray = Gson().fromJson(response.body()!!.string(), Array<Trip>::class.java).toList()
-                        success(tripsArray)
-                    } else {
-                        failure()
+                    when (response.code()) {
+                        200 -> success(Gson().fromJson(response.body()!!.string(), Array<Trip>::class.java).toList())
+                        else -> failure()
                     }
                 }
                 override fun onFailure(call: Call, e: IOException) {
