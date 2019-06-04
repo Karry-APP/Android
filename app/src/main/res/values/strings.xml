@@ -75,6 +75,8 @@
     <string name="ProfileFragment_profilePicture_contentDescription">Image du profil</string>
     <string name="ProfilFragment_titleProfil">Profil</string>
     <string name="tripFragment_titleTripList">Mes voyages</string>
+    <string name="tripFragment_placeholderTripList">Il semble que vous n\'avez jamais créé de voyage</string>
+    <string name="tripFragment_placeholderTripList_link">Créez-en un maintenant</string>
 
     <!-- TripFormActivity -->
     <string name="TripFormActivity_TripPageTitle_text">Créer un voyage</string>
