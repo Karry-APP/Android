@@ -18,17 +18,25 @@ class TripsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v: View = inflater.inflate(myapp.com.karry.R.layout.fragment_trips, container, false)
         v.userTripsList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
-        v.swiperefresh.setOnRefreshListener { loadUserCreatedTrips() }
-        loadUserCreatedTrips()
+        v.swiperefresh.setOnRefreshListener { loadUserCreatedTrips(v) }
+        v.progressBarTrip.visibility = View.VISIBLE
+        loadUserCreatedTrips(v)
         return v
     }
 
-    private fun loadUserCreatedTrips() {
+    private fun loadUserCreatedTrips(v: View) {
         val token: String = TokenManager(requireContext()).deviceToken ?: ""
-        UsersService.getCreatedTrips(token, { tripsArray -> onSuccess(tripsArray) }, { onError()})
+        UsersService.getCreatedTrips(token,
+            {
+                tripsArray -> onSuccess(tripsArray, v)
+            }, {
+                onError()
+            }
+        )
     }
 
-    private fun onSuccess(tripsArray: List<Trip>) = activity?.runOnUiThread {
+    private fun onSuccess(tripsArray: List<Trip>, v: View) = activity?.runOnUiThread {
+        v.progressBarTrip.visibility = View.INVISIBLE
         userTripsList.adapter = TripsAdapter(tripsArray) {
             // activity?.intent!!.putExtra("trip", trip.id)
         }
