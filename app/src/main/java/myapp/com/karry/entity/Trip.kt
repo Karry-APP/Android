@@ -10,8 +10,9 @@ class Trip (
     val departureCountry: String,
     val destinationCountry: String,
     val carryWeight: String,
-    val carryMaxAmount: String,
+    val carryVolume: String,
     val carryTaxe: String,
     val owner: User,
-    val joinList: ArrayList<User>
+    val joinList: ArrayList<User>,
+    val arrivalDate: String
 )

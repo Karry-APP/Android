@@ -38,6 +38,9 @@ class SearchResultsFragment : Fragment() {
         v.destinationValue.text = model.destinationValue.value?.toUpperCase()
         v.closeSearchResult.setOnClickListener { launchFragment(SearchFragment()) }
 
+        v.errorSearchResult.visibility = View.INVISIBLE
+        v.tripListProgress.visibility = View.INVISIBLE
+
         loadTripsQuery(v)
 
         return v
@@ -61,17 +64,30 @@ class SearchResultsFragment : Fragment() {
         val token = TokenManager(context!!).deviceToken.toString()
         val departure = model.departureValue.value.toString()
         val destination = model.destinationValue.value.toString()
+        v.tripListProgress.visibility = View.VISIBLE
+        v.tripsList.visibility = View.INVISIBLE
 
-        TripsService.searchByCities(departure, destination,token, {
-            if (it.isNullOrEmpty()) {
+            TripsService.searchByCities(departure, destination, token, {
+                if (it.isNullOrEmpty()) {
+                    activity?.runOnUiThread {
+                        v.errorSearchResult.visibility = View.VISIBLE
+                        v.tripListProgress.visibility = View.INVISIBLE
+                        v.tripsList.visibility = View.INVISIBLE
+                    }
 
-            } else {
-                model.storeTrips(it)
-                bindView(v)
-            }
-        }, {
-            Log.d("yay", "Something bad happened")
-        })
+                } else {
+                    activity?.runOnUiThread {
+                        v.errorSearchResult.visibility = View.INVISIBLE
+                        v.tripListProgress.visibility = View.INVISIBLE
+                        v.tripsList.visibility = View.VISIBLE
+
+                        model.storeTrips(it)
+                        bindView(v)
+                    }
+                }
+            }, {
+                Log.d("yay", "Something bad happened")
+            })
     }
 
     private fun launchFragment(fragment: Fragment) {
