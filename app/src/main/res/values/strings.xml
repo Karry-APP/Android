@@ -74,6 +74,7 @@
     <string name="title_activity_trip_form">TripFormActivity</string>
     <string name="ProfileFragment_profilePicture_contentDescription">Image du profil</string>
     <string name="ProfilFragment_titleProfil">Profil</string>
+    <string name="tripFragment_titleTripList">Mes voyages</string>
 
     <!-- TripFormActivity -->
     <string name="TripFormActivity_TripPageTitle_text">Créer un voyage</string>
