@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_trips.*
 import kotlinx.android.synthetic.main.fragment_trips.view.*
+import myapp.com.karry.activities.CreateTripWrapperActivity
 import myapp.com.karry.activities.TripDetails
 import myapp.com.karry.adapters.TripsAdapter
 import myapp.com.karry.entity.Trip
@@ -24,6 +25,14 @@ class TripsFragment : Fragment() {
         v.userTripsList.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
         v.swiperefresh.setOnRefreshListener { loadUserCreatedTrips(v) }
         v.progressBarTrip.visibility = View.VISIBLE
+        v.placeHolder.visibility = View.INVISIBLE
+        v.placeHolder_link.visibility = View.INVISIBLE
+
+        v.placeHolder_link.setOnClickListener{
+            val intent = Intent(v.context, CreateTripWrapperActivity::class.java)
+            startActivity(intent)
+        }
+
         loadUserCreatedTrips(v)
         return v
     }
@@ -34,12 +43,19 @@ class TripsFragment : Fragment() {
             {
                 tripsArray -> onSuccess(tripsArray, v)
             }, {
-                onError()
+                onError(v)
             }
         )
     }
 
     private fun onSuccess(tripsArray: List<Trip>, v: View) = activity?.runOnUiThread {
+
+        if(tripsArray.isEmpty()) {
+            v.placeHolder.visibility = View.VISIBLE
+            v.placeHolder_link.visibility = View.VISIBLE
+
+        }
+
         v.progressBarTrip.visibility = View.INVISIBLE
         userTripsList.adapter = TripsAdapter(tripsArray) {
             val intent = Intent(this.context, TripDetails::class.java)
@@ -49,7 +65,8 @@ class TripsFragment : Fragment() {
         swiperefresh.isRefreshing = false
     }
 
-    private fun onError() = activity?.runOnUiThread {
-
+    private fun onError(v: View) = activity?.runOnUiThread {
+        v.placeHolder.visibility = View.VISIBLE
+        v.placeHolder_link.visibility = View.VISIBLE
     }
 }
