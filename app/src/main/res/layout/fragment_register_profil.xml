@@ -16,10 +16,12 @@
 >
     <ImageView
             android:layout_width="0dp"
-            android:layout_height="442dp" app:srcCompat="@drawable/ic_background_gradient"
+            android:layout_height="442dp"
             android:id="@+id/imageView" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"
+            android:minHeight="442dp" android:background="@drawable/ic_background_gradient"
     />
     <ImageView
             android:layout_width="64dp"
