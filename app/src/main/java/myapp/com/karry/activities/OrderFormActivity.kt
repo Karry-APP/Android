@@ -1,9 +1,13 @@
 package myapp.com.karry.activities
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.StrictMode
+import android.util.AttributeSet
+import android.view.View
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_order_form.*
 import myapp.com.karry.R
 import myapp.com.karry.fragments.orderForm.OrderFormFragment
 
@@ -18,6 +22,7 @@ class OrderFormActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             replaceFragment(OrderFormFragment())
         }
+
     }
 
     private fun replaceFragment(fragment: Fragment) {

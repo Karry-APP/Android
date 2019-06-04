@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.transactions_row.view.*
 import myapp.com.karry.R
 import myapp.com.karry.entity.Transaction
@@ -36,7 +37,7 @@ class TransactionsAdapter(private val transactionList: Array<UserRequest>) :
 
     private fun loadTransaction(c: Context, transaction: UserRequest) {
         val intent = Intent(c, TransactionDetailsActivity::class.java)
-        intent.putExtra("USER_REQUEST", transaction.toString())
+        intent.putExtra("USER_REQUEST", Gson().toJson(transaction))
         c.startActivity(intent)
     }
 }

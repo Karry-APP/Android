@@ -4,6 +4,7 @@ package myapp.com.karry.fragments.main
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -49,7 +50,6 @@ class CreateTripFragment : Fragment() {
             v.arrivalDate.text = Editable.Factory.getInstance().newEditable(model.arrivalDate.value)
         }
 
-
         if (model.departureValue.value.isNullOrEmpty() && model.destinationValue.value.isNullOrEmpty() && model.arrivalDate.value.isNullOrEmpty()) {
             v.validStepOne.isEnabled = false
         } else {
@@ -89,6 +89,20 @@ class CreateTripFragment : Fragment() {
             datePickerDialog.datePicker.minDate = curCalender.timeInMillis
             datePickerDialog.show()
         }
+
+        v.description.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                if (s.isNotEmpty()) {
+                    model.description.value = s.toString()
+                }
+            }
+        })
 
         displayReceivedData(v)
 

@@ -2,6 +2,7 @@ package myapp.com.karry.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -24,11 +25,12 @@ class TransactionDetailsActivity : AppCompatActivity() {
     }
 
     private fun loadDetails() {
-        val currentRequest = Gson().fromJson(intent.getStringExtra("USER_REQUEST").toString(), UserRequest::class.java)
+        val USER_REQUEST = intent.getStringExtra("USER_REQUEST").toString()
+
+        Log.d("yay", USER_REQUEST)
+        val currentRequest = Gson().fromJson(USER_REQUEST, UserRequest::class.java)
 
         transactionName.text = currentRequest.name
         transactionPrice.text = currentRequest.estimatePrice
-
-
     }
 }

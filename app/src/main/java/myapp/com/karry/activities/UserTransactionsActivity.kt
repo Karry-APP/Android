@@ -11,6 +11,7 @@ import myapp.com.karry.adapters.TransactionsAdapter
 import myapp.com.karry.entity.UserRequest
 import myapp.com.karry.model.SharedViewModel
 import myapp.com.karry.modules.TokenManager
+import myapp.com.karry.modules.UserInfoManager
 import myapp.com.karry.network.RequestsService
 
 class UserTransactionsActivity : AppCompatActivity() {
@@ -43,8 +44,9 @@ class UserTransactionsActivity : AppCompatActivity() {
 
 
     private fun bindView(transactionListArray: Array<UserRequest>) {
+            val cleanListArray = transactionListArray.filter{ trip -> trip.creator === UserInfoManager(this).id}
             transactionsList.layoutManager = LinearLayoutManager(this.baseContext)
-            transactionsList.adapter = TransactionsAdapter(transactionListArray)
+            transactionsList.adapter = TransactionsAdapter(cleanListArray.toTypedArray())
 
     }
 }

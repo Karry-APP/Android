@@ -6,7 +6,9 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_trip_details.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 import myapp.com.karry.R
 import myapp.com.karry.entity.Trip
 import myapp.com.karry.entity.User
@@ -41,10 +43,16 @@ class TripDetails : AppCompatActivity() {
                 karryTax.text = tripDetails.carryTaxe
                 availableWeight.text = tripDetails.carryWeight
                 maxAmount.text = tripDetails.carryMaxAmount
-                tripDepartureCityDetails.text = tripDetails.departureCity
-                tripDestinationCity.text = tripDetails.destinationCity
+                tripDepartureCityDetails.text = tripDetails.departureCity.capitalize()
+                tripDestinationCity.text = tripDetails.destinationCity.capitalize()
                 descriptionValue.text = tripDetails.description
                 linkTravelerProfile.setOnClickListener { startTravelerProfileActivity() }
+
+                Glide
+                    .with(this)
+                    .load("https://" + tripDetails.owner.profilePicture)
+                    .circleCrop()
+                    .into(userAvatar)
             }
         }, {
             runOnUiThread {

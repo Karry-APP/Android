@@ -17,6 +17,7 @@ class SharedViewModel : ViewModel() {
     val userID = MutableLiveData<String>()
     val roundTrip = MutableLiveData<Boolean>()
     val arrivalDate = MutableLiveData<String>()
+    val description = MutableLiveData<String>()
     val carryMaxAmount = MutableLiveData<Int>()
 
 
@@ -44,6 +45,7 @@ class SharedViewModel : ViewModel() {
         userObject.put("isRound",roundTrip.value)
         userObject.put("arrivalDate",arrivalDate.value)
         userObject.put("carryMaxAmount",carryMaxAmount.value)
+        userObject.put("description",description.value)
 
 
         return userObject
