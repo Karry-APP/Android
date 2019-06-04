@@ -13,14 +13,12 @@ import myapp.com.karry.R
 import myapp.com.karry.activities.CreateTripWrapperActivity
 import myapp.com.karry.model.SharedViewModel
 
-
 class SearchFragment : Fragment() {
 
     private var departureValue: String = " "
     private var destinationValue: String = " "
 
     private lateinit var model: SharedViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

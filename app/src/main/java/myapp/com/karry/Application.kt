@@ -38,8 +38,6 @@ class MainApplication : Application() {
                 }
 
                 val token = task.result?.token
-
-                Log.d(TAG, token)
                 Toast.makeText(this.applicationContext, token, Toast.LENGTH_SHORT).show()
             })
     }

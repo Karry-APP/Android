@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:paddingTop="16dp" android:paddingBottom="16dp"
+            android:background="@drawable/card_border" android:id="@+id/askingContactRow">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_profile" android:id="@+id/profil"
+                android:layout_weight="0.5" android:layout_gravity="center_vertical"/>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView
+                    android:text=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/demande_title"
+                    style="@style/userNameTrip"/>
+            <TextView
+                    android:text=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/creatorName" style="@style/textSmallGrey"/>
+            <TextView
+                    android:text="Rome - Paris"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView26"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

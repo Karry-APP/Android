@@ -6,33 +6,11 @@
              android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
              tools:context=".fragments.chat.ChatContactFragment">
 
-
-    <LinearLayout
-            android:orientation="horizontal"
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRequestsList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:paddingTop="16dp" android:paddingBottom="16dp"
-            android:background="@drawable/card_border" android:id="@+id/askingContactRow">
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_profile" android:id="@+id/profil"
-                android:layout_weight="0.5" android:layout_gravity="center_vertical"/>
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_weight="1">
-            <TextView
-                    android:text="Huilde d'olive vierge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/demande_title"
-                    style="@style/userNameTrip"/>
-            <TextView
-                    android:text="Valentin M."
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/date" style="@style/textSmallGrey"/>
-            <TextView
-                    android:text="Rome - Paris"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/textView26"/>
-        </LinearLayout>
-    </LinearLayout>
+
+            android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 </FrameLayout>

@@ -20,7 +20,9 @@ class ApiManager {
             // REQUESTS
             fun USER_REQUEST(id: String) = "$BASE/requests/$id"
             const val USER_JOIN_LIST = ""
-            const val USER_REQUESTS = "$BASE/requests"
+            const val USER_REQUESTS = "$BASE/users/me/requests"
+
+            const val USER_ROOMS = "$BASE/users/me/rooms"
 
             // TRIPS
             const val TRIP_SEARCH = "$BASE/trips/search"
