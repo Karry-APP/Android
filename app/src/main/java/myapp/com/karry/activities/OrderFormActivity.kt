@@ -25,5 +25,4 @@ class OrderFormActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }
-
 }

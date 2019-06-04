@@ -6,8 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import myapp.com.karry.fragments.chat.ChatContactFragment
 import myapp.com.karry.fragments.chat.ChatMessageFragment
 
-class ChatAdaptater(fm: FragmentManager, private var tabCount: Int) :
-    FragmentPagerAdapter(fm) {
+class ChatAdaptater(fm: FragmentManager, private var tabCount: Int) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
