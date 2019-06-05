@@ -70,20 +70,22 @@ class TripDetails : AppCompatActivity() {
 
 
     }
-  
+
   private fun startTravelerProfileActivity() {
       val jsonTrip: String = intent.getStringExtra("TRIP")
       val trip = Gson().fromJson(jsonTrip, Trip::class.java)
       val intent = Intent(this, TravelerProfileActivity::class.java)
+
       intent.putExtra("ownerName", trip.owner.firstname + " " + trip.owner.lastname)
       intent.putExtra("ownerRatings", trip.owner.ratings)
       intent.putExtra("ownerDescription", trip.owner.description)
       intent.putExtra("ownerCreatedTripsCount", trip.owner.createdTripsCount)
       intent.putExtra("ownerJoinedTripsCount", trip.owner.joinedTripsCount)
+
       startActivity(intent)
       overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
   }
-  
+
   private fun startOrderForm() {
         val jsonTrip: String = intent.getStringExtra("TRIP")
         val trip = Gson().fromJson(jsonTrip, Trip::class.java)
@@ -93,7 +95,7 @@ class TripDetails : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
   }
-  
+
   private fun replaceFragment() {
       model.cleanTripsList()
       finish()
